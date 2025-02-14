@@ -1,5 +1,6 @@
 -- Roact version by @sircfenner
 -- Ported to Fusion by @YasuYoshida
+-- Migrated to Fusion 0.3 by @TenebrisNoctua
 
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
@@ -7,19 +8,17 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
-local Background = require(StudioComponents.Background)
-local BoxBorder = require(StudioComponents.BoxBorder)
+-- Scoped components
+local BoxBorderComponent = require(StudioComponents.BoxBorder)
+local BackgroundComponent = require(StudioComponents.Background)
 
-local getMotionState = require(StudioComponentsUtil.getMotionState)
+local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
+
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
 local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
-local Computed = Fusion.Computed
-local Hydrate = Fusion.Hydrate
-local New = Fusion.New
-local Value = Fusion.Value
 local Out = Fusion.Out
 
 local COMPONENT_ONLY_PROPERTIES = {
@@ -32,40 +31,47 @@ type VerticalExpandingListProperties = {
 	[any]: any,
 }
 
-return function(props: VerticalExpandingListProperties): Frame
-	local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
+return function(Scope: { [any]: any }): (props: VerticalExpandingListProperties) -> Frame
+	local BoxBorder = BoxBorderComponent(Scope)
+	local Background = BackgroundComponent(Scope)
 
-	local contentSize = Value(Vector2.new(0,0))
+	local getMotionState = getMotionStateUtil(Scope)
 
-	return Hydrate(
-		BoxBorder {
-			[Children] = Background {
-				ClipsDescendants = true,
-				Size = getMotionState(Computed(function()
-					local mode = unwrap(props.AutomaticSize or Enum.AutomaticSize.Y) -- Custom autosize since engine sizing is unreliable
-					if mode == Enum.AutomaticSize.Y then
-						local s = unwrap(contentSize)
-						if s then
-							return UDim2.new(1,0,0,s.Y)
+	return function(props: VerticalExpandingListProperties): Frame
+		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
+		local contentSize = Scope:Value(Vector2.new(0,0))
+
+		return Scope:Hydrate(
+			BoxBorder {
+				[Children] = Background {
+					ClipsDescendants = true,
+					Size = getMotionState(Scope:Computed(function(use, scope)
+						local mode = unwrap(props.AutomaticSize or Enum.AutomaticSize.Y, use) -- Custom autosize since engine sizing is unreliable
+						if mode == Enum.AutomaticSize.Y then
+							local s = unwrap(contentSize, use)
+							if s then
+								return UDim2.new(1,0,0,s.Y)
+							else
+								return UDim2.new(1,0,0,0)
+							end
 						else
-							return UDim2.new(1,0,0,0)
+							return props.Size or UDim2.new(1,0,0,0)
 						end
-					else
-						return props.Size or UDim2.new(1,0,0,0)
-					end
-				end), "Spring", 40),
+					end), "Spring", 40),
 
-				[Children] = New "UIListLayout" {
-					SortOrder = Enum.SortOrder.LayoutOrder,
-					FillDirection = Enum.FillDirection.Vertical,
+					[Children] = Scope:New "UIListLayout" {
+						SortOrder = Enum.SortOrder.LayoutOrder,
+						FillDirection = Enum.FillDirection.Vertical,
 
-					Padding = Computed(function()
-						return unwrap(props.Padding) or UDim.new(0, 10)
-					end),
+						Padding = Scope:Computed(function(use, scope)
+							return unwrap(props.Padding, use) or UDim.new(0, 10)
+						end),
 
-					[Out "AbsoluteContentSize"] = contentSize,
+						[Out "AbsoluteContentSize"] = contentSize,
+					}
 				}
 			}
-		}
-	)(hydrateProps)
+		)(hydrateProps)
+	end
 end
+

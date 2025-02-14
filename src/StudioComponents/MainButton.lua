@@ -1,5 +1,6 @@
 -- Roact version by @sircfenner
 -- Ported to Fusion by @YasuYoshida
+-- Migrated to Fusion 0.3 by @TenebrisNoctua
 
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
@@ -7,11 +8,8 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
-local Button = require(StudioComponents.Button)
-
-local Children = Fusion.Children
-local Hydrate = Fusion.Hydrate
-local New = Fusion.New
+-- Scoped components
+local ButtonComponent = require(StudioComponents.Button)
 
 local baseProperties = {
 	TextColorStyle = Enum.StudioStyleGuideColor.DialogMainButtonText,
@@ -20,11 +18,15 @@ local baseProperties = {
 	Name = "MainButton",
 }
 
-return function(props: Button.ButtonProperties): TextButton
-	for index,value in pairs(baseProperties) do
-		if props[index]==nil then
-			props[index] = value
+return function(Scope: { [any]: any }): (props: ButtonComponent.ButtonProperties) -> TextButton
+	local Button = ButtonComponent(Scope)
+
+	return function(props: ButtonComponent.ButtonProperties): TextButton
+		for index, value in pairs(baseProperties) do
+			if props[index] == nil then
+				props[index] = value
+			end
 		end
+		return Button(props)
 	end
-	return Button(props)
 end

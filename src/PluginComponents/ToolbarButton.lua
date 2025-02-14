@@ -9,7 +9,6 @@ local unwrap = require(StudioComponentsUtil.unwrap)
 local types = require(StudioComponentsUtil.types)
 
 local Observer = Fusion.Observer
-local Hydrate = Fusion.Hydrate
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"ToolTip",
@@ -28,26 +27,24 @@ type ToolbarProperties = {
 	[any]: any,
 }
 
-return function(props: ToolbarProperties)
-	local toolbarButton = props.Toolbar:CreateButton(
-		props.Name,
-		props.ToolTip,
-		props.Image
-	)
+return function(Scope: { [any]: any }): (props: ToolbarProperties) -> ()
+	return function(props: ToolbarProperties)
+		local toolbarButton = props.Toolbar:CreateButton(props.Name, props.ToolTip, props.Image)
 
-	if props.Active~=nil then
-		toolbarButton:SetActive(unwrap(props.Active))
-		if unwrap(props.Active)~=props.Active then
-			Plugin.Unloading:Connect(Observer(props.Active):onChange(function()
-				toolbarButton:SetActive(unwrap(props.Active, false))
-			end))
+		if props.Active ~= nil then
+			toolbarButton:SetActive(unwrap(props.Active))
+			if unwrap(props.Active) ~= props.Active then
+				Plugin.Unloading:Connect(Observer(props.Active):onChange(function()
+					toolbarButton:SetActive(unwrap(props.Active))
+				end))
+			end
 		end
-	end
 
-	local hydrateProps = table.clone(props)
-	for _,propertyName in pairs(COMPONENT_ONLY_PROPERTIES) do
-		hydrateProps[propertyName] = nil
-	end
+		local hydrateProps = table.clone(props)
+		for _, propertyName in pairs(COMPONENT_ONLY_PROPERTIES) do
+			hydrateProps[propertyName] = nil
+		end
 
-	return Hydrate(toolbarButton)(hydrateProps)
+		return Scope:Hydrate(toolbarButton)(hydrateProps)
+	end
 end

@@ -1,5 +1,6 @@
 -- Roact version by @sircfenner
 -- Ported to Fusion by @YasuYoshida
+-- Migrated to Fusion 0.3 by @TenebrisNoctua
 
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
@@ -7,18 +8,16 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
-local getMotionState = require(StudioComponentsUtil.getMotionState)
-local themeProvider = require(StudioComponentsUtil.themeProvider)
-local getModifier = require(StudioComponentsUtil.getModifier)
+-- Scoped components
+local getModifierUtil = require(StudioComponentsUtil.getModifier)
+local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
+local getStateUtil = require(StudioComponentsUtil.getState)
+local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
+
 local stripProps = require(StudioComponentsUtil.stripProps)
-local constants = require(StudioComponentsUtil.constants)
-local getState = require(StudioComponentsUtil.getState)
 local unwrap = require(StudioComponentsUtil.unwrap)
 local types = require(StudioComponentsUtil.types)
-
-local Computed = Fusion.Computed
-local Hydrate = Fusion.Hydrate
-local New = Fusion.New
+local constants = require(StudioComponentsUtil.constants)
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"Enabled",
@@ -32,32 +31,41 @@ type LabelProperties = {
 	[any]: any,
 }
 
-return function(props: LabelProperties): TextLabel
-	local isEnabled = getState(props.Enabled, true)
-	local textSize = props.TextSize or constants.TextSize
+return function(Scope: { [any]: any }): (props: LabelProperties) -> TextLabel
+	local themeProvider = themeProviderComponent(Scope)
+	local getState = getStateUtil(Scope)
+	local getModifier = getModifierUtil(Scope)
+	local getMotionState = getMotionStateUtil(Scope)
+	
+	return function(props: LabelProperties): TextLabel
+		local isEnabled = getState(props.Enabled, true)
+		local textSize = props.TextSize or constants.TextSize
 
-	local mainModifier = getModifier({
-		Enabled = isEnabled
-	})
+		local mainModifier = getModifier({
+			Enabled = isEnabled
+		})
 
-	local newLabel = New "TextLabel" {
-		Name = "Label",
-		Position = UDim2.fromScale(0, 0),
-		AnchorPoint = Vector2.new(0, 0),
-		Text = "Label",
-		TextSize = textSize,
-		BackgroundTransparency = 1,
-		BorderSizePixel = 0,
-		BorderMode = Enum.BorderMode.Inset,
+		local newLabel = Scope:New "TextLabel" {
+			Name = "Label",
+			Position = UDim2.fromScale(0, 0),
+			AnchorPoint = Vector2.new(0, 0),
+			Text = "Label",
+			TextSize = textSize,
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			BorderMode = Enum.BorderMode.Inset,
 
-		Font = themeProvider:GetFont("Default"),
-		TextColor3 = props.TextColor3 or getMotionState(themeProvider:GetColor(props.TextColorStyle or Enum.StudioStyleGuideColor.MainText, mainModifier), "Spring", 40),
+			Font = themeProvider:GetFont("Default"),
+			TextColor3 = props.TextColor3 or getMotionState(themeProvider:GetColor(props.TextColorStyle or Enum.StudioStyleGuideColor.MainText, mainModifier), "Spring", 40),
 
-		Size = Computed(function()
-			return UDim2.new(1, 0, 0, unwrap(textSize))
-		end),
-	}
+			Size = Scope:Computed(function(use, scope)
+				return UDim2.new(1, 0, 0, unwrap(textSize, use))
+			end),
+		}
 
-	local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-	return Hydrate(newLabel)(hydrateProps)
+		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
+		return Scope:Hydrate(newLabel)(hydrateProps)
+	end
 end
+
+
