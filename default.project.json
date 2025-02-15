@@ -1,13 +1,6 @@
 {
 	"name": "PluginEssentials",
 	"tree": {
-		"$className": "DataModel",
-
-		"ServerScriptService": {
-			"$className": "ServerScriptService",
-			"PluginEssentials": {
-				"$path": "src"
-			}
-		}
+		"$path": "src"
 	}
 }
