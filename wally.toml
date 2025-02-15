@@ -1,7 +1,7 @@
 [package]
 name = "tenebrisnoctua/pluginessentials"
 description = "A repository of Fusion components meant to speed up the development of plugins. (For Fusion 0.3)"
-version = "1.0.1"
+version = "1.0.2"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 license = "MIT"
