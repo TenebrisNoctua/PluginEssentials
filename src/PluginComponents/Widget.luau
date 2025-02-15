@@ -24,15 +24,8 @@ type PluginGuiProperties = {
 
 return function(Scope: { [any]: any }): (props: PluginGuiProperties) -> ()
 	return function(props: PluginGuiProperties)
-		local initialDockState
-
-		-- Fix luau false warning
-		if typeof(props.InitialDockTo) == "string" then
-			initialDockState = Enum.InitialDockState[props.InitialDockTo]
-		else
-			initialDockState = props.InitialDockTo
-		end
-
+		local initialDockState = if typeof(props.InitialDockTo) == "string" then Enum.InitialDockState[props.InitialDockTo] else props.InitialDockTo
+		
 		local newWidget = Plugin:CreateDockWidgetPluginGui(
 			props.Id,
 			DockWidgetPluginGuiInfo.new(

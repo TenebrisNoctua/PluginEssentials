@@ -4,3 +4,6 @@
 
 # VS Code files
 .vscode/*
+
+# LLS file
+sourcemap.json

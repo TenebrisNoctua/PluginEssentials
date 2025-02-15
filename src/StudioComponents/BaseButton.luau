@@ -29,6 +29,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"BorderColorStyle",
 	"Activated",
 	"Enabled",
+	"TextSize"
 }
 
 type styleGuideColorInput = (Enum.StudioStyleGuideColor | types.StateObject<Enum.StudioStyleGuideColor>)?
@@ -39,6 +40,7 @@ export type BaseButtonProperties = {
 	TextColorStyle: styleGuideColorInput,
 	BackgroundColorStyle: styleGuideColorInput,
 	BorderColorStyle: styleGuideColorInput,
+	TextSize: number,
 	[any]: any,
 }
 
@@ -69,7 +71,7 @@ return function(Scope: { [any]: any }): (props: BaseButtonProperties) -> TextBut
 				Size = UDim2.fromScale(1, 1),
 				Text = "Button",
 				Font = themeProvider:GetFont("Default"),
-				TextSize = constants.TextSize,
+				TextSize = props.TextSize or constants.TextSize,
 				TextColor3 = getMotionState(themeProvider:GetColor(props.TextColorStyle or Enum.StudioStyleGuideColor.ButtonText, modifier), "Spring", 40),
 				BackgroundColor3 = getMotionState(themeProvider:GetColor(props.BackgroundColorStyle or Enum.StudioStyleGuideColor.Button, modifier), "Spring", 40),
 				AutoButtonColor = false,

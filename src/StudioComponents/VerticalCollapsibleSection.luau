@@ -14,7 +14,6 @@ local LabelMain = require(StudioComponents.Label)
 local VerticalExpandingListMain = require(StudioComponents.VerticalExpandingList)
 
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
-local getDragInputUtil = require(StudioComponentsUtil.getDragInput)
 local getStateUtil = require(StudioComponentsUtil.getState)
 local getModifierUtil = require(StudioComponentsUtil.getModifier)
 local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)

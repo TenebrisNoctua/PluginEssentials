@@ -89,18 +89,13 @@ return function(Scope: { [any]: any }): (props: SliderProperties) -> TextButton
 			end
 		})
 
-		local cleanupDraggingObserver = Scope:Observer(isDragging):onChange(function()
+		Scope:Observer(isDragging):onChange(function()
 			inputValue:set(unwrap(currentValue).X)
 		end)
 
-		local cleanupInputValueObserver = Scope:Observer(inputValue):onChange(function()
+		Scope:Observer(inputValue):onChange(function()
 			currentValue:set(Vector2.new(unwrap(inputValue), 0))
 		end)
-
-		local function cleanupCallback() -- Add a better way to call this.
-			cleanupDraggingObserver()
-			cleanupInputValueObserver()
-		end
 
 		local zIndex = Scope:Computed(function(use, scope)
 			return (unwrap(props.ZIndex, use) or 0) + 1

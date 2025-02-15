@@ -63,7 +63,7 @@ return function(Scope: { [any]: any }): (props: LoadingProperties) -> Frame
 		startMotion()
 		local observeDisconnect = Scope:Observer(isEnabled):onChange(startMotion)
 
-		local function haltAnim() -- Add a better way to call this.
+		local function haltAnim() -- TODO: Add a better way to call this.
 			observeDisconnect()
 			if animThread then
 				task.cancel(animThread)

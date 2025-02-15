@@ -19,7 +19,6 @@ local unwrap = require(StudioComponentsUtil.unwrap)
 local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
-local Cleanup = Fusion.doCleanup
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"ZIndex",
@@ -92,17 +91,14 @@ return function(Scope: { [any]: any }): (props: ColorPickerProperties) -> Frame
 			return if (1-number) < .01 or number < .01 then math.round(number) else number
 		end
 
+		-- These will be auto-cleaned when the scope gets destroyed.
+		Scope:Observer(inputColor):onChange(updateCurrentInput)
+
 		local lastUpdatedColor = nil
-		local cleanupInputColorObserver = Scope:Observer(inputColor):onChange(updateCurrentInput)
-		local cleanupCurrentColorObserver = Scope:Observer(currentColor):onChange(function()
+		Scope:Observer(currentColor):onChange(function()
 			local newColor = unwrap(currentColor)
 			if props.OnChange then
-				local roundedColor = Color3.new(
-					roundNumber(newColor.R),
-					roundNumber(newColor.G),
-					roundNumber(newColor.B)
-				)
-
+				local roundedColor = Color3.new(roundNumber(newColor.R), roundNumber(newColor.G), roundNumber(newColor.B))
 				if lastUpdatedColor ~= roundedColor then
 					lastUpdatedColor = roundedColor
 					-- to prevent dependency issues
@@ -117,11 +113,6 @@ return function(Scope: { [any]: any }): (props: ColorPickerProperties) -> Frame
 		local childZIndex = Scope:Computed(function(use, scope)
 			return (unwrap(props.ZIndex, use) or 0) + 1
 		end)
-
-		local function cleanUp() -- Add a better way to call this.
-			cleanupInputColorObserver()
-			cleanupCurrentColorObserver()
-		end
 
 		local newColorPicker = Scope:New "Frame" {
 			Name = "ColorPicker",
