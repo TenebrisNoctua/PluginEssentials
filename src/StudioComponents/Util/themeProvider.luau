@@ -66,6 +66,7 @@ function themeProvider:GetColor(studioStyleGuideColor: styleStyleGuideColor, stu
 	local nScope = if hasState then Fusion:scoped() else nil
 	
 	return if not hasState then themeValue else Scope:Computed(function(use, scope)
+		use(themeValue)
 		local currentColor = unwrap(studioStyleGuideColor, use)
 		local currentModifier = unwrap(studioStyleGuideModifier, use)
 		local currentValueState = self:GetColor(currentColor, currentModifier, nScope)
