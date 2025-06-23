@@ -5,6 +5,9 @@ local PluginComponents = script.Parent
 local StudioComponents = PluginComponents.Parent:FindFirstChild("StudioComponents")
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = PluginComponents.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local unwrap = require(StudioComponentsUtil.unwrap)
 local types = require(StudioComponentsUtil.types)
 
@@ -18,17 +21,11 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Active",
 }
 
-type ToolbarProperties = {
-	Active: types.CanBeState<boolean>?,
-	Toolbar: PluginToolbar,
-	ToolTip: string,
-	Image: string,
-	Name: string,
-	[any]: any,
-}
+type ToolbarButtonProperties = Types.ToolbarButtonProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ToolbarProperties) -> ()
-	return function(props: ToolbarProperties)
+return function(Scope: Scope): (props: ToolbarButtonProperties) -> PluginToolbarButton
+	return function(props: ToolbarButtonProperties): PluginToolbarButton
 		local toolbarButton = props.Toolbar:CreateButton(props.Name, props.ToolTip, props.Image)
 
 		if props.Active ~= nil then
@@ -45,6 +42,6 @@ return function(Scope: { [any]: any }): (props: ToolbarProperties) -> ()
 			hydrateProps[propertyName] = nil
 		end
 
-		return Scope:Hydrate(toolbarButton)(hydrateProps)
+		return Scope:Hydrate(toolbarButton)(hydrateProps) :: PluginToolbarButton
 	end
 end

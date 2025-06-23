@@ -311,9 +311,6 @@ return function (Scope: { [any]: any }): (props: DropdownProperties) -> Frame
 								end),
 							}
 						}
-						--end
-						--return nil
-						--end)
 					}
 				},
 

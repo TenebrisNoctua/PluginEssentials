@@ -1,6 +1,9 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local COMPONENT_ONLY_PROPERTIES = {
 	"Id",
 	"InitialDockTo",
@@ -11,23 +14,14 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Plugin",
 }
 
-type PluginGuiProperties = {
-	Id: string,
-	Name: string,
-	InitialDockTo: string | Enum.InitialDockState,
-	InitialEnabled: boolean,
-	ForceInitialEnabled: boolean,
-	FloatingSize: Vector2,
-	MinimumSize: Vector2,
-	[any]: any,
-}
+type WidgetProperties = Types.WidgetProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: PluginGuiProperties) -> ()
-	return function(props: PluginGuiProperties)
+return function(Scope: Scope): (props: WidgetProperties) -> DockWidgetPluginGui
+	return function(props: WidgetProperties): DockWidgetPluginGui
 		local initialDockState = if typeof(props.InitialDockTo) == "string" then Enum.InitialDockState[props.InitialDockTo] else props.InitialDockTo
 		
-		local newWidget = Plugin:CreateDockWidgetPluginGui(
-			props.Id,
+		local newWidget = Plugin:CreateDockWidgetPluginGui(props.Id,
 			DockWidgetPluginGuiInfo.new(
 				initialDockState,
 				props.InitialEnabled,
@@ -49,6 +43,6 @@ return function(Scope: { [any]: any }): (props: PluginGuiProperties) -> ()
 			props.Enabled:set(newWidget.Enabled)
 		end
 
-		return Scope:Hydrate(newWidget)(props)
+		return Scope:Hydrate(newWidget)(props) :: DockWidgetPluginGui
 	end
 end
