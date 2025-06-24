@@ -1,22 +1,19 @@
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-local types = require(script.Parent.types)
-
-type styleStyleGuideColor = Enum.StudioStyleGuideColor | types.StateObject<Enum.StudioStyleGuideColor>
-type styleGuideModifier = Enum.StudioStyleGuideModifier | types.StateObject<Enum.StudioStyleGuideModifier>
-type computedOrValue = types.Computed<Color3> | types.Value<Color3>
-
 local Studio = settings().Studio
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local unwrap = require(script.Parent.unwrap)
 
-local currentTheme = {}
 local themeProvider = {
-	Theme = false, -- Initialize Theme, IsDark and Scope values here
-	IsDark = false,
-	Scope = false,
+	Theme = {} :: Value<string>,
+	ThemeColors = {} :: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Color3}},
+	IsDark = {} :: Value<boolean>,
+	Scope = {} :: Scope,
 	Fonts = {
 		Default = Enum.Font.SourceSans,
 		SemiBold = Enum.Font.SourceSansSemibold,
@@ -26,56 +23,74 @@ local themeProvider = {
 	},
 }
 
-function themeProvider:GetColor(studioStyleGuideColor: styleStyleGuideColor, studioStyleGuideModifier: styleGuideModifier?, newScope: {[any]: any}?): computedOrValue
-	local Scope = newScope or self.Scope
-	
-	local hasState = (unwrap(studioStyleGuideModifier) ~= studioStyleGuideModifier) or (unwrap(studioStyleGuideColor) ~= studioStyleGuideColor)
-	
-	local function isCorrectType(value, enumType)
-		local unwrapped = unwrap(value)
-		local isState = unwrapped ~= value and unwrapped ~= nil
-		assert((value == nil or isState) or (typeof(value) == "EnumItem" and value.EnumType == enumType), "Incorrect type")
+type State<T> = Types.State<T>
+type Value<T> = Types.Value<T>
+type Computed<T> = Types.Computed<T>
+
+type Scope = Types.Scope
+type Use = Types.Use
+
+type StyleGuideColor = Value<Enum.StudioStyleGuideColor> | Enum.StudioStyleGuideColor
+type StyleGuideModifier = Value<Enum.StudioStyleGuideModifier> | Enum.StudioStyleGuideModifier
+
+type themeProvider = typeof(themeProvider)
+
+--// Local Functions
+
+local function getValue(value: Value<any> | any): (any, "State" | "Enum")
+	if typeof(value) == "table" and value.type == "State" then
+		return unwrap(value), "State"
+	else
+		return value, "Enum"
+	end 
+end
+
+local function isCorrectEnum(value: any, desiredEnum: any)
+	assert(typeof(value) == "EnumItem" and value == desiredEnum, "Incorrect type.")
+end
+
+local function updateTheme()
+	for studioStyleGuideColor, styleGuideModifiers in themeProvider.ThemeColors do
+		for studioStyleGuideModifier, valueState in styleGuideModifiers do
+			valueState = Studio.Theme:GetColor(studioStyleGuideColor, studioStyleGuideModifier)
+		end
 	end
 
-	isCorrectType(studioStyleGuideColor, Enum.StudioStyleGuideColor)
-	isCorrectType(studioStyleGuideModifier, Enum.StudioStyleGuideModifier)
+	themeProvider.Theme:set(Studio.Theme.Name)
 
-	local unwrappedColor = unwrap(studioStyleGuideColor)
-	local unwrappedModifier = unwrap(studioStyleGuideModifier)
+	local _, _, v = Studio.Theme:GetColor(Enum.StudioStyleGuideColor.MainBackground):ToHSV()
+	themeProvider.IsDark:set(v <= 0.6)
+end
 
-	if not currentTheme[unwrappedColor] then
-		currentTheme[unwrappedColor] = {}
-	end
+--// Main Functions
 
-	local themeValue = (function()
-		local styleGuideModifier = if unwrappedModifier ~= nil
-			then unwrappedModifier
-			else Enum.StudioStyleGuideModifier.Default
+function themeProvider.GetColor(self: themeProvider, styleGuideColor: StyleGuideColor, styleGuideModifier: StyleGuideModifier, force: boolean?): Computed<Color3>
+	local StyleGuideColor, SGCValueType = getValue(styleGuideColor)
+	local StyleGuideModifier, SGMValueType = getValue(styleGuideModifier)
 
-		local existingValue = currentTheme[unwrappedColor][styleGuideModifier]
-		if existingValue then
-			return existingValue
+	isCorrectEnum(StyleGuideColor)
+	isCorrectEnum(StyleGuideModifier)
+
+	return self.Scope:Computed(function(use: Use, innerScope: Scope)  
+		if SGCValueType == "State" and SGMValueType == "State" then
+			use(styleGuideColor)
+			use(styleGuideModifier)
 		end
 
-		local newThemeValue = Scope:Value(Studio.Theme:GetColor(unwrappedColor, styleGuideModifier))
-		currentTheme[unwrappedColor][styleGuideModifier] = newThemeValue
+		if not force then
+			local currentThemeColor = self.ThemeColors[StyleGuideColor][StyleGuideModifier]
+			if currentThemeColor then return currentThemeColor end
+		end
 
-		return newThemeValue
-	end)()
-	
-	local nScope = if hasState then Fusion:scoped() else nil
-	
-	return if not hasState then themeValue else Scope:Computed(function(use, scope)
-		local currentColor = unwrap(studioStyleGuideColor, use)
-		local currentModifier = unwrap(studioStyleGuideModifier, use)
-		local currentValueState = self:GetColor(currentColor, currentModifier, nScope)
-		
-		return unwrap(currentValueState)
+		local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
+		self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColor
+
+		return newThemeColor
 	end)
 end
 
-function themeProvider:GetFont(fontName: (string | types.StateObject<string>)?): types.Computed<Enum.Font>
-	return self.Scope:Computed(function(use, scope)
+function themeProvider.GetFont(self: themeProvider, fontName: (string | State<string>)): Computed<Enum.Font>
+	return self.Scope:Computed(function(use: Use, innerScope: Scope)  
 		local givenFontName = unwrap(fontName, use)
 		local fontToGet = self.Fonts.Default
 
@@ -87,22 +102,8 @@ function themeProvider:GetFont(fontName: (string | types.StateObject<string>)?):
 	end)
 end
 
-local function updateTheme()
-	for studioStyleGuideColor, styleGuideModifiers: { Enum.StudioStyleGuideModifier } in pairs(currentTheme) do
-		for studioStyleGuideModifier, valueState in pairs(styleGuideModifiers) do
-			valueState:set(Studio.Theme:GetColor(studioStyleGuideColor, studioStyleGuideModifier))
-		end
-	end
-
-	themeProvider.Theme:set(Studio.Theme.Name)
-
-	local _, _, v = Studio.Theme:GetColor(Enum.StudioStyleGuideColor.MainBackground):ToHSV()
-	themeProvider.IsDark:set(v <= 0.6)
-end
-
-return function(Scope: { [any]: any }): typeof(themeProvider)
+return function(Scope: Scope): themeProvider
 	themeProvider.Theme = Scope:Value(Studio.Theme.Name)
-	themeProvider.IsDark = Scope:Value(true)
 	themeProvider.Scope = Scope
 
 	local themeChangedConnection = Studio.ThemeChanged:Connect(updateTheme)
