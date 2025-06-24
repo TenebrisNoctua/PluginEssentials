@@ -4,25 +4,21 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local TextInputComponent = require(StudioComponents.TextInput)
 local getStateUtil = require(StudioComponentsUtil.getState)
 
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local OnChange = Fusion.OnChange
 
-type numberInput = (number | types.StateObject<number>)?
+type LimitedTextInputProperties = Types.LimitedTextInputProperties
+type Scope = Types.Scope
 
-export type LimitedTextInputProperties = TextInputComponent.TextInputProperties & {
-	Text: (string | types.Value<string>)?,
-	GraphemeLimit: numberInput,
-	OnChange: (newText: string) -> nil,
-	TextLimit: numberInput,
-}
-
-return function(Scope: { [any]: any }): (props: LimitedTextInputProperties) -> any
+return function(Scope: Scope): (props: LimitedTextInputProperties) -> any
 	local getState = getStateUtil(Scope)
 	local TextInput = TextInputComponent(Scope)
 

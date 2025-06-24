@@ -8,20 +8,20 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
-local stripProps = require(StudioComponentsUtil.stripProps)
-local types = require(StudioComponentsUtil.types)
-local unwrap = require(StudioComponentsUtil.unwrap)
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
 
-type ClassIconProperties = {
-	ClassName: string | types.StateObject<string>,
-	[any]: any,
-}
+local stripProps = require(StudioComponentsUtil.stripProps)
+local unwrap = require(StudioComponentsUtil.unwrap)
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"ClassName",
 }
 
-return function(Scope: { [any]: any }): (props: ClassIconProperties) -> Frame
+type ClassIconProperties = Types.ClassIconProperties
+type Scope = Types.Scope
+
+return function(Scope: Scope): (props: ClassIconProperties) -> Frame
 	return function(props: ClassIconProperties): Frame
 		local image = Scope:Computed(function(use, scope)
 			local class = unwrap(props.ClassName, use)
@@ -43,6 +43,6 @@ return function(Scope: { [any]: any }): (props: ClassIconProperties) -> Frame
 			ImageRectSize = Scope:Computed(function(use, scope)
 				return unwrap(image, use).ImageRectSize
 			end),
-		})(hydrateProps)
+		})(hydrateProps) :: Frame
 	end
 end

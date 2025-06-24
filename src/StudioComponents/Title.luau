@@ -7,13 +7,15 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 local getStateUtil = require(StudioComponentsUtil.getState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 
 local COMPONENT_ONLY_PROPERTIES = {
@@ -23,12 +25,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"TextSize",
 }
 
-type LabelProperties = {
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	[any]: any,
-}
+type LabelProperties = Types.LabelProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: LabelProperties) -> TextLabel
+return function(Scope: Scope): (props: LabelProperties) -> TextLabel
 	local themeProvider = themeProviderComponent(Scope)
 	local getState = getStateUtil(Scope)
 
@@ -60,7 +60,7 @@ return function(Scope: { [any]: any }): (props: LabelProperties) -> TextLabel
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newLabel)(hydrateProps)
+		return Scope:Hydrate(newLabel)(hydrateProps) :: TextLabel
 	end
 end
 

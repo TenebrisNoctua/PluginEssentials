@@ -7,11 +7,16 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
+
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local BaseButtonComponent = require(StudioComponents.BaseButton)
 
-export type ButtonProperties = BaseButtonComponent.BaseButtonProperties
+type ButtonProperties = Types.BaseButtonProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ButtonProperties) -> TextButton
+return function(Scope: Scope): (props: ButtonProperties) -> TextButton
 	local BaseButton = BaseButtonComponent(Scope)
 
 	return function(props: ButtonProperties): TextButton

@@ -8,12 +8,14 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BaseScrollFrameComponent = require(StudioComponents.BaseScrollFrame)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local Out = Fusion.Out
@@ -26,13 +28,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 -- if you're using this component with the default sizes of the other components
 -- you'll need to have CanvasScaleConstraint set to Enum.ScrollingDirection.X
-export type ScrollFrameProperties = BaseScrollFrameComponent.BaseScrollFrameProperties & {
-	CanvasScaleConstraint: types.CanBeState<Enum.ScrollingDirection?>?,
-	UIPadding: UIPadding?,
-	UILayout: UILayout?,
-}
+type ScrollFrameProperties = Types.ScrollFrameProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ScrollFrameProperties) -> Frame
+return function(Scope: Scope): (props: ScrollFrameProperties) -> Frame
 	local BaseScrollFrame = BaseScrollFrameComponent(Scope)
 
 	return function(props: ScrollFrameProperties): Frame

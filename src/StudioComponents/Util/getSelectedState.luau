@@ -1,14 +1,14 @@
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+
+local Types = require(ComponentTypes.Types)
 local unwrap = require(script.Parent.unwrap)
-local types = require(script.Parent.types)
 
-type GetSelectedStateProperties = {
-	Value: types.Value<any>?,
-	Options: types.CanBeState<{any}>?,
-	OnSelected: ((selectedOption: any, use: () -> ()?) -> nil)?,
-}
+type GetSelectedStateProperties = Types.GetSelectedStateProperties
+type Use = Types.Use
+type Scope = Types.Scope
 
-return function(props: GetSelectedStateProperties): () -> any
-	return function(use, scope)
+return function(props: GetSelectedStateProperties): (use: Use, scope: Scope) -> any
+	return function(use: Use, scope: Scope)
 		local currentValue = unwrap(props.Value)
 		local availableOptions = unwrap(props.Options) or {}
 		

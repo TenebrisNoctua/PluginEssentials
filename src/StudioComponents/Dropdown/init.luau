@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local ScrollFrameComponent = require(StudioComponents.ScrollFrame)
 local DropdownItemComponent = require(script.DropdownItem)
@@ -21,7 +24,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 local getSelectedState = require(StudioComponentsUtil.getSelectedState)
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 local dropdownConstants = require(script.Constants)
 
@@ -39,17 +41,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Size",
 }
 
-type DropdownProperties = {
-	Enabled: types.CanBeState<boolean>?,
-	Value: types.CanBeState<any>?,
-	Options: types.CanBeState<{any}>,
-	MaxVisibleItems: types.CanBeState<number>?,
-	HideDropdownWhenMouseLeaves: types.CanBeState<boolean>?,
-	OnSelected: (selectedOption: any) -> nil,
-	[any]: any,
-}
+type DropdownProperties = Types.DropdownProperties
+type Scope = Types.Scope
 
-return function (Scope: { [any]: any }): (props: DropdownProperties) -> Frame
+return function (Scope: Scope): (props: DropdownProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local ScrollFrame = ScrollFrameComponent(Scope)
 	local DropdownItem = DropdownItemComponent(Scope)
@@ -424,6 +419,6 @@ return function (Scope: { [any]: any }): (props: DropdownProperties) -> Frame
 			Scope:Hydrate(newDropdown)
 		end
 
-		return Scope:Hydrate(newDropdown)(stripProps(props, COMPONENT_ONLY_PROPERTIES))
+		return Scope:Hydrate(newDropdown)(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: Frame
 	end
 end

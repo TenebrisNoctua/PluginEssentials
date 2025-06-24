@@ -1,21 +1,17 @@
 -- Written by @boatbomber
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-type ShadowProperties = {
-    Side: string,
-	Transparency: number?,
-	[any]: any,
-}
-
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
-
 local constants = require(StudioComponentsUtil.constants)
 local unwrap = require(StudioComponentsUtil.unwrap)
 
@@ -34,7 +30,10 @@ local SideData = {
 	},
 }
 
-return function(Scope: { [any]: any }): (props: ShadowProperties) -> Frame
+type ShadowProperties = Types.ShadowProperties
+type Scope = Types.Scope
+
+return function(Scope: Scope): (props: ShadowProperties) -> ImageLabel
 	local themeProvider = themeProviderComponent(Scope)
 	SideData = {
 		top = {
@@ -75,7 +74,7 @@ return function(Scope: { [any]: any }): (props: ShadowProperties) -> Frame
 		},
 	}
 
-	return function(props: ShadowProperties): Frame
+	return function(props: ShadowProperties): ImageLabel
 		local Side = SideData[string.lower(props.Side or "right")]
 
 		return Scope:New "ImageLabel" {
@@ -94,7 +93,7 @@ return function(Scope: { [any]: any }): (props: ShadowProperties) -> Frame
 
 			Size = Side.size,
 			Position = Side.position,
-		}
+		} :: ImageLabel
 	end
 end
 

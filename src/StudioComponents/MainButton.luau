@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local ButtonComponent = require(StudioComponents.Button)
 
@@ -18,10 +21,13 @@ local baseProperties = {
 	Name = "MainButton",
 }
 
-return function(Scope: { [any]: any }): (props: ButtonComponent.ButtonProperties) -> TextButton
+type BaseButtonProperties = Types.BaseButtonProperties
+type Scope = Types.Scope
+
+return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 	local Button = ButtonComponent(Scope)
 
-	return function(props: ButtonComponent.ButtonProperties): TextButton
+	return function(props: BaseButtonProperties): TextButton
 		for index, value in pairs(baseProperties) do
 			if props[index] == nil then
 				props[index] = value

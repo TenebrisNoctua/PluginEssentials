@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
@@ -16,7 +19,6 @@ local getStateUtil = require(StudioComponentsUtil.getState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 
@@ -29,16 +31,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Step",
 }
 
-type ColorPickerProperties = {
-	ListDisplayMode: (Enum.ListDisplayMode | types.StateObject<Enum.ListDisplayMode>)?,
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	OnChange: (newColor: Color3) -> nil,
-	Value: (Color3 | types.Value<Color3>)?,
-	Step: (Vector2 | types.Value<Vector2>)?,
-	[any]: any,
-}
+type ColorPickerProperties = Types.ColorPickerProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ColorPickerProperties) -> Frame
+return function(Scope: Scope): (props: ColorPickerProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local themeProvider = themeProviderComponent(Scope)
 	local getDragInput = getDragInputUtil(Scope)
@@ -53,8 +49,8 @@ return function(Scope: { [any]: any }): (props: ColorPickerProperties) -> Frame
 			return unwrap(listDisplayMode, use) == Enum.ListDisplayMode.Horizontal
 		end)
 
-		local regionRef = Scope:Value()
-		local sliderRef = Scope:Value()
+		local regionRef = Scope:Value(nil)
+		local sliderRef = Scope:Value(nil)
 
 		local currentRegionInput = getDragInput({
 			Enabled = isEnabled,
@@ -247,7 +243,7 @@ return function(Scope: { [any]: any }): (props: ColorPickerProperties) -> Frame
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newColorPicker)(hydrateProps)
+		return Scope:Hydrate(newColorPicker)(hydrateProps) :: Frame
 	end
 end
 

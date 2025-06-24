@@ -7,13 +7,15 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 
 local Children = Fusion.Children
@@ -22,12 +24,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Progress",
 }
 
-type ProgressProperties = {
-	Progress: (number | types.StateObject<number>)?,
-	[any]: any,
-}
+type ProgressProperties = Types.ProgressProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ProgressProperties) -> Frame
+return function(Scope: Scope): (props: ProgressProperties) -> Frame
 	local themeProvider = themeProviderComponent(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
 
@@ -47,7 +47,7 @@ return function(Scope: { [any]: any }): (props: ProgressProperties) -> Frame
 					BackgroundColor3 = themeProvider:GetColor(Enum.StudioStyleGuideColor.DialogMainButton),
 
 					Size = getMotionState(Scope:Computed(function(use, scope)
-						return UDim2.fromScale(unwrap(props.Progress, use), 1)
+						return UDim2.fromScale(unwrap(props.Progress, use) :: number, 1)
 					end), "Spring", 40),
 
 					[Children] = Scope:New "UICorner" {
@@ -58,7 +58,7 @@ return function(Scope: { [any]: any }): (props: ProgressProperties) -> Frame
 		}
 
 	    local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-	    return Scope:Hydrate(frame)(hydrateProps)
+	    return Scope:Hydrate(frame)(hydrateProps) :: Frame
 	end
 end
 

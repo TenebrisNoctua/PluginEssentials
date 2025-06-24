@@ -1,10 +1,14 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
-return function(x: any, use: any?): any
-	-- If x is a state, and requires a dependency to be added, we also require a use function.
-	-- If x is a state, but doesn't require a dependency to be added, we use Fusion.peek function. (Doesn't add any dependencies)
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
 
+type Use = Types.Use
+
+return function<T>(x: T, use: Use?): T | any
+	-- If x is a state, and requires a dependency to be added, we also require a use function.
+	-- If x is a state, but doesn't require a dependency to be added, we use Fusion.peek function. (Doesn't add any dependencies)	
 	if typeof(x) == "table" and x.type == "State" and use then
 		return use(x)
 	elseif typeof(x) == "table" and x.type == "State" then

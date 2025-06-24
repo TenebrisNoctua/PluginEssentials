@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 local getStateUtil = require(StudioComponentsUtil.getState)
@@ -15,7 +18,6 @@ local getModifierUtil = require(StudioComponentsUtil.getModifier)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local OnEvent = Fusion.OnEvent
 
@@ -30,14 +32,12 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"ZIndex",
 }
 
-type ScrollArrowProperties = {
-	Enabled: types.CanBeState<boolean>?,
-	Direction: types.CanBeState<string>,
-	Activated: () -> nil,
-	[any]: any,
-}
+type ScrollArrowProperties = Types.ScrollArrowProperties
 
-local function getBaseProperties(Scope: {[any]: any}, themeProvider: typeof(themeProviderComponent({})), mainModifier: types.CanBeState<Enum.StudioStyleGuideModifier>, props: ScrollArrowProperties)
+type State<T> = Types.State<T>
+type Scope = Types.Scope
+
+local function getBaseProperties(Scope: Scope, themeProvider: typeof(themeProviderComponent({})), mainModifier: State<Enum.StudioStyleGuideModifier> | Enum.StudioStyleGuideModifier, props: ScrollArrowProperties)
 	return {
 		Size = DEFAULT_ARROW_SIZE,
 		Image = DEFAULT_ARROW_IMAGE,
@@ -82,7 +82,7 @@ local function getBaseProperties(Scope: {[any]: any}, themeProvider: typeof(them
 	}
 end
 
-return function(Scope: { [any]: any }): (props: ScrollArrowProperties) -> ImageButton
+return function(Scope: Scope): (props: ScrollArrowProperties) -> ImageButton
 	local themeProvider = themeProviderComponent(Scope)
 	local getState = getStateUtil(Scope)
 	local getModifier = getModifierUtil(Scope)
@@ -115,7 +115,7 @@ return function(Scope: { [any]: any }): (props: ScrollArrowProperties) -> ImageB
 				hearbeatConnection = game:GetService("RunService").Heartbeat:Connect(function()
 					local now = os.clock()
 					if now >= nextAt then
-						if unwrap(isHovering, false) then
+						if unwrap(isHovering) then
 							props.Activated()
 						end
 						nextAt += 0.05
@@ -172,6 +172,6 @@ return function(Scope: { [any]: any }): (props: ScrollArrowProperties) -> ImageB
 			end
 		end
 
-		return Scope:Hydrate(newScrollArrow)(stripProps(props, COMPONENT_ONLY_PROPERTIES))
+		return Scope:Hydrate(newScrollArrow)(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: ImageButton
 	end
 end

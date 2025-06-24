@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local ScrollArrowComponent = require(script.Parent.ScrollArrow)
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
@@ -16,7 +19,6 @@ local getModifierUtil = require(StudioComponentsUtil.getModifier)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local OnEvent = Fusion.OnEvent
@@ -33,23 +35,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"BorderMode",
 }
 
-type ScrollBarProperties = {
-	VerticalScrollBarPosition: types.CanBeState<Enum.VerticalScrollBarPosition>?,
-	BorderMode: types.CanBeState<Enum.BorderMode>?,
-	CanvasPosition: types.CanBeState<UDim2>,
-	AbsoluteSize: types.CanBeState<Vector2>,
-	AbsoluteCanvasSize: types.CanBeState<Vector2>,
-	WindowSize: types.CanBeState<Vector2>,
-	ScrollBarThickness: types.CanBeState<number>,
-	BarVisibility: {
-		Horizontal: types.CanBeState<boolean>,
-		Vertical: types.CanBeState<boolean>,
-	},
-	IsVertical: boolean,
-	[any]: any,
-}
+type ScrollBarProperties = Types.ScrollBarProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: ScrollBarProperties) -> ImageButton
+return function(Scope: Scope): (props: ScrollBarProperties) -> ImageButton
 	local themeProvider = themeProviderComponent(Scope)
 	local ScrollArrow = ScrollArrowComponent(Scope)
 	local getModifier = getModifierUtil(Scope)
@@ -232,7 +221,7 @@ return function(Scope: { [any]: any }): (props: ScrollBarProperties) -> ImageBut
 					end,
 				},
 			}
-		})(stripProps(props, COMPONENT_ONLY_PROPERTIES))
+		})(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: ImageButton
 	end
 end
 

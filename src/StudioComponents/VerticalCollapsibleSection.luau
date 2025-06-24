@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local LabelMain = require(StudioComponents.Label)
@@ -20,7 +23,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 
 local Children = Fusion.Children
@@ -37,14 +39,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	Children,
 }
 
-type VerticalExpandingListProperties = {
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	Collapsed: (boolean | types.Value<boolean>)?,
-	Padding: (UDim | types.StateObject<UDim>)?,
-	[any]: any,
-}
+type VerticalExpandingListProperties = Types.VerticalExpandingListProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: VerticalExpandingListProperties) -> Frame
+return function(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local Label = LabelMain(Scope)
 	local VerticalExpandingList = VerticalExpandingListMain(Scope)
@@ -187,6 +185,6 @@ return function(Scope: { [any]: any }): (props: VerticalExpandingListProperties)
 				},
 				props[Children],
 			}
-		})(stripProps(props, COMPONENT_ONLY_PROPERTIES))
+		})(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: Frame
 	end
 end

@@ -4,6 +4,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
@@ -13,7 +16,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local OnEvent = Fusion.OnEvent
@@ -28,19 +30,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"IconColor3"
 }
 
-type styleGuideColorInput = (Enum.StudioStyleGuideColor | types.StateObject<Enum.StudioStyleGuideColor>)?
+type IconButtonProperties = Types.IconButtonProperties
+type Scope = Types.Scope
 
-export type IconButtonProperties = {
-	Activated: (() -> nil)?,
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	TextColorStyle: styleGuideColorInput,
-	BackgroundColorStyle: styleGuideColorInput,
-	BorderColorStyle: styleGuideColorInput,
-	IconColor3: Color3?,
-	[any]: any,
-}
-
-return function(Scope: { [any]: any }): (props: IconButtonProperties) -> TextButton
+return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 	local BoxBorder = BoxBorderComponent(Scope)
 	local themeProvider = themeProviderComponent(Scope)
 	local getState = getStateUtil(Scope)
@@ -126,6 +119,6 @@ return function(Scope: { [any]: any }): (props: IconButtonProperties) -> TextBut
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newBaseButton)(hydrateProps)
+		return Scope:Hydrate(newBaseButton)(hydrateProps) :: TextButton
 	end
 end

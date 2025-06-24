@@ -7,6 +7,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 local getStateUtil = require(StudioComponentsUtil.getState)
@@ -14,7 +17,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 
 local Children = Fusion.Children
@@ -23,16 +25,14 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Enabled",
 }
 
-type LoadingProperties = {
-	Enabled: types.CanBeState<boolean>?,
-	[any]: any,
-}
+type LoadingProperties = Types.LoadingProperties
+type Scope = Types.Scope
 
 local cos = math.cos
 local clock = os.clock
 local pi4 = 12.566370614359172 -- 4 * pi
 
-return function(Scope: { [any]: any }): (props: LoadingProperties) -> Frame
+return function(Scope: Scope): (props: LoadingProperties) -> Frame
 	local themeProvider = themeProviderComponent(Scope)
 	local getState = getStateUtil(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
@@ -139,7 +139,7 @@ return function(Scope: { [any]: any }): (props: LoadingProperties) -> Frame
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(frame)(hydrateProps)
+		return Scope:Hydrate(frame)(hydrateProps) :: Frame
 	end
 end
 

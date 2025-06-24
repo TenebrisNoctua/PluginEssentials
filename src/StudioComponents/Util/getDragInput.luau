@@ -29,31 +29,26 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
-local getStateUtil = require(script.Parent.getState)
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
 
+local getStateUtil = require(script.Parent.getState)
 local unwrap = require(script.Parent.unwrap)
-local types = require(script.Parent.types)
 
 local OnEvent = Fusion.OnEvent
 
-type vector2Value = types.Value<Vector2>
-type vector2Input = (Vector2 | vector2Value)?
+type Vector2Value = Types.Value<Vector2>
+type Vector2Input = (Vector2 | Vector2Value)?
 
-type DragInputProperites = {
-	Instance: GuiObject,
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	OnChange: ((newValue: Vector2) -> Vector2?)?,
-	getUseFunction: () -> ((state: any) -> ())?,
-	Value: vector2Input,
-	Min: vector2Input,
-	Max: vector2Input,
-	Step: vector2Input,
-}
+type DragInputProperties = Types.DragInputProperties
 
-return function(Scope: { [any]: any }): (props: DragInputProperites) -> (vector2Value, types.Computed<Vector2>, types.Value<boolean>)
+type Computed<T> = Types.Computed<T>
+type Value<T> = Types.Value<T>
+
+return function(Scope: { [any]: any }): (props: DragInputProperties) -> (Vector2Value, Computed<Vector2>, Value<boolean>)
 	local getState = getStateUtil(Scope)
 
-	return function(props: DragInputProperites): (vector2Value, types.Computed<Vector2>, types.Value<boolean>)
+	return function(props: DragInputProperties): (Vector2Value, Computed<Vector2>, Value<boolean>)
 		local isEnabled = getState(props.Enabled, true)
 		local isDragging = Scope:Value(false)
 		local getUseFunction = props.getUseFunction

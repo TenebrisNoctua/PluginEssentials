@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local BackgroundComponent = require(StudioComponents.Background)
@@ -16,7 +19,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local Out = Fusion.Out
@@ -26,12 +28,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"AutomaticSize",
 }
 
-type VerticalExpandingListProperties = {
-	Padding: (UDim | types.StateObject<UDim>)?,
-	[any]: any,
-}
+type VerticalExpandingListProperties = Types.VerticalExpandingListProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: VerticalExpandingListProperties) -> Frame
+return function(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local Background = BackgroundComponent(Scope)
 
@@ -71,7 +71,7 @@ return function(Scope: { [any]: any }): (props: VerticalExpandingListProperties)
 					}
 				}
 			}
-		)(hydrateProps)
+		)(hydrateProps) :: Frame
 	end
 end
 

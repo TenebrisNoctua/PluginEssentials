@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
@@ -17,7 +20,6 @@ local getStateUtil = require(StudioComponentsUtil.getState)
 
 local constants = require(StudioComponentsUtil.constants)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local OnEvent = Fusion.OnEvent
 local Children = Fusion.Children
@@ -31,16 +33,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Text",
 }
 
-type CheckboxProperties = {
-	OnChange: ((newValue: boolean) -> nil)?,
-	Alignment: (Enum.HorizontalAlignment | types.StateObject<Enum.HorizontalAlignment>)?,
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	Text: (string | types.StateObject<string>)?,
-	Value: (boolean | types.Value<boolean>)?,
-	[any]: any,
-}
+type CheckboxProperties = Types.CheckboxProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: CheckboxProperties) -> Frame
+return function(Scope: Scope): (props: CheckboxProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
 	local themeProvider = themeProviderComponent(Scope)
@@ -195,7 +191,7 @@ return function(Scope: { [any]: any }): (props: CheckboxProperties) -> Frame
 			hydrateProps[propertyIndex] = nil
 		end
 
-		return Scope:Hydrate(newCheckboxFrame)(hydrateProps)
+		return Scope:Hydrate(newCheckboxFrame)(hydrateProps) :: Frame
 	end
 end
 

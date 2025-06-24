@@ -4,21 +4,20 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local stripProps = require(StudioComponentsUtil.stripProps)
-local types = require(StudioComponentsUtil.types)
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"StudioStyleGuideColor",
 	"StudioStyleGuideModifier",
 }
 
-type BackgroundProperties = {
-	StudioStyleGuideColor: types.CanBeState<Enum.StudioStyleGuideColor>?,
-	StudioStyleGuideModifier: types.CanBeState<Enum.StudioStyleGuideModifier>?,
-	[any]: any,
-}
+type BackgroundProperties = Types.BackgroundProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: BackgroundProperties) -> Frame
+return function(Scope: Scope): (props: BackgroundProperties) -> Frame
 	return function(props: BackgroundProperties): Frame
 		local themeProvider = require(StudioComponentsUtil.themeProvider)(Scope)
 		
@@ -33,6 +32,6 @@ return function(Scope: { [any]: any }): (props: BackgroundProperties) -> Frame
 				props.StudioStyleGuideColor or Enum.StudioStyleGuideColor.MainBackground,
 				props.StudioStyleGuideModifier
 			),
-		})(stripProps(props, COMPONENT_ONLY_PROPERTIES))
+		})(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: Frame
 	end
 end

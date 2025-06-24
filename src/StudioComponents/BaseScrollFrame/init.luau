@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local BackgroundComponent = require(StudioComponents.Background)
 local ScrollBarComponent = require(script.ScrollBar)
 
@@ -15,7 +18,6 @@ local getStateUtil = require(StudioComponentsUtil.getState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local OnChange = Fusion.OnChange
@@ -33,18 +35,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	Children,
 }
 
-export type BaseScrollFrameProperties = {
-	ScrollBarBorderMode: types.CanBeState<Enum.BorderMode>?,
-	CanvasSize: types.CanBeState<UDim2>?,
-	ScrollingEnabled: types.CanBeState<boolean>?,
-	ScrollBarThickness: types.CanBeState<number>?,
-	VerticalScrollBarPosition: types.CanBeState<Enum.VerticalScrollBarPosition>?,
-	VerticalScrollBarInset: types.CanBeState<Enum.ScrollBarInset>?,
-	CornerRadius: UDim,
-	[any]: any,
-}
+type BaseScrollFrameProperties = Types.BaseScrollFrameProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: BaseScrollFrameProperties) -> Frame
+return function(Scope: Scope): (props: BaseScrollFrameProperties) -> Frame
 	local getState = getStateUtil(Scope)
 	local Background = BackgroundComponent(Scope)
 	local ScrollBar = ScrollBarComponent(Scope)
@@ -162,6 +156,6 @@ return function(Scope: { [any]: any }): (props: BaseScrollFrameProperties) -> Fr
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(containerFrame)(hydrateProps)
+		return Scope:Hydrate(containerFrame)(hydrateProps) :: Frame
 	end
 end

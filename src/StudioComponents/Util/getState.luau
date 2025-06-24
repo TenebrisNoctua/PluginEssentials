@@ -1,13 +1,16 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+
+local Types = require(ComponentTypes.Types)
 local unwrap = require(script.Parent.unwrap)
-local types = require(script.Parent.types)
 
-type stateOrAny = types.StateObject<any> | any
+type StateOrAny = Types.State<any> | any
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (inputValue: stateOrAny, defaultValue: stateOrAny, mustBeKind: string?) -> stateOrAny
-	return function(inputValue: stateOrAny, defaultValue: stateOrAny, mustBeKind: string?): stateOrAny
+return function(Scope: Scope): (inputValue: StateOrAny, defaultValue: StateOrAny, mustBeKind: string?) -> StateOrAny
+	return function(inputValue: StateOrAny, defaultValue: StateOrAny, mustBeKind: string?): StateOrAny
 		local stateKind = mustBeKind or "Value"
 		local isInputAState = unwrap(inputValue) ~= inputValue
 		local isDefaultAState = unwrap(defaultValue) ~= defaultValue

@@ -4,26 +4,24 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 
 local constants = require(StudioComponentsUtil.constants)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Children = Fusion.Children
 local OnChange = Fusion.OnChange
 
-type BoxBorderProperties = {
-	Color: types.CanBeState<Color3>?,
-	Thickness: types.CanBeState<number>?,
-	CornerRadius: types.CanBeState<UDim>?,
-	[types.Children]: GuiObject,
-}
+type BoxBorderProperties = Types.BoxBorderProperties
+type Scope = Types.Scope
 
 -- using [Children] to define the GuiObject is meant to give a more consistant format
 
-return function(Scope: { [any]: any }): (props: BoxBorderProperties) -> GuiObject
+return function(Scope: Scope): (props: BoxBorderProperties) -> GuiObject
 	local themeProvider = themeProviderComponent(Scope)
 
 	return function(props: BoxBorderProperties): GuiObject
@@ -63,6 +61,6 @@ return function(Scope: { [any]: any }): (props: BoxBorderProperties) -> GuiObjec
 			}
 		end
 
-		return Scope:Hydrate(props[Children])(hydrateProps)
+		return Scope:Hydrate(props[Children])(hydrateProps) :: GuiObject
 	end
 end

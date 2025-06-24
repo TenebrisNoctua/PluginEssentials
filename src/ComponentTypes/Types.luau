@@ -18,9 +18,10 @@ type NumberInput = (number | StateObject<number>)
 type StateObject<T> = FusionTypes.StateObject<T>
 type CanBeState<T> = StateObject<T> | T
 
-export type Scope = FusionTypes.Scope<FusionTypes.Fusion>
 export type State<T> = StateObject<T>
 export type Value<T> = FusionTypes.Value<T>
+export type Computed<T> = FusionTypes.Computed<T>
+export type Scope = FusionTypes.Scope<FusionTypes.Fusion>
 export type Use = FusionTypes.Use
 
 --// Plugin Component Types
@@ -52,7 +53,7 @@ export type WidgetProperties = {
 
 --// Util Types
 
-export type DragInputProperites = {
+export type DragInputProperties = {
 	Instance: GuiObject,
 	Enabled: (boolean | StateObject<boolean>)?,
 	OnChange: ((newValue: Vector2) -> Vector2?)?,
@@ -74,7 +75,7 @@ export type ModifierInput = {
 export type GetSelectedStateProperties = {
 	Value: Value<any>?,
 	Options: CanBeState<{any}>?,
-	OnSelected: ((selectedOption: any, use: () -> ()?) -> nil)?,
+	OnSelected: ((selectedOption: any, use: Use?) -> nil)?,
 }
 
 --// Studio Component Types

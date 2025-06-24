@@ -1,25 +1,25 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
 local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 local unwrap = require(script.Parent.unwrap)
-local types = require(script.Parent.types)
 
-type modifierInput = {
-	Enabled: types.CanBeState<boolean>?,
-	Hovering: types.CanBeState<boolean>?,
-	Selected: types.CanBeState<boolean>?,
-	Pressed: types.CanBeState<boolean>?,
-	Otherwise: types.CanBeState<Enum.StudioStyleGuideModifier>?,
-}
+type ModifierInput = Types.ModifierInput
 
-return function(Scope: { [any]: any }): (modifierInput: modifierInput) -> types.Computed<any>
-	return function(modifierInput: modifierInput): types.Computed<any>
+type Computed<T> = Types.Computed<T>
+type Scope = Types.Scope
+type Use = Types.Use
+
+return function(Scope: Scope): (modifierInput: ModifierInput) -> Computed<any>
+	return function(modifierInput: ModifierInput): Computed<any>
 		local isEnabled = modifierInput.Enabled
 		local isHovering = modifierInput.Hovering
 		local isSelected = modifierInput.Selected
 		local isPressed = modifierInput.Pressed
 
-		return Scope:Computed(function(use, scope)
+		return Scope:Computed(function(use: Use, scope: Scope)
 			local isDisabled = not unwrap(isEnabled, use)
 			local isHovering = unwrap(isHovering, use)
 			local isSelected = unwrap(isSelected, use)

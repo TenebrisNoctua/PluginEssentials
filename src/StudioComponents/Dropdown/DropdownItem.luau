@@ -4,6 +4,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
 local getStateUtil = require(StudioComponentsUtil.getState)
@@ -22,13 +25,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Item",
 }
 
-type DropdownItemProperties = {
-	OnSelected: (selectedOption: any) -> nil,
-	Item: any,
-	[any]: any,
-}
+type DropdownItemProperties = Types.DropdownItemProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: DropdownItemProperties) -> TextButton
+return function(Scope: Scope): (props: DropdownItemProperties) -> TextButton
 	local themeProvider = themeProviderComponent(Scope)
 	local getModifier = getModifierUtil(Scope)
 	local getState = getStateUtil(Scope)
@@ -94,6 +94,6 @@ return function(Scope: { [any]: any }): (props: DropdownItemProperties) -> TextB
 			hydrateProps[propertyIndex] = nil
 		end
 
-		return Scope:Hydrate(newDropdownItem)(hydrateProps)
+		return Scope:Hydrate(newDropdownItem)(hydrateProps) :: TextButton
 	end
 end

@@ -8,6 +8,9 @@ local Fusion = require(Plugin:FindFirstChild("Fusion", true))
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 
+local ComponentTypes = script.Parent.Parent.ComponentTypes
+local Types = require(ComponentTypes.Types)
+
 -- Scoped components
 local BoxBorderComponent = require(StudioComponents.BoxBorder)
 local themeProviderComponent = require(StudioComponentsUtil.themeProvider)
@@ -17,7 +20,6 @@ local getMotionStateUtil = require(StudioComponentsUtil.getMotionState)
 
 local stripProps = require(StudioComponentsUtil.stripProps)
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 local constants = require(StudioComponentsUtil.constants)
 
 local Children = Fusion.Children
@@ -31,12 +33,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"ClearTextOnFocus"
 }
 
-export type TextInputProperties = {
-	Enabled: (boolean | types.StateObject<boolean>)?,
-	[any]: any,
-}
+type TextInputProperties = Types.TextInputProperties
+type Scope = Types.Scope
 
-return function(Scope: { [any]: any }): (props: TextInputProperties) -> TextLabel
+return function(Scope: Scope): (props: TextInputProperties) -> TextLabel
 	local BoxBorder = BoxBorderComponent(Scope)
 	local themeProvider = themeProviderComponent(Scope)
 	local getModifier = getModifierUtil(Scope)
@@ -121,7 +121,7 @@ return function(Scope: { [any]: any }): (props: TextInputProperties) -> TextLabe
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newTextBox)(hydrateProps)
+		return Scope:Hydrate(newTextBox)(hydrateProps) :: TextLabel
 	end
 end
 
