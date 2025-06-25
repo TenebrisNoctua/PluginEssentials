@@ -4,7 +4,7 @@
 
 --[[
 	Stores common public-facing type information for Fusion APIs.
-    From: https://github.com/dphfox/Fusion/blob/main/src/Types.luau
+	From: https://github.com/dphfox/Fusion/blob/main/src/Types.luau
 ]]
 
 export type Error = {

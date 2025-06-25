@@ -45,7 +45,9 @@ type DragInputProperties = Types.DragInputProperties
 type Computed<T> = Types.Computed<T>
 type Value<T> = Types.Value<T>
 
-return function(Scope: { [any]: any }): (props: DragInputProperties) -> (Vector2Value, Computed<Vector2>, Value<boolean>)
+type Scope = Types.Scope
+
+return function(Scope: Scope): (props: DragInputProperties) -> (Vector2Value, Computed<Vector2>, Value<boolean>)
 	local getState = getStateUtil(Scope)
 
 	return function(props: DragInputProperties): (Vector2Value, Computed<Vector2>, Value<boolean>)

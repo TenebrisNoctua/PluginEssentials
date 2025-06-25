@@ -1,4 +1,4 @@
--- Migrated to Fusion 0.3 by @TenebrisNoctua
+-- Written by @TenebrisNoctua
 
 local Studio = settings().Studio
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
