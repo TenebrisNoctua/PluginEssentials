@@ -89,7 +89,7 @@ return function(Scope: Scope): (props: BaseScrollFrameProperties) -> Frame
 			[Children] = {
 				Scope:New "UICorner" {
 					Name = "UICorner",
-					CornerRadius = props.CornerRadius or UDim2.new(),
+					CornerRadius = props.CornerRadius or UDim.new(),
 				},
 
 				ScrollBar {
