@@ -37,16 +37,18 @@ type themeProvider = typeof(themeProvider)
 
 --// Local Functions
 
-local function getValue(value: Value<any> | any): (any, "State" | "Enum")
+local function getValue(value: Value<any> | any): (any, "State" | "Enum" | "Nil")
 	if typeof(value) == "table" and value.type == "State" then
 		return unwrap(value), "State"
-	else
+	elseif value then
 		return value, "Enum"
+	else
+		return nil, "Nil"
 	end 
 end
 
-local function isCorrectEnum(value: any, desiredEnum: any)
-	assert(typeof(value) == "EnumItem" and value == desiredEnum, "Incorrect type.")
+local function isCorrectEnum(value: EnumItem | any, desiredEnum: Enum)
+	assert(typeof(value) == "EnumItem" and value.EnumType == desiredEnum, "Incorrect type.")
 end
 
 local function updateTheme()
@@ -68,21 +70,25 @@ function themeProvider.GetColor(self: themeProvider, styleGuideColor: StyleGuide
 	local StyleGuideColor, SGCValueType = getValue(styleGuideColor)
 	local StyleGuideModifier, SGMValueType = getValue(styleGuideModifier)
 
-	isCorrectEnum(StyleGuideColor)
-	isCorrectEnum(StyleGuideModifier)
+	isCorrectEnum(StyleGuideColor, Enum.StudioStyleGuideColor)
+	
+	if SGMValueType == "Nil" then 
+		StyleGuideModifier = Enum.StudioStyleGuideModifier.Default
+	else
+		isCorrectEnum(StyleGuideModifier, Enum.StudioStyleGuideModifier) 
+	end
 
 	return self.Scope:Computed(function(use: Use, innerScope: Scope)  
-		if SGCValueType == "State" and SGMValueType == "State" then
-			use(styleGuideColor)
-			use(styleGuideModifier)
-		end
+		if SGCValueType == "State" then use(styleGuideColor) end
+		if SGMValueType == "State" then use(styleGuideModifier) end
 
-		if not force then
+		if not force and self.ThemeColors[StyleGuideColor] then
 			local currentThemeColor = self.ThemeColors[StyleGuideColor][StyleGuideModifier]
 			if currentThemeColor then return currentThemeColor end
 		end
 
 		local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
+		self.ThemeColors[StyleGuideColor] = {}
 		self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColor
 
 		return newThemeColor
@@ -104,6 +110,7 @@ end
 
 return function(Scope: Scope): themeProvider
 	themeProvider.Theme = Scope:Value(Studio.Theme.Name)
+	themeProvider.IsDark = Scope:Value(false)
 	themeProvider.Scope = Scope
 
 	local themeChangedConnection = Studio.ThemeChanged:Connect(updateTheme)

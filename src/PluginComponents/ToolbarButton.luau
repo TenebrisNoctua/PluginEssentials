@@ -9,7 +9,6 @@ local ComponentTypes = PluginComponents.Parent.ComponentTypes
 local Types = require(ComponentTypes.Types)
 
 local unwrap = require(StudioComponentsUtil.unwrap)
-local types = require(StudioComponentsUtil.types)
 
 local Observer = Fusion.Observer
 

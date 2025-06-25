@@ -56,9 +56,9 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 			Color = Scope:Computed(function(use, scope) 
 				local hovering = unwrap(isHovering, use)
 				if hovering then
-					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Hover), use)
+					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Hover))
 				else
-					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Default), use)
+					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Default))
 				end				
 			end),
 
