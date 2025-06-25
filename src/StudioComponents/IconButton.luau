@@ -44,6 +44,7 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)
 		local isPressed = Scope:Value(false)
+		local hoverGuideModifier = Scope:Value(Enum.StudioStyleGuideModifier.Default)
 
 		local modifier = getModifier({
 			Enabled = props.Enabled,
@@ -56,10 +57,12 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 			Color = Scope:Computed(function(use, scope) 
 				local hovering = unwrap(isHovering, use)
 				if hovering then
-					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Hover))
+					hoverGuideModifier:set(Enum.StudioStyleGuideModifier.Hover)
 				else
-					return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, Enum.StudioStyleGuideModifier.Default))
+					hoverGuideModifier:set(Enum.StudioStyleGuideModifier.Default)
 				end				
+
+				return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, hoverGuideModifier))
 			end),
 
 			[Children] = Scope:New "TextButton" {
