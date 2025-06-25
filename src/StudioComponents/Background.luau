@@ -28,10 +28,7 @@ return function(Scope: Scope): (props: BackgroundProperties) -> Frame
 			LayoutOrder = 0,
 			ZIndex = 1,
 			BorderSizePixel = 0,
-			BackgroundColor3 = themeProvider:GetColor(
-				props.StudioStyleGuideColor or Enum.StudioStyleGuideColor.MainBackground,
-				props.StudioStyleGuideModifier
-			),
+			BackgroundColor3 = themeProvider:GetColor(props.StudioStyleGuideColor or Enum.StudioStyleGuideColor.MainBackground, props.StudioStyleGuideModifier),
 		})(stripProps(props, COMPONENT_ONLY_PROPERTIES)) :: Frame
 	end
 end

@@ -113,7 +113,7 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 						Position = UDim2.fromScale(0.5, 0.5),
 						AnchorPoint = Vector2.new(0.5, 0.5),
 						ScaleType = Enum.ScaleType.Fit,
-						ImageColor3 = props.IconColor3 or getMotionState(themeProvider:GetColor(props.ImageColorStyle or Enum.StudioStyleGuideColor.ButtonText, modifier), "Spring", 40),
+						ImageColor3 = props.IconColor3 or getMotionState(themeProvider:GetColor(props.ImageColorStyle or Enum.StudioStyleGuideColor.ButtonText, props.ImageColorModifier or Enum.StudioStyleGuideModifier.Selected), "Spring", 40),
 						Image = props.Icon,
 						ZIndex = props.ZIndex or 1
 					},

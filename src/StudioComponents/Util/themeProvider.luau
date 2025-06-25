@@ -11,7 +11,7 @@ local unwrap = require(script.Parent.unwrap)
 
 local themeProvider = {
 	Theme = {} :: Value<string>,
-	ThemeColors = {} :: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Color3}},
+	ThemeColors = {} :: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Value<Color3>}},
 	IsDark = {} :: Value<boolean>,
 	Scope = {} :: Scope,
 	Fonts = {
@@ -54,7 +54,7 @@ end
 local function updateTheme()
 	for studioStyleGuideColor, styleGuideModifiers in themeProvider.ThemeColors do
 		for studioStyleGuideModifier, valueState in styleGuideModifiers do
-			valueState = Studio.Theme:GetColor(studioStyleGuideColor, studioStyleGuideModifier)
+			valueState:set(Studio.Theme:GetColor(studioStyleGuideColor, studioStyleGuideModifier))
 		end
 	end
 
@@ -77,21 +77,26 @@ function themeProvider.GetColor(self: themeProvider, styleGuideColor: StyleGuide
 	else
 		isCorrectEnum(StyleGuideModifier, Enum.StudioStyleGuideModifier) 
 	end
-
+	
+	local targetThemeState: State<Color3>
+	
+	if not force and self.ThemeColors[StyleGuideColor] and self.ThemeColors[StyleGuideColor][StyleGuideModifier] then
+		targetThemeState = self.ThemeColors[StyleGuideColor][StyleGuideModifier]
+	else
+		local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
+		local newThemeColorState = self.Scope:Value(newThemeColor)
+		
+		if not self.ThemeColors[StyleGuideColor] then self.ThemeColors[StyleGuideColor] = {} end
+		self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColorState
+		
+		targetThemeState = newThemeColorState
+	end
+	
 	return self.Scope:Computed(function(use: Use, innerScope: Scope)  
 		if SGCValueType == "State" then use(styleGuideColor) end
 		if SGMValueType == "State" then use(styleGuideModifier) end
-
-		if not force and self.ThemeColors[StyleGuideColor] then
-			local currentThemeColor = self.ThemeColors[StyleGuideColor][StyleGuideModifier]
-			if currentThemeColor then return currentThemeColor end
-		end
-
-		local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
-		self.ThemeColors[StyleGuideColor] = {}
-		self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColor
-
-		return newThemeColor
+		
+		return unwrap(targetThemeState, use)
 	end)
 end
 
@@ -109,6 +114,8 @@ function themeProvider.GetFont(self: themeProvider, fontName: (string | State<st
 end
 
 return function(Scope: Scope): themeProvider
+	if themeProvider.Scope.New then return themeProvider end
+	
 	themeProvider.Theme = Scope:Value(Studio.Theme.Name)
 	themeProvider.IsDark = Scope:Value(false)
 	themeProvider.Scope = Scope
