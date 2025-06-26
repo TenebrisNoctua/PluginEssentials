@@ -20,7 +20,7 @@ return function(Scope: Scope): (modifierInput: ModifierInput) -> Computed<any>
 		local isPressed = modifierInput.Pressed
 
 		return Scope:Computed(function(use: Use, scope: Scope)
-			local isDisabled = not unwrap(isEnabled, use)
+			local isDisabled = if isEnabled ~= nil then not unwrap(isEnabled, use) else false
 			local isHovering = unwrap(isHovering, use)
 			local isSelected = unwrap(isSelected, use)
 			local isPressed = unwrap(isPressed, use)

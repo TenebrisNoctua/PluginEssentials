@@ -14,6 +14,7 @@ local themeProvider = {
 	ThemeColors = {} :: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Value<Color3>}},
 	IsDark = {} :: Value<boolean>,
 	Scope = {} :: Scope,
+	ItemScope = {} :: Scope,
 	Fonts = {
 		Default = Enum.Font.SourceSans,
 		SemiBold = Enum.Font.SourceSansSemibold,
@@ -69,34 +70,37 @@ end
 function themeProvider.GetColor(self: themeProvider, styleGuideColor: StyleGuideColor, styleGuideModifier: StyleGuideModifier, force: boolean?): Computed<Color3>
 	local StyleGuideColor, SGCValueType = getValue(styleGuideColor)
 	local StyleGuideModifier, SGMValueType = getValue(styleGuideModifier)
+	
+	local function evaluate(): State<Color3>
+		StyleGuideColor, SGCValueType = getValue(styleGuideColor)
+		StyleGuideModifier, SGMValueType = getValue(styleGuideModifier)
 
-	isCorrectEnum(StyleGuideColor, Enum.StudioStyleGuideColor)
-	
-	if SGMValueType == "Nil" then 
-		StyleGuideModifier = Enum.StudioStyleGuideModifier.Default
-	else
-		isCorrectEnum(StyleGuideModifier, Enum.StudioStyleGuideModifier) 
-	end
-	
-	local targetThemeState: State<Color3>
-	
-	if not force and self.ThemeColors[StyleGuideColor] and self.ThemeColors[StyleGuideColor][StyleGuideModifier] then
-		targetThemeState = self.ThemeColors[StyleGuideColor][StyleGuideModifier]
-	else
-		local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
-		local newThemeColorState = self.Scope:Value(newThemeColor)
+		isCorrectEnum(StyleGuideColor, Enum.StudioStyleGuideColor)
+
+		if SGMValueType == "Nil" then 
+			StyleGuideModifier = Enum.StudioStyleGuideModifier.Default
+		else
+			isCorrectEnum(StyleGuideModifier, Enum.StudioStyleGuideModifier) 
+		end
 		
-		if not self.ThemeColors[StyleGuideColor] then self.ThemeColors[StyleGuideColor] = {} end
-		self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColorState
-		
-		targetThemeState = newThemeColorState
+		if not force and self.ThemeColors[StyleGuideColor] and self.ThemeColors[StyleGuideColor][StyleGuideModifier] then
+			return self.ThemeColors[StyleGuideColor][StyleGuideModifier]
+		else
+			local newThemeColor = Studio.Theme:GetColor(StyleGuideColor, StyleGuideModifier)
+			local newThemeColorState = self.ItemScope:Value(newThemeColor)
+
+			if not self.ThemeColors[StyleGuideColor] then self.ThemeColors[StyleGuideColor] = {} end
+			self.ThemeColors[StyleGuideColor][StyleGuideModifier] = newThemeColorState
+
+			return newThemeColorState
+		end
 	end
-	
+
 	return self.Scope:Computed(function(use: Use, innerScope: Scope)  
 		if SGCValueType == "State" then use(styleGuideColor) end
 		if SGMValueType == "State" then use(styleGuideModifier) end
-		
-		return unwrap(targetThemeState, use)
+
+		return unwrap(evaluate(), use)
 	end)
 end
 
@@ -119,6 +123,8 @@ return function(Scope: Scope): themeProvider
 	themeProvider.Theme = Scope:Value(Studio.Theme.Name)
 	themeProvider.IsDark = Scope:Value(false)
 	themeProvider.Scope = Scope
+	
+	themeProvider.ItemScope = Fusion:scoped()
 
 	local themeChangedConnection = Studio.ThemeChanged:Connect(updateTheme)
 	updateTheme()
@@ -126,6 +132,7 @@ return function(Scope: Scope): themeProvider
 	Plugin.Unloading:Connect(function()
 		themeChangedConnection:Disconnect()
 		themeChangedConnection = nil
+		Fusion.doCleanup(themeProvider.ItemScope)
 	end)
 
 	return themeProvider

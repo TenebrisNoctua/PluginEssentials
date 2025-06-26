@@ -59,17 +59,17 @@ return function(Scope: Scope): (props: LoadingProperties) -> Frame
 				end
 			end)
 		end
-
 		startMotion()
+		
 		local observeDisconnect = Scope:Observer(isEnabled):onChange(startMotion)
 
-		local function haltAnim() -- TODO: Add a better way to call this.
+		table.insert(Scope, function() 
 			observeDisconnect()
 			if animThread then
 				task.cancel(animThread)
 				animThread = nil
 			end
-		end
+		end)
 
 		local light = themeProvider:GetColor(Enum.StudioStyleGuideColor.Light, Enum.StudioStyleGuideModifier.Default)
 		local accent = themeProvider:GetColor(Enum.StudioStyleGuideColor.DialogMainButton, Enum.StudioStyleGuideModifier.Default)

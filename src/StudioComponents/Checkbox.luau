@@ -24,7 +24,12 @@ local unwrap = require(StudioComponentsUtil.unwrap)
 local OnEvent = Fusion.OnEvent
 local Children = Fusion.Children
 
-local INDICATOR_IMAGE = "rbxassetid://6652838434"
+local CheckboxOn_Dark = "rbxasset://studio_svg_textures/Shared/Utility/Dark/Standard/CheckboxOn@2x.png"
+local CheckboxOn_Light = "rbxasset://studio_svg_textures/Shared/Utility/Light/Standard/CheckboxOn@2x.png"
+
+local CheckboxOff_Dark = "rbxasset://studio_svg_textures/Shared/Utility/Dark/Standard/CheckboxOff@2x.png"
+local CheckboxOff_Light = "rbxasset://studio_svg_textures/Shared/Utility/Light/Standard/CheckboxOff@2x.png"
+
 local COMPONENT_ONLY_PROPERTIES = {
 	"OnChange",
 	"Alignment",
@@ -62,7 +67,20 @@ return function(Scope: Scope): (props: CheckboxProperties) -> Frame
 			Selected = currentValue,
 		})
 
-		local checkFieldIndicatorColor = themeProvider:GetColor(Enum.StudioStyleGuideColor.CheckedFieldIndicator, mainModifier)
+		local checkFieldImage = Scope:Computed(function(use, innerScope)
+			local IsDark = use(themeProvider.IsDark)
+			local IsIndeterminate = use(isIndeterminate)
+			
+			if IsDark and IsIndeterminate then
+				return CheckboxOff_Dark
+			elseif IsDark and not IsIndeterminate then
+				return CheckboxOn_Dark
+			elseif not IsDark and IsIndeterminate then
+				return CheckboxOff_Light
+			else
+				return CheckboxOn_Light
+			end
+		end)
 
 		local boxHorizontalScale = Scope:Computed(function(use, scope)
 			local currentAlignment = unwrap(props.Alignment, use) or Enum.HorizontalAlignment.Left
@@ -112,7 +130,8 @@ return function(Scope: Scope): (props: CheckboxProperties) -> Frame
 				},
 				BoxBorder {
 					Color = getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.CheckedFieldBorder, mainModifier), "Spring", 40),
-
+					CornerRadius = UDim.new(0, 4),
+					
 					[Children] = Scope:New "Frame" {
 						Name = "Box",
 						AnchorPoint = Scope:Computed(function(use, scope)
@@ -131,32 +150,9 @@ return function(Scope: Scope): (props: CheckboxProperties) -> Frame
 							end),
 							Name = "Indicator",
 							BackgroundTransparency = 1,
-							Size = UDim2.fromOffset(13, 13),
+							Size = UDim2.fromOffset(15, 15),
 							Position = UDim2.fromScale(.5, .5),
-							Image = INDICATOR_IMAGE,
-							ImageRectSize = Vector2.new(13, 13),
-
-							ImageColor3 = getMotionState(Scope:Computed(function(use, scope)
-								local indicatorColor = unwrap(checkFieldIndicatorColor, use)
-								return if unwrap(isIndeterminate, use) then Color3.fromRGB(255, 255, 255) else indicatorColor
-							end), "Spring", 40),
-
-							ImageRectOffset = Scope:Computed(function(use, scope)
-								if unwrap(isIndeterminate, use) then
-									return if unwrap(themeProvider.IsDark, use) then Vector2.new(13, 0) else Vector2.new(26, 0)
-								end
-								return Vector2.new(0, 0)
-							end),
-
-							[Children] = Scope:Computed(function(use, scope)
-								local useCurvedBoxes = unwrap(constants.CurvedBoxes, use)
-								if useCurvedBoxes then
-									return Scope:New "UICorner" {
-										CornerRadius = constants.CornerRadius
-									}
-								end
-								return
-							end)
+							Image = checkFieldImage
 						}
 					}
 				},
@@ -194,4 +190,3 @@ return function(Scope: Scope): (props: CheckboxProperties) -> Frame
 		return Scope:Hydrate(newCheckboxFrame)(hydrateProps) :: Frame
 	end
 end
-

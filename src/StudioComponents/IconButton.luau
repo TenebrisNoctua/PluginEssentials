@@ -39,12 +39,11 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 	local getState = getStateUtil(Scope)
 	local getModifier = getModifierUtil(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
-	
+
 	return function(props: IconButtonProperties): TextButton
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)
 		local isPressed = Scope:Value(false)
-		local hoverGuideModifier = Scope:Value(Enum.StudioStyleGuideModifier.Default)
 
 		local modifier = getModifier({
 			Enabled = props.Enabled,
@@ -54,17 +53,8 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 		})
 
 		local newBaseButton = BoxBorder {
-			Color = Scope:Computed(function(use, scope) 
-				local hovering = unwrap(isHovering, use)
-				if hovering then
-					hoverGuideModifier:set(Enum.StudioStyleGuideModifier.Hover)
-				else
-					hoverGuideModifier:set(Enum.StudioStyleGuideModifier.Default)
-				end				
-
-				return unwrap(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, hoverGuideModifier))
-			end),
-
+			Color = getMotionState(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, modifier), "Spring", 40),
+			
 			[Children] = Scope:New "TextButton" {
 				Name = "IconButton",
 				Size = UDim2.fromScale(1, 1),
