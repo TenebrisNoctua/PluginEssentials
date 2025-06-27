@@ -68,11 +68,15 @@
     left: 0;
     right: 0;
     background-repeat: no-repeat;
-    background-size: 60vh 43vh;
+    background-size: 42vh 42vh;
     background-position: center right;
     background-image: var(--main-section-image);
     z-index: 0;
     margin-bottom: 12%;
+    opacity: 0.4;
+    background: radial-gradient(farthest-corner at 50% 0%, transparent, #000);
+    box-shadow: inset 0 -15em 15em -1em var(--fusiondoc-bg-1);
+    filter: blur(calc(0.1vw + 0.25em));
 }
 
 #peNavButton {
