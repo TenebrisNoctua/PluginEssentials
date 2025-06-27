@@ -33,7 +33,7 @@ theme:
         icon: octicons/sun-24
         name: Switch to Light Mode
 
-    - scheme: pepdoc-light 
+    - scheme: pedoc-light 
       toggle:
         icon: octicons/moon-24
         name: Switch To Dark Mode
