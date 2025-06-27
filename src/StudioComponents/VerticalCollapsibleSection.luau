@@ -39,10 +39,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	Children,
 }
 
-type VerticalExpandingListProperties = Types.VerticalExpandingListProperties
+type VerticalCollapsibleSectionProperties = Types.VerticalCollapsibleSectionProperties
 type Scope = Types.Scope
 
-return function(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
+return function(Scope: Scope): (props: VerticalCollapsibleSectionProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local Label = LabelMain(Scope)
 	local VerticalExpandingList = VerticalExpandingListMain(Scope)
@@ -52,7 +52,7 @@ return function(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
 	local getModifier = getModifierUtil(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
 
-	return function(props: VerticalExpandingListProperties): Frame
+	return function(props: VerticalCollapsibleSectionProperties): Frame
 		local shouldBeCollapsed = getState(props.Collapsed, false, "Value")
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)

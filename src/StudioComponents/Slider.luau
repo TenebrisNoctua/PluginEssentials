@@ -40,7 +40,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 type SliderProperties = Types.SliderProperties
 type Scope = Types.Scope
 
-return function(Scope: Scope): (props: SliderProperties) -> TextButton
+return function(Scope: Scope): (props: SliderProperties) -> Frame
 	local BoxBorder = BoxBorderComponent(Scope)
 	local themeProvider = themeProviderComponent(Scope)
 	local getDragInput = getDragInputUtil(Scope)
@@ -48,7 +48,7 @@ return function(Scope: Scope): (props: SliderProperties) -> TextButton
 	local getModifier = getModifierUtil(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
 
-	return function(props: SliderProperties): TextButton
+	return function(props: SliderProperties): Frame
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)
 
@@ -188,7 +188,7 @@ return function(Scope: Scope): (props: SliderProperties) -> TextButton
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newSlider)(hydrateProps) :: TextButton
+		return Scope:Hydrate(newSlider)(hydrateProps) :: Frame
 	end
 end
 

@@ -217,13 +217,13 @@ export type LabelProperties = {
 
 export type TextInputProperties = {
 	Enabled: (boolean | StateObject<boolean>)?,
+	OnChange: (newText: string) -> nil,
 	[any]: any,
 }
 
 export type LimitedTextInputProperties = TextInputProperties & {
 	Text: (string | Value<string>)?,
 	GraphemeLimit: NumberInput,
-	OnChange: (newText: string) -> nil,
 	TextLimit: NumberInput,
 }
 
@@ -266,8 +266,16 @@ export type SliderProperties = {
 
 export type VerticalExpandingListProperties = {
 	Enabled: (boolean | StateObject<boolean>)?,
-	Collapsed: (boolean | Value<boolean>)?,
 	Padding: (UDim | StateObject<UDim>)?,
+	[any]: any,
+}
+
+-- VerticalCollapsibleSection
+
+export type VerticalCollapsibleSectionProperties = VerticalExpandingListProperties & {
+	Text: (string | StateObject<string>)?,
+	TextColor3: (Color3 | StateObject<Color3>)?,
+	Collapsed: (boolean | Value<boolean>)?,
 	[any]: any,
 }
 

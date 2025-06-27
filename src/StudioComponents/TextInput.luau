@@ -24,6 +24,7 @@ local constants = require(StudioComponentsUtil.constants)
 
 local Children = Fusion.Children
 local OnEvent = Fusion.OnEvent
+local OnChange = Fusion.OnChange
 local Out = Fusion.Out
 
 local PLACEHOLDER_TEXT_COLOR = Color3.fromRGB(102, 102, 102)
@@ -36,14 +37,14 @@ local COMPONENT_ONLY_PROPERTIES = {
 type TextInputProperties = Types.TextInputProperties
 type Scope = Types.Scope
 
-return function(Scope: Scope): (props: TextInputProperties) -> TextLabel
+return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 	local BoxBorder = BoxBorderComponent(Scope)
 	local themeProvider = themeProviderComponent(Scope)
 	local getModifier = getModifierUtil(Scope)
 	local getState = getStateUtil(Scope)
 	local getMotionState = getMotionStateUtil(Scope)
 
-	return function(props: TextInputProperties): TextLabel
+	return function(props: TextInputProperties): TextBox
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)
 		local isFocused = Scope:Value(false)
@@ -113,6 +114,8 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextLabel
 					end
 				end,
 
+				[OnChange "Text"] = props.OnChange,
+
 				[Children] = Scope:New "UIPadding" {
 					PaddingLeft = UDim.new(0, 5),
 					PaddingRight = UDim.new(0, 5),
@@ -121,7 +124,7 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextLabel
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)
-		return Scope:Hydrate(newTextBox)(hydrateProps) :: TextLabel
+		return Scope:Hydrate(newTextBox)(hydrateProps) :: TextBox
 	end
 end
 

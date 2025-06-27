@@ -1,0 +1,93 @@
+site_name: Plugin Essentials Documentation
+site_url: https://tenebrisnoctua.github.io/PluginEssentials/
+repo_name: TenebrisNoctua/PluginEssentials
+repo_url: https://github.com/TenebrisNoctua/PluginEssentials
+
+extra:
+  version:
+    provider: mike
+
+theme:
+  logo: img/light/pe_small.png
+  logo_dark: img/dark/pe_small.png
+  favicon: img/dark/pe_small.png
+  custom_dir: docs/overrides
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.path
+    - navigation.indexes 
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+
+  palette:
+    - scheme: pedoc-dark
+      toggle:
+        icon: octicons/sun-24
+        name: Switch to Light Mode
+
+    - scheme: pepdoc-light 
+      toggle:
+        icon: octicons/moon-24
+        name: Switch To Dark Mode
+  icon:
+    repo: octicons/mark-github-16
+
+extra_css:
+  - css/colors.css
+  - css/theme.css
+  - css/code.css
+  - css/api-reference.css
+  - css/paragraph.css
+  - css/home.css
+
+markdown_extensions:
+  - toc
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - pymdownx.extra
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Tutorials:
+    - Tutorials: tutorials/index.md
+    - Plugin Components:
+      - tutorials/plugin-components/widgetCreation.md
+      - tutorials/plugin-components/toolbarCreation.md
+    - Studio Components:
+      - tutorials/studio-components/basicComponents.md
+      - tutorials/studio-components/buttons.md
+      - tutorials/studio-components/inputs.md
+      - tutorials/studio-components/advancedComponents.md
+  - API Reference:
+      - API Reference: api-reference/index.md
+      - Plugin Components:
+        - api-reference/plugin-components/Widget.md
+        - api-reference/plugin-components/Toolbar.md
+        - api-reference/plugin-components/ToolbarButton.md
+      - Studio Components: 
+        - Inputs:
+        - Buttons: 
+        - Util:
+copyright: |
+  &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>

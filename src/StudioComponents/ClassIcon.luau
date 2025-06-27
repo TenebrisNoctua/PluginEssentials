@@ -21,8 +21,8 @@ local COMPONENT_ONLY_PROPERTIES = {
 type ClassIconProperties = Types.ClassIconProperties
 type Scope = Types.Scope
 
-return function(Scope: Scope): (props: ClassIconProperties) -> Frame
-	return function(props: ClassIconProperties): Frame
+return function(Scope: Scope): (props: ClassIconProperties) -> ImageLabel
+	return function(props: ClassIconProperties): ImageLabel
 		local image = Scope:Computed(function(use, scope)
 			local class = unwrap(props.ClassName, use)
 			return StudioService:GetClassIcon(class)
@@ -43,6 +43,6 @@ return function(Scope: Scope): (props: ClassIconProperties) -> Frame
 			ImageRectSize = Scope:Computed(function(use, scope)
 				return unwrap(image, use).ImageRectSize
 			end),
-		})(hydrateProps) :: Frame
+		})(hydrateProps) :: ImageLabel
 	end
 end
