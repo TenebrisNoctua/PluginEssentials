@@ -85,9 +85,6 @@ nav:
         - api-reference/plugin-components/Widget.md
         - api-reference/plugin-components/Toolbar.md
         - api-reference/plugin-components/ToolbarButton.md
-      - Studio Components: 
-        - Inputs:
-        - Buttons: 
-        - Util:
+      
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>
