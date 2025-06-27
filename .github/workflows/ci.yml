@@ -44,9 +44,6 @@ jobs:
           git commit -m "Clear gh-pages for new deployment" || echo "No changes to commit"
           git push origin gh-pages
 
-      - name: Build documentation
-        run: mkdocs build
-
       - name: Deploy latest documentation version
         if: env.Deploy_Type == 'release'
         run: |
