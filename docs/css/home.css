@@ -67,9 +67,9 @@
     bottom: -20em;
     z-index: -1;
     opacity: 0.4;
-    background: radial-gradient(farthest-corner at 50% 0%, transparent, #000), var(--main-section-image);
-    background-position: top;
-    background-size: 100vh 100vh;
+    background: radial-gradient(farthest-corner at 10% 0%, transparent, var(--md-default-bg-color)), var(--main-section-image);
+    background-position: top right;
+    background-size: 80vh 80vh;
     box-shadow: inset 0 -15em 15em -1em var(--md-default-bg-color);
     filter: blur(calc(0.1vw + 0.25em));
     background-repeat: no-repeat;
