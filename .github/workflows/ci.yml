@@ -48,4 +48,5 @@ jobs:
 
       - name: Deploy indev documentation
         if: env.Deploy_Type == 'indev'
-        run: mike deploy $Version --push --update-aliases --branch gh-pages 
+        run: mike deploy $Version --push --update-aliases --branch gh-pages
+        
