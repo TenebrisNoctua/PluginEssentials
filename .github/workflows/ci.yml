@@ -35,6 +35,9 @@ jobs:
           git config user.name pedoc
           git config user.email pedoc@example.com
 
+      - name: Fetch the gh-pages branch
+        run: git fetch origin gh-pages --depth=1
+
       - name: Build documentation
         run: mkdocs build
 
