@@ -8,13 +8,11 @@ A migrated version of PluginEssentials (by @mvyasu) to Fusion 0.3.
 The usage is similar to the previous version, except now every component requires a Scope table to use the components.
 If there are any bugs to any components, feel free to create a new issue. I'll see what I can do.
 
-(The example plugin folder has been removed, will be added back soon with updated code.)
-
 -------------------------------------------------------------------------------------------------------------
 
 This is a repository with components that many people find essential to making plugins with [Fusion](https://github.com/Elttob/Fusion). You'll find in the src folder that there's two folders. Each one has a specific set of components which you can learn more about below.
 
-There's no documentation at the moment, but each component has a property type that should give you an idea of what it expects for the properties. (Documentation might come at one point.)
+Below is a basic documentation for the components, for more details, you can visit the full documentation site by clicking [here](https://tenebrisnoctua.github.io/PluginEssentials/latest).
 
 ### Community Usage (For Fusion 0.2)
 
