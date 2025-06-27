@@ -12,7 +12,7 @@ If there are any bugs to any components, feel free to create a new issue. I'll s
 
 This is a repository with components that many people find essential to making plugins with [Fusion](https://github.com/Elttob/Fusion). You'll find in the src folder that there's two folders. Each one has a specific set of components which you can learn more about below.
 
-Below is a basic documentation for the components, for more details, you can visit the full documentation site by clicking [here](https://tenebrisnoctua.github.io/PluginEssentials/latest).
+Below is a basic documentation for the components, for more details, you can visit the full documentation site by clicking [here](https://tenebrisnoctua.github.io/PluginEssentials/).
 
 ### Community Usage (For Fusion 0.2)
 

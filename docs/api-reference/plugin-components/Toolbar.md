@@ -22,6 +22,8 @@ local Toolbar = ToolbarComponent(Scope)
 local Toolbar = require(...Toolbar)(Scope)
 ```
 
+-----
+
 ## Parameters
 <span markdown>
     <div class="md-typeset__table">
