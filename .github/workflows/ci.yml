@@ -14,12 +14,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: List files in the repository
-        run: ls -la
+      - name: Configure the git user
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: 3.x
 
@@ -28,27 +30,13 @@ jobs:
           pip install mkdocs-material
           pip install pillow cairosvg
           pip install --upgrade setuptools
-          pip install mike
 
-      - name: Configure the git user
-        run: |
-          git config user.name pedoc
-          git config user.email pedoc@example.com
-
-      - name: Clear gh-pages branch
-        run: |
-          git fetch origin gh-pages
-          git checkout gh-pages
-          rm -rf *
-          git add .
-          git commit -m "Clear gh-pages for new deployment" || echo "No changes to commit"
-          git push origin gh-pages
-
-      - name: Deploy latest documentation version
-        if: env.Deploy_Type == 'release'
-        run: |
-          mike deploy $Version latest --update-aliases --branch gh-pages
-
-      - name: Set default version to latest
-        if: env.Deploy_Type == 'release'
-        run: mike set-default latest --branch gh-pages 
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+            
+      - run: mkdocs gh-deploy --force
