@@ -90,10 +90,10 @@ nav:
           - BaseScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
           - ScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
         - Buttons:
-          - BaseButton: api-reference/studio-components/Background.md
-          - Button: api-reference/studio-components/Background.md
-          - IconButton: api-reference/studio-components/Background.md
-          - MainButton: api-reference/studio-components/Background.md
+          - BaseButton: api-reference/studio-components/buttons/BaseButton.md
+          - Button: api-reference/studio-components/buttons/Button.md
+          - IconButton: api-reference/studio-components/buttons/IconButton.md
+          - MainButton: api-reference/studio-components/buttons/MainButton.md
         - Dropdown Menu:
           - Dropdown: api-reference/studio-components/Background.md
           - DropdownItem: api-reference/studio-components/Background.md
