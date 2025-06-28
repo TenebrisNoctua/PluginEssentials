@@ -1,6 +1,6 @@
 # Widget Creation
 
-Plugin Essentials make creating widgets very easy, using the `Widget` component.
+The Plugin Components library make creating widgets very easy with the `Widget` component.
 
 Here's an example of a plugin widget:
 
