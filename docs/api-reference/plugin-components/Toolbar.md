@@ -38,15 +38,23 @@ local Toolbar = require(...Toolbar)(Scope)
     </div>
 </span>
 
-## Returns
+## Returns Function
 <span markdown>
     <div class="md-typeset__table" id="api-returns-function-table">
         <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
+                    <td class="api-param-highlight">props: <a href="">ToolbarProperties</a></td>
+                    <td>The table which contains the properties of the component that will be created.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="">PluginToolbar</a></td>
                 </tr>
             </tbody>
         </table>
