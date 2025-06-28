@@ -41,7 +41,7 @@ local Toolbar = require(...Toolbar)(Scope)
 ## Returns
 <span markdown>
     <div class="md-typeset__table" id="api-returns-function-table">
-        <h2>Parameters</h2>
+        <h2 style="margin: 1.2em 0 .64em">Parameters</h2>
         <table>
             <tbody>
                 <tr>
