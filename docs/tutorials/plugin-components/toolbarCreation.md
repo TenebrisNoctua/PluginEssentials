@@ -94,7 +94,7 @@ local newWidget = Widget {
 
 In the example above, we created a toolbar, a toolbar button and a widget to display. We also created a value to check and set if the widget is enabled or not. Since Fusion is a state-based UI library, whenever the `widgetsEnabled` state changes, automatically the `Widget` will set its visibility depending on the value of the state.
 
-!!! info
+!!! success
     To create components easier, you can directly require and call a component with a `Scope`, like below.
     ```lua
     local Fusion = require(someFolder.Fusion)
