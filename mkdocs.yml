@@ -87,7 +87,7 @@ nav:
         - ToolbarButton: api-reference/plugin-components/ToolbarButton.md
       - Studio Components:
         - Scroll Frames:
-          - BaseScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
+          - BaseScrollFrame: api-reference/studio-components/scrollframe/BaseScrollFrame.md
           - ScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
         - Buttons:
           - BaseButton: api-reference/studio-components/buttons/BaseButton.md
