@@ -12,14 +12,14 @@ Initializes the Toolbar component and returns a new function to create an instan
 ## Default Syntax
 
 ```lua
-local ToolbarComponent = require(...Toolbar)
+local ToolbarComponent = require(PluginComponents.Toolbar)
 local Toolbar = ToolbarComponent(Scope)
 ```
 
 ## Shorthand
 
 ```lua
-local Toolbar = require(...Toolbar)(Scope)
+local Toolbar = require(PluginComponents.Toolbar)(Scope)
 ```
 
 -----

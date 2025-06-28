@@ -1,25 +1,25 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">Widget</span>
+    <span class="api-title">Label</span>
     <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
 </h1>
 
 ```lua
-function Widget(Scope: Scope): (props: WidgetProperties) -> DockWidgetPluginGui
+function Label(Scope: Scope): (props: LabelProperties) -> TextLabel
 ```
-Initializes the Widget component and returns a new function to create an instance of the component.
+Initializes the Label component and returns a new function to create an instance of the component.
 
 ## Default Syntax
 
 ```lua
-local WidgetComponent = require(PluginComponents.Widget)
-local Widget = WidgetComponent(Scope)
+local LabelComponent = require(StudioComponents.Label)
+local Label = LabelComponent(Scope)
 ```
 
 ## Shorthand
 
 ```lua
-local Widget = require(PluginComponents.Widget)(Scope)
+local Label = require(StudioComponents.Label)(Scope)
 ```
 
 -----
@@ -45,7 +45,7 @@ local Widget = require(PluginComponents.Widget)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">WidgetProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="">LabelProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>
@@ -54,7 +54,7 @@ local Widget = require(PluginComponents.Widget)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/DockWidgetPluginGui">DockWidgetPluginGui</a></td>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/TextLabel">TextLabel</a></td>
                 </tr>
             </tbody>
         </table>
