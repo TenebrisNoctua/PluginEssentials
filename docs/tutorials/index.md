@@ -37,4 +37,4 @@ Using the navigation bar, you can find tutorials and examples of the components 
     It is heavily recommended that you go through each tutorial page in order, to know the full extent of the features that Plugin Essentials provide.
 
 !!! info 
-    Studio Components has been originally written by [@sircfenner](https://github.com/sircfenner). And ported to Fusion by [@YasuYoshida](https://github.com/mvyasu).
+    Studio Components was originally written by [@sircfenner](https://github.com/sircfenner). And ported to Fusion by [@YasuYoshida](https://github.com/mvyasu).
