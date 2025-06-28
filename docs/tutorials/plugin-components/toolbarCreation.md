@@ -95,12 +95,12 @@ In the example above, we created a toolbar, a toolbar button and a widget to dis
 !!! info
     To create components easier, you can directly call and give the scope to the returned component functions right after requiring the components. For example:
     ```lua
-        local Fusion = require(someFolder.Fusion)
-        local Scope = Fusion:scoped()
+    local Fusion = require(someFolder.Fusion)
+    local Scope = Fusion:scoped()
 
-        -- More efficient and easier to write!
-        local Window = require(PluginEssentials.PluginComponents.Window)(Scope)
-        local Toolbar = require(PluginEssentials.PluginComponents.Toolbar)(Scope)
-        local ToolbarButton = require(PluginEssentials.PluginComponents.ToolbarButton)(Scope)
+    -- More efficient and easier to write!
+    local Window = require(PluginEssentials.PluginComponents.Window)(Scope)
+    local Toolbar = require(PluginEssentials.PluginComponents.Toolbar)(Scope)
+    local ToolbarButton = require(PluginEssentials.PluginComponents.ToolbarButton)(Scope)
     ```
 
