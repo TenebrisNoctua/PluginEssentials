@@ -85,6 +85,14 @@ nav:
         - Widget: api-reference/plugin-components/Widget.md
         - Toolbar: api-reference/plugin-components/Toolbar.md
         - ToolbarButton: api-reference/plugin-components/ToolbarButton.md
+      - Studio Components:
+        - Background: api-reference/studio-components/Background.md
+        - ScrollFrame: api-reference/studio-components/ScrollFrame.md
+        - Shadow: api-reference/studio-components/Shadow.md
+        - BoxBorder: api-reference/studio-components/BoxBorder.md
+        - ClassIcon: api-reference/studio-components/ClassIcon.md
+        - Label: api-reference/studio-components/Label.md
+        - Title: api-reference/studio-components/Title.md
       
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>
