@@ -101,12 +101,12 @@ nav:
           - Dropdown: api-reference/studio-components/dropdown/Dropdown.md
           - DropdownItem: api-reference/studio-components/dropdown/DropdownItem.md
         - Util:
-          - getDragInput: api-reference/studio-components/getDragInput.md
-          - getModifier: api-reference/studio-components/getModifier.md
-          - getMotionState: api-reference/studio-components/getMotionState.md
-          - getSelectedState: api-reference/studio-components/getSelectedState.md
-          - getState: api-reference/studio-components/getState.md
-          - themeProvider: api-reference/studio-components/themeProvider.md
+          - getDragInput: api-reference/studio-components/util/getDragInput.md
+          - getModifier: api-reference/studio-components/util/getModifier.md
+          - getMotionState: api-reference/studio-components/util/getMotionState.md
+          - getSelectedState: api-reference/studio-components/util/getSelectedState.md
+          - getState: api-reference/studio-components/util/getState.md
+          - themeProvider: api-reference/studio-components/util/themeProvider.md
         - Background: api-reference/studio-components/Background.md
         - Shadow: api-reference/studio-components/Shadow.md
         - BoxBorder: api-reference/studio-components/BoxBorder.md
