@@ -1,7 +1,7 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">Widget</span>
-    <span class="api-type">:</span><a href="" class="api-type">(props: WidgetProperties) -> DockWidgetPluginGui</a>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
 </h1>
 
 ```lua
@@ -22,6 +22,8 @@ local Widget = WidgetComponent(Scope)
 local Widget = require(...Widget)(Scope)
 ```
 
+-----
+
 ## Parameters
 <span markdown>
     <div class="md-typeset__table">
@@ -36,13 +38,23 @@ local Widget = require(...Widget)(Scope)
     </div>
 </span>
 
-## Returns
+## Returns Function
 <span markdown>
-    <div class="md-typeset__table">
+    <div class="md-typeset__table" id="api-returns-function-table">
+        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="">WidgetCreator</a></td>
+                    <td class="api-param-highlight">props: <a href="">WidgetProperties</a></td>
+                    <td>The table which contains the properties of the component that will be created.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/DockWidgetPluginGui">DockWidgetPluginGui</a></td>
                 </tr>
             </tbody>
         </table>

@@ -1,7 +1,7 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">Toolbar</span>
-    <span class="api-type">:</span><a href="" class="api-type">function</a>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
 </h1>
 
 ```lua
@@ -54,7 +54,7 @@ local Toolbar = require(...Toolbar)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="">PluginToolbar</a></td>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/PluginToolbar">PluginToolbar</a></td>
                 </tr>
             </tbody>
         </table>

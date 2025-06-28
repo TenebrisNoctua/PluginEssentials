@@ -1,7 +1,7 @@
 <h1 class="api-header" markdown>
     <span class="api-icon" markdown>:octicons-workflow-24:</span>
     <span class="api-title">ToolbarButton</span>
-    <span class="api-type">:</span><a href="" class="api-type">(props: ToolbarButtonProperties) -> PluginToolbarButton</a>
+    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
 </h1>
 
 ```lua
@@ -22,6 +22,8 @@ local ToolbarButton = ToolbarButtonComponent(Scope)
 local ToolbarButton = require(...ToolbarButton)(Scope)
 ```
 
+-----
+
 ## Parameters
 <span markdown>
     <div class="md-typeset__table">
@@ -36,13 +38,23 @@ local ToolbarButton = require(...ToolbarButton)(Scope)
     </div>
 </span>
 
-## Returns
+## Returns Function
 <span markdown>
-    <div class="md-typeset__table">
+    <div class="md-typeset__table" id="api-returns-function-table">
+        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="">ToolbarButtonCreator</a></td>
+                    <td class="api-param-highlight">props: <a href="">ToolbarButtonProperties</a></td>
+                    <td>The table which contains the properties of the component that will be created.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/PluginToolbarButton">PluginToolbarButton</a></td>
                 </tr>
             </tbody>
         </table>

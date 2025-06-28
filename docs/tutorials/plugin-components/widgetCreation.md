@@ -1,5 +1,7 @@
 # Widget Creation
 
+A Widget is a `PluginGui` that displays its contents inside a dockable Roblox Studio window.
+
 The Plugin Components library make creating widgets very easy with the `Widget` component.
 
 Here's an example of a plugin widget:

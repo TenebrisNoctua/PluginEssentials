@@ -1,5 +1,7 @@
 # Toolbar Creation
 
+A `Toolbar` is an object used to create `ToolbarButton`s. And a `ToolbarButton` is an object that allows the user to initiate a single, one-off action in Roblox Studio through the Click event.
+
 To configure our `Widget` from the Studio Ribbon, we must create a `Toolbar`, and buttons within that `Toolbar`.
 Fortunately, like `Widget`, there are components called `Toolbar` and `ToolbarButton` that allow you to do exactly this.
 
