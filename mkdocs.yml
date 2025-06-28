@@ -82,10 +82,9 @@ nav:
   - API Reference:
       - API Reference: api-reference/index.md
       - Plugin Components:
-        - api-reference/plugin-components/Widget.md
-        - api-reference/plugin-components/Toolbar.md
-        - api-reference/plugin-components/ToolbarButton.md
-        
+        - Widget: api-reference/plugin-components/Widget.md
+        - Toolbar: api-reference/plugin-components/Toolbar.md
+        - ToolbarButton: api-reference/plugin-components/ToolbarButton.md
       
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>
