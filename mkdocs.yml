@@ -86,8 +86,25 @@ nav:
         - Toolbar: api-reference/plugin-components/Toolbar.md
         - ToolbarButton: api-reference/plugin-components/ToolbarButton.md
       - Studio Components:
+        - Scroll Frames:
+          - BaseScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
+          - ScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
+        - Buttons:
+          - BaseButton: api-reference/studio-components/Background.md
+          - Button: api-reference/studio-components/Background.md
+          - IconButton: api-reference/studio-components/Background.md
+          - MainButton: api-reference/studio-components/Background.md
+        - Dropdown Menu:
+          - Dropdown: api-reference/studio-components/Background.md
+          - DropdownItem: api-reference/studio-components/Background.md
+        - Util:
+          - getDragInput: api-reference/studio-components/Background.md
+          - getModifier: api-reference/studio-components/Background.md
+          - getMotionState: api-reference/studio-components/Background.md
+          - getSelectedState: api-reference/studio-components/Background.md
+          - getState: api-reference/studio-components/Background.md
+          - themeProvider: api-reference/studio-components/Background.md
         - Background: api-reference/studio-components/Background.md
-        - ScrollFrame: api-reference/studio-components/ScrollFrame.md
         - Shadow: api-reference/studio-components/Shadow.md
         - BoxBorder: api-reference/studio-components/BoxBorder.md
         - ClassIcon: api-reference/studio-components/ClassIcon.md
