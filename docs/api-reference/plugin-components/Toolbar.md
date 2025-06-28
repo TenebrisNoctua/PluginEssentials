@@ -44,10 +44,9 @@ local Toolbar = require(...Toolbar)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="">ToolbarCreator</a></td>
                     <h2>Parameters</h2>
                     <span markdown>
-                        <div class="md-typeset__table">
+                        <div class="md-typeset__table" id="api-returns-function-table">
                             <table>
                                 <tbody>
                                     <tr>

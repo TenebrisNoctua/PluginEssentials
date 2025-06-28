@@ -20,7 +20,9 @@
     --md-footer-fg-color--light: var(--text-color-white);
 
     --md-typeset-table-color: var(--table-background-color-dark);
+
     --td-color: var(--td-color-dark);
+    --td-color-light: var(--td-color-dark-light);
 
     --md-admonition-fg-color: var(--admonition-fg-color-dark);
 	--md-admonition-bg-color: var(--admonition-bg-color-dark);
@@ -56,7 +58,9 @@
     --md-footer-fg-color--light: var(--text-color-dark);
 
     --md-typeset-table-color: var(--table-background-color-white);
+
     --td-color: var(--td-color-white);
+    --td-color-light: var(--td-color-white-light);
 
     --md-admonition-fg-color: var(--admonition-fg-color-white);
 	--md-admonition-bg-color: var(--admonition-bg-color-white);

@@ -87,3 +87,11 @@
     text-align: center;
     padding: 6px;
 }
+
+#api-returns-function-table {
+    background-color: var(--td-color-light);
+    border-radius: 0.6em;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+}
