@@ -21,20 +21,21 @@ local newWidget = Widget {
 }
 ```
 
-As you most likely noticed, unlike in the other version of PluginEssentials, you need to initialize the component with a `Scope` in this version. This is due to Fusion now requiring a `Scope` table to create objects. Every component will require to be initialized with a `Scope` first, then you can use the component function returned after initialization to create your component.
+To create a new basic widget, you use the `Widget()` function with the syntax in the above example. All components like `Widget` will accept a properties table that you can use to define properties or even children.
+
+-----
+
+With the introduction of `Scope`s in Fusion 0.3, all components must now be initialized with a `Scope` first, and then using the returned component function, you can create an instance of that component.
 
 !!! info
     It is recommended to use the same Scope for the same use-case components. Creating a new Scope after every component is strongly not recommended.
 
 -----
 
-To create a new basic widget, you use the `Widget()` function with the syntax in the above example. All components like `Widget` will accept a properties table that you can use to define properties or even children.
-
-In that example, we created a new widget with the name "Tools", and then defined the properties such as `InitialDockTo` and `InitialEnabled` to customize the widget.
 
 ## Adding Children
 
-Like it has been mentioned above, you can add children to a `Widget` to add other components or objects to it. Like `Widget`, all components can have children, like normal Fusion objects.
+Like it has been mentioned above, you can add children to a `Widget`, or any other component. Components accept properties and children in the same way as normal Fusion objects do.
 
 ```lua
 local Fusion = require(someFolder.Fusion)
