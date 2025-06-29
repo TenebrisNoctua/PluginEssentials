@@ -42,7 +42,7 @@ return function(Scope: Scope): (props: ColorPickerProperties) -> Frame
 
 	return function(props: ColorPickerProperties): Frame
 		local listDisplayMode = getState(props.ListDisplayMode, Enum.ListDisplayMode.Horizontal)
-
+		local step = getState(props.Step, Vector2.zero, "Vector2")
 		local isEnabled = getState(props.Enabled, true)
 
 		local isHorizontalList = Scope:Computed(function(use, scope)
@@ -55,13 +55,13 @@ return function(Scope: Scope): (props: ColorPickerProperties) -> Frame
 		local currentRegionInput = getDragInput({
 			Enabled = isEnabled,
 			Instance = regionRef,
-			Value = Scope:Value(Vector2.new()),
+			Value = step,
 		})
 
 		local currentSliderInput = getDragInput({
 			Enabled = isEnabled,
 			Instance = sliderRef,
-			Value = Scope:Value(Vector2.new()),
+			Value = step,
 		})
 
 		local inputColor = getState(props.Value, Color3.new(1, 1, 1))

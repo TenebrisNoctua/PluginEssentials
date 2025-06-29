@@ -82,44 +82,85 @@ nav:
   - API Reference:
       - API Reference: api-reference/index.md
       - Plugin Components:
-        - Widget: api-reference/plugin-components/Widget.md
-        - Toolbar: api-reference/plugin-components/Toolbar.md
-        - ToolbarButton: api-reference/plugin-components/ToolbarButton.md
+        - Members:
+          - Widget: api-reference/plugin-components/members/Widget.md
+          - Toolbar: api-reference/plugin-components/members/Toolbar.md
+          - ToolbarButton: api-reference/plugin-components/members/ToolbarButton.md
+        - Types:
+          - WidgetProperties: api-reference/plugin-components/types/Widget.md
+          - ToolbarProperties: api-reference/plugin-components/types/Toolbar.md
+          - ToolbarButtonProperties: api-reference/plugin-components/types/ToolbarButton.md
       - Studio Components:
-        - Scroll Frames:
-          - BaseScrollFrame: api-reference/studio-components/scrollframe/BaseScrollFrame.md
-          - ScrollFrame: api-reference/studio-components/scrollframe/ScrollFrame.md
-        - Buttons:
-          - BaseButton: api-reference/studio-components/buttons/BaseButton.md
-          - Button: api-reference/studio-components/buttons/Button.md
-          - IconButton: api-reference/studio-components/buttons/IconButton.md
-          - MainButton: api-reference/studio-components/buttons/MainButton.md
-        - Inputs:
-          - TextInput: api-reference/studio-components/input/TextInput.md
-          - LimitedTextInput: api-reference/studio-components/input/LimitedTextInput.md
-        - Dropdown Menu:
-          - Dropdown: api-reference/studio-components/dropdown/Dropdown.md
-          - DropdownItem: api-reference/studio-components/dropdown/DropdownItem.md
-        - Util:
-          - getDragInput: api-reference/studio-components/util/getDragInput.md
-          - getModifier: api-reference/studio-components/util/getModifier.md
-          - getMotionState: api-reference/studio-components/util/getMotionState.md
-          - getSelectedState: api-reference/studio-components/util/getSelectedState.md
-          - getState: api-reference/studio-components/util/getState.md
-          - themeProvider: api-reference/studio-components/util/themeProvider.md
-        - Background: api-reference/studio-components/Background.md
-        - Shadow: api-reference/studio-components/Shadow.md
-        - BoxBorder: api-reference/studio-components/BoxBorder.md
-        - ClassIcon: api-reference/studio-components/ClassIcon.md
-        - Label: api-reference/studio-components/Label.md
-        - Title: api-reference/studio-components/Title.md
-        - Loading: api-reference/studio-components/Loading.md
-        - Checkbox: api-reference/studio-components/Checkbox.md
-        - ColorPicker: api-reference/studio-components/ColorPicker.md
-        - ProgressBar: api-reference/studio-components/ProgressBar.md
-        - Slider: api-reference/studio-components/Slider.md
-        - VerticalCollapsibleSection: api-reference/studio-components/VerticalCollapsibleSection.md
-        - VerticalExpandingList: api-reference/studio-components/VerticalExpandingList.md
+        - Members:
+          - Scroll Frames:
+            - BaseScrollFrame: api-reference/studio-components/members/scrollframe/BaseScrollFrame.md
+            - ScrollFrame: api-reference/studio-components/members/scrollframe/ScrollFrame.md
+          - Buttons:
+            - BaseButton: api-reference/studio-components/members/buttons/BaseButton.md
+            - Button: api-reference/studio-components/members/buttons/Button.md
+            - IconButton: api-reference/studio-components/members/buttons/IconButton.md
+            - MainButton: api-reference/studio-components/members/buttons/MainButton.md
+          - Inputs:
+            - TextInput: api-reference/studio-components/members/input/TextInput.md
+            - LimitedTextInput: api-reference/studio-components/members/input/LimitedTextInput.md
+          - Dropdown Menu:
+            - Dropdown: api-reference/studio-components/members/dropdown/Dropdown.md
+            - DropdownItem: api-reference/studio-components/members/dropdown/DropdownItem.md
+          - Util:
+            - getDragInput: api-reference/studio-components/members/util/getDragInput.md
+            - getModifier: api-reference/studio-components/members/util/getModifier.md
+            - getMotionState: api-reference/studio-components/members/util/getMotionState.md
+            - getSelectedState: api-reference/studio-components/members/util/getSelectedState.md
+            - getState: api-reference/studio-components/members/util/getState.md
+            - themeProvider: api-reference/studio-components/members/util/themeProvider.md
+          - Background: api-reference/studio-components/members/Background.md
+          - Shadow: api-reference/studio-components/members/Shadow.md
+          - BoxBorder: api-reference/studio-components/members/BoxBorder.md
+          - ClassIcon: api-reference/studio-components/members/ClassIcon.md
+          - Label: api-reference/studio-components/members/Label.md
+          - Title: api-reference/studio-components/members/Title.md
+          - Loading: api-reference/studio-components/members/Loading.md
+          - Checkbox: api-reference/studio-components/members/Checkbox.md
+          - ColorPicker: api-reference/studio-components/members/ColorPicker.md
+          - ProgressBar: api-reference/studio-components/members/ProgressBar.md
+          - Slider: api-reference/studio-components/members/Slider.md
+          - VerticalCollapsibleSection: api-reference/studio-components/members/VerticalCollapsibleSection.md
+          - VerticalExpandingList: api-reference/studio-components/members/VerticalExpandingList.md
+        - Types:
+          - Scroll Frames:
+            - BaseScrollFrame: api-reference/studio-components/types/scrollframe/BaseScrollFrame.md
+            - ScrollFrame: api-reference/studio-components/types/scrollframe/ScrollFrame.md
+          - Buttons:
+            - BaseButton: api-reference/studio-components/types/buttons/BaseButton.md
+            - Button: api-reference/studio-components/types/buttons/Button.md
+            - IconButton: api-reference/studio-components/types/buttons/IconButton.md
+            - MainButton: api-reference/studio-components/types/buttons/MainButton.md
+          - Inputs:
+            - TextInput: api-reference/studio-components/types/input/TextInput.md
+            - LimitedTextInput: api-reference/studio-components/types/input/LimitedTextInput.md
+          - Dropdown Menu:
+            - Dropdown: api-reference/studio-components/types/dropdown/Dropdown.md
+            - DropdownItem: api-reference/studio-components/types/dropdown/DropdownItem.md
+          - Util:
+            - getDragInput: api-reference/studio-components/types/util/getDragInput.md
+            - getModifier: api-reference/studio-components/types/util/getModifier.md
+            - getMotionState: api-reference/studio-components/types/util/getMotionState.md
+            - getSelectedState: api-reference/studio-components/types/util/getSelectedState.md
+            - getState: api-reference/studio-components/types/util/getState.md
+            - themeProvider: api-reference/studio-components/types/util/themeProvider.md
+          - Background: api-reference/studio-components/types/Background.md
+          - Shadow: api-reference/studio-components/types/Shadow.md
+          - BoxBorder: api-reference/studio-components/types/BoxBorder.md
+          - ClassIcon: api-reference/studio-components/types/ClassIcon.md
+          - Label: api-reference/studio-components/types/Label.md
+          - Title: api-reference/studio-components/types/Title.md
+          - Loading: api-reference/studio-components/types/Loading.md
+          - Checkbox: api-reference/studio-components/types/Checkbox.md
+          - ColorPicker: api-reference/studio-components/types/ColorPicker.md
+          - ProgressBar: api-reference/studio-components/types/ProgressBar.md
+          - Slider: api-reference/studio-components/types/Slider.md
+          - VerticalCollapsibleSection: api-reference/studio-components/types/VerticalCollapsibleSection.md
+          - VerticalExpandingList: api-reference/studio-components/types/VerticalExpandingList.md
       
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>

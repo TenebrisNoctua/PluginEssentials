@@ -17,6 +17,7 @@ type NumberInput = (number | StateObject<number>)
 
 type StateObject<T> = FusionTypes.StateObject<T>
 type CanBeState<T> = StateObject<T> | T
+type CanBeValue<T> = Value<T> | T
 
 export type State<T> = StateObject<T>
 export type Value<T> = FusionTypes.Value<T>
@@ -55,13 +56,13 @@ export type WidgetProperties = {
 
 export type DragInputProperties = {
 	Instance: GuiObject,
-	Enabled: (boolean | StateObject<boolean>)?,
+	Enabled: CanBeState<boolean>?,
 	OnChange: ((newValue: Vector2) -> Vector2?)?,
 	getUseFunction: () -> ((state: any) -> ())?,
-	Value: (Vector2 | Value<Vector2>),
-	Min: (Vector2 | Value<Vector2>),
-	Max: (Vector2 | Value<Vector2>),
-	Step: (Vector2 | Value<Vector2>),
+	Value: CanBeValue<Vector2>,
+	Min: CanBeValue<Vector2>,
+	Max: CanBeValue<Vector2>,
+	Step: CanBeValue<Vector2>,
 }
 
 export type ModifierInput = {
@@ -152,7 +153,7 @@ export type BackgroundProperties = {
 
 export type BaseButtonProperties = {
 	Activated: (() -> nil)?,
-	Enabled: (boolean | StateObject<boolean>)?,
+	Enabled: CanBeState<boolean>?,
 	TextColorStyle: StyleGuideColorInput?,
 	BackgroundColorStyle: StyleGuideColorInput?,
 	BorderColorStyle: StyleGuideColorInput?,
@@ -162,7 +163,7 @@ export type BaseButtonProperties = {
 
 export type IconButtonProperties = {
 	Activated: (() -> nil)?,
-	Enabled: (boolean | StateObject<boolean>)?,
+	Enabled: CanBeState<boolean>?,
 	TextColorStyle: StyleGuideColorInput,
 	BackgroundColorStyle: StyleGuideColorInput,
 	BorderColorStyle: StyleGuideColorInput,
@@ -181,48 +182,48 @@ export type BoxBorderProperties = {
 
 export type CheckboxProperties = {
 	OnChange: ((newValue: boolean) -> nil)?,
-	Alignment: (Enum.HorizontalAlignment | StateObject<Enum.HorizontalAlignment>)?,
-	Enabled: (boolean | StateObject<boolean>)?,
-	Text: (string | StateObject<string>)?,
-	Value: (boolean | Value<boolean>)?,
+	Alignment: CanBeState<Enum.HorizontalAlignment>?,
+	Enabled: CanBeState<boolean>?,
+	Text: CanBeState<string>?,
+	Value: CanBeValue<boolean>?,
 	[any]: any,
 }
 
 -- ClassIcon
 
 export type ClassIconProperties = {
-	ClassName: string | StateObject<string>,
+	ClassName: CanBeState<string>,
 	[any]: any,
 }
 
 -- ColorPicker
 
 export type ColorPickerProperties = {
-	ListDisplayMode: (Enum.ListDisplayMode | StateObject<Enum.ListDisplayMode>)?,
-	Enabled: (boolean | StateObject<boolean>)?,
+	ListDisplayMode: CanBeState<Enum.ListDisplayMode>?,
+	Enabled: CanBeState<boolean>?,
 	OnChange: (newColor: Color3) -> nil,
-	Value: (Color3 | Value<Color3>)?,
-	Step: (Vector2 | Value<Vector2>)?,
+	Value: CanBeValue<Color3>?,
+	Step: CanBeValue<Vector2>?,
 	[any]: any,
 }
 
 -- Label
 
 export type LabelProperties = {
-	Enabled: (boolean | StateObject<boolean>)?,
+	Enabled: CanBeState<boolean>?,
 	[any]: any,
 }
 
 -- Inputs
 
 export type TextInputProperties = {
-	Enabled: (boolean | StateObject<boolean>)?,
+	Enabled: CanBeState<boolean>?,
 	OnChange: (newText: string) -> nil,
 	[any]: any,
 }
 
 export type LimitedTextInputProperties = TextInputProperties & {
-	Text: (string | Value<string>)?,
+	Text: CanBeValue<string>?,
 	GraphemeLimit: NumberInput,
 	TextLimit: NumberInput,
 }
@@ -237,7 +238,7 @@ export type LoadingProperties = {
 -- ProgressBar
 
 export type ProgressProperties = {
-	Progress: (number | StateObject<number>)?,
+	Progress: CanBeState<number>?,
 	[any]: any,
 }
 
@@ -265,17 +266,17 @@ export type SliderProperties = {
 -- VerticalExpandingList
 
 export type VerticalExpandingListProperties = {
-	Enabled: (boolean | StateObject<boolean>)?,
-	Padding: (UDim | StateObject<UDim>)?,
+	Enabled: CanBeState<boolean>?,
+	Padding: CanBeState<UDim>?,
 	[any]: any,
 }
 
 -- VerticalCollapsibleSection
 
 export type VerticalCollapsibleSectionProperties = VerticalExpandingListProperties & {
-	Text: (string | StateObject<string>)?,
-	TextColor3: (Color3 | StateObject<Color3>)?,
-	Collapsed: (boolean | Value<boolean>)?,
+	Text: CanBeState<string>?,
+	TextColor3: CanBeState<Color3>?,
+	Collapsed: CanBeValue<boolean>?,
 	[any]: any,
 }
 
