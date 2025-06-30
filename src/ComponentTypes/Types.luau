@@ -11,7 +11,6 @@ local FusionTypes = require(script.Parent.Fusion)
 
 type Set<T> = {[T]: any}
 type StyleGuideColorInput = (Enum.StudioStyleGuideColor | StateObject<Enum.StudioStyleGuideColor>)
-type NumberInput = (number | StateObject<number>)
 
 --// Fusion Types
 
@@ -228,8 +227,8 @@ export type TextInputProperties = {
 
 export type LimitedTextInputProperties = TextInputProperties & {
 	Text: CanBeValue<string>?,
-	GraphemeLimit: NumberInput,
-	TextLimit: NumberInput,
+	GraphemeLimit: CanBeState<number>,
+	TextLimit: CanBeState<number>,
 }
 
 -- Loading
@@ -261,9 +260,9 @@ export type SliderProperties = {
 	Enabled: CanBeState<boolean>?,
 	OnChange: ((newValue: number) -> nil)?,
 	Value: CanBeState<number>?,
-	Min: NumberInput,
-	Max: NumberInput,
-	Step: NumberInput,
+	Min: CanBeState<number>,
+	Max: CanBeState<number>,
+	Step: CanBeState<number>,
 	[any]: any,
 }
 

@@ -67,7 +67,7 @@ Sets the color style of the text to the given [`Enum`](https://create.roblox.com
 <h3 markdown>
 	TextSize
 	<span class="api-property-type">
-		: CanBeValue<number>?,
+		: CanBeValue<number>?
 	</span>
 </h3>
 
