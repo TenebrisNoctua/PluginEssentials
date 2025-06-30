@@ -1,62 +1,76 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">Label</span>
-    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
+    <span class="api-title">LabelProperties</span>
 </h1>
 
 ```lua
-function Label(Scope: Scope): (props: LabelProperties) -> TextLabel
-```
-Initializes the Label component and returns a new function to create an instance of the component.
-
-## Default Syntax
-
-```lua
-local LabelComponent = require(StudioComponents.Label)
-local Label = LabelComponent(Scope)
-```
-
-## Shorthand
-
-```lua
-local Label = require(StudioComponents.Label)(Scope)
+export type LabelProperties = {
+	Enabled: CanBeState<boolean>?,
+	Text: CanBeState<string>?,
+	TextColor3: CanBeState<Color3>?,
+	TextColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	TextSize: CanBeState<number>?,
+	[any]: any,
+}
 ```
 
------
+The `LabelProperties` table that is given to the [`Label()`](../members/Label.md) function that contains data about the desired `Label`.
 
-## Parameters
-<span markdown>
-    <div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</span>
+----
 
-## Returns Function
-<span markdown>
-    <div class="md-typeset__table" id="api-returns-function-table">
-        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">props: <a href="">LabelProperties</a></td>
-                    <td>The table which contains the properties of the component that will be created.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/TextLabel">TextLabel</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+## Properties
+
+<h3 markdown>
+	Enabled
+	<span class="api-property-type">
+		: CanBeState<boolean>?
+	</span>
+</h3>
+
+Sets whether the `Label` will be enabled or not. Can either be a `State` containing a `boolean`, or a `boolean`.
+
+----
+
+<h3 markdown>
+	Text
+	<span class="api-property-type">
+		: CanBeState<string>?
+	</span>
+</h3>
+
+The text that will be displayed on the `Label`. Can either be a `State` containing a `string`, or a `string`.
+
+----
+
+<h3 markdown>
+	TextColor3
+	<span class="api-property-type">
+		: CanBeState<Color3>?
+	</span>
+</h3>
+
+The color of the text on the `Label`. Can either be a `State` containing a `Color3`, or a `Color3`. Setting this property is not recommended, as it will overwrite the default color defined by the theme of the Studio.
+
+----
+
+<h3 markdown>
+	TextColorStyle
+	<span class="api-property-type">
+		: CanBeState<Enum.StudioStyleGuideColor>?
+	</span>
+</h3>
+
+Sets the color style of the text to the given [`Enum`](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideColor) or a `State` containing that `Enum`. This property is recommended to use if you want to modify the color of the text while making it consistent with the theme of the Studio.
+
+----
+
+<h3 markdown>
+	TextSize
+	<span class="api-property-type">
+		: CanBeValue<number>?,
+	</span>
+</h3>
+
+The size of the text that will be displayed on the `Label`. Can either be a `Value` containing a `number`, or a `number`.
+
+----

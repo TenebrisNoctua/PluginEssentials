@@ -211,6 +211,10 @@ export type ColorPickerProperties = {
 
 export type LabelProperties = {
 	Enabled: CanBeState<boolean>?,
+	Text: CanBeState<string>?,
+	TextColor3: CanBeState<Color3>?,
+	TextColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	TextSize: CanBeState<number>?,
 	[any]: any,
 }
 

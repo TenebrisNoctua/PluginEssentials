@@ -51,7 +51,7 @@ A unique and consistent identifier used to storing the `Widget`'s dock state and
 	</span>
 </h3>
 
-Describes the initial docking state of a `Widget`. Can either be a string or an [Enum](https://create.roblox.com/docs/reference/engine/enums/InitialDockState).
+Describes the initial docking state of a `Widget`. Can either be a `string` or an [Enum](https://create.roblox.com/docs/reference/engine/enums/InitialDockState).
 
 ----
 

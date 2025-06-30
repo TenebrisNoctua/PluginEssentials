@@ -148,19 +148,18 @@ nav:
             - getSelectedState: api-reference/studio-components/types/util/getSelectedState.md
             - getState: api-reference/studio-components/types/util/getState.md
             - themeProvider: api-reference/studio-components/types/util/themeProvider.md
-          - Background: api-reference/studio-components/types/Background.md
-          - Shadow: api-reference/studio-components/types/Shadow.md
-          - BoxBorder: api-reference/studio-components/types/BoxBorder.md
-          - ClassIcon: api-reference/studio-components/types/ClassIcon.md
-          - Label: api-reference/studio-components/types/Label.md
-          - Title: api-reference/studio-components/types/Title.md
-          - Loading: api-reference/studio-components/types/Loading.md
-          - Checkbox: api-reference/studio-components/types/Checkbox.md
-          - ColorPicker: api-reference/studio-components/types/ColorPicker.md
-          - ProgressBar: api-reference/studio-components/types/ProgressBar.md
-          - Slider: api-reference/studio-components/types/Slider.md
-          - VerticalCollapsibleSection: api-reference/studio-components/types/VerticalCollapsibleSection.md
-          - VerticalExpandingList: api-reference/studio-components/types/VerticalExpandingList.md
+          - BackgroundProperties: api-reference/studio-components/types/Background.md
+          - ShadowProperties: api-reference/studio-components/types/Shadow.md
+          - BoxBorderProperties: api-reference/studio-components/types/BoxBorder.md
+          - ClassIconProperties: api-reference/studio-components/types/ClassIcon.md
+          - LabelProperties: api-reference/studio-components/types/Label.md
+          - LoadingProperties: api-reference/studio-components/types/Loading.md
+          - CheckboxProperties: api-reference/studio-components/types/Checkbox.md
+          - ColorPickerProperties: api-reference/studio-components/types/ColorPicker.md
+          - ProgressBarProperties: api-reference/studio-components/types/ProgressBar.md
+          - SliderProperties: api-reference/studio-components/types/Slider.md
+          - VerticalCollapsibleSectionProperties: api-reference/studio-components/types/VerticalCollapsibleSection.md
+          - VerticalExpandingListProperties: api-reference/studio-components/types/VerticalExpandingList.md
       
 copyright: |
   &copy; 2025 <a href="https://github.com/TenebrisNoctua"  target="_blank" rel="noopener">Tenebris Noctua</a>
