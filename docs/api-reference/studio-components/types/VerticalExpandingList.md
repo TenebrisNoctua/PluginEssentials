@@ -1,62 +1,40 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">VerticalExpandingList</span>
-    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
+    <span class="api-title">VerticalExpandingListProperties</span>
 </h1>
 
 ```lua
-function VerticalExpandingList(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
-```
-Initializes the VerticalExpandingList component and returns a new function to create an instance of the component.
-
-## Default Syntax
-
-```lua
-local VerticalExpandingListComponent = require(StudioComponents.VerticalExpandingList)
-local VerticalExpandingList = VerticalExpandingListComponent(Scope)
+export type VerticalExpandingListProperties = {
+	Enabled: CanBeState<boolean>?,
+	Padding: CanBeState<UDim>?,
+	[any]: any,
+}
 ```
 
-## Shorthand
+The `VerticalExpandingListProperties` table that is given to the [`VerticalExpandingList()`](../members/VerticalExpandingList.md) function that contains data about the desired `VerticalExpandingList` component.
 
-```lua
-local VerticalExpandingList = require(StudioComponents.VerticalExpandingList)(Scope)
-```
+----
 
------
+## Properties
 
-## Parameters
-<span markdown>
-    <div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</span>
+<h3 markdown>
+	Enabled
+	<span class="api-property-type">
+		: CanBeState<boolean>?
+	</span>
+</h3>
 
-## Returns Function
-<span markdown>
-    <div class="md-typeset__table" id="api-returns-function-table">
-        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">props: <a href="">VerticalExpandingListProperties</a></td>
-                    <td>The table which contains the properties of the component that will be created.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/Frame">Frame</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+Sets whether the `VerticalExpandingList` will be enabled or not. Can either be a `State` containing a `boolean`, or a `boolean`.
+
+----
+
+<h3 markdown>
+	Padding
+	<span class="api-property-type">
+		: CanBeState<UDim>?
+	</span>
+</h3>
+
+The padding between instances inside the `VerticalExpandingList`. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----

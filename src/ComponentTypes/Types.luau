@@ -10,13 +10,12 @@ local FusionTypes = require(script.Parent.Fusion)
 --// General Use Types
 
 type Set<T> = {[T]: any}
-type StyleGuideColorInput = (Enum.StudioStyleGuideColor | StateObject<Enum.StudioStyleGuideColor>)
-
---// Fusion Types
 
 type StateObject<T> = FusionTypes.StateObject<T>
 type CanBeState<T> = StateObject<T> | T
 type CanBeValue<T> = Value<T> | T
+
+--// Fusion Types
 
 export type State<T> = StateObject<T>
 export type Value<T> = FusionTypes.Value<T>
@@ -153,20 +152,18 @@ export type BackgroundProperties = {
 export type BaseButtonProperties = {
 	Activated: (() -> nil)?,
 	Enabled: CanBeState<boolean>?,
-	TextColorStyle: StyleGuideColorInput?,
-	BackgroundColorStyle: StyleGuideColorInput?,
-	BorderColorStyle: StyleGuideColorInput?,
-	TextSize: number,
+	TextColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	BackgroundColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	BorderColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	TextSize: CanBeValue<number>?,
 	[any]: any,
 }
 
-export type IconButtonProperties = {
-	Activated: (() -> nil)?,
-	Enabled: CanBeState<boolean>?,
-	TextColorStyle: StyleGuideColorInput,
-	BackgroundColorStyle: StyleGuideColorInput,
-	BorderColorStyle: StyleGuideColorInput,
-	IconColor3: Color3?,
+export type IconButtonProperties = BaseButtonProperties & {
+	ImageColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
+	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
+	IconColor3: CanBeState<Color3>?,
+	TextSize: nil,
 	[any]: any,
 }
 

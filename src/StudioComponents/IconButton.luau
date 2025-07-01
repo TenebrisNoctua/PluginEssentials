@@ -83,12 +83,14 @@ return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 				end,
 
 				[OnEvent "Activated"] = (function()
-					if props.Activated then
+					local Activated = props.Activated
+					if Activated then
 						return function()
 							if unwrap(isEnabled) then
 								isHovering:set(false)
 								isPressed:set(false)
-								props.Activated()
+
+								Activated() 
 							end
 						end
 					end
