@@ -45,7 +45,7 @@ local Widget = require(PluginComponents.Widget)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../../types/Widget.md">WidgetProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../types/Widget">WidgetProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>
