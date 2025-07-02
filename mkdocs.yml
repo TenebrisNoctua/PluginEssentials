@@ -128,26 +128,22 @@ nav:
           - VerticalExpandingList: api-reference/studio-components/members/VerticalExpandingList.md
         - Types:
           - Scroll Frames:
-            - BaseScrollFrame: api-reference/studio-components/types/scrollframe/BaseScrollFrame.md
-            - ScrollFrame: api-reference/studio-components/types/scrollframe/ScrollFrame.md
+            - BaseScrollFrameProperties: api-reference/studio-components/types/scrollframe/BaseScrollFrame.md
+            - ScrollFrameProperties: api-reference/studio-components/types/scrollframe/ScrollFrame.md
           - Buttons:
-            - BaseButton: api-reference/studio-components/types/buttons/BaseButton.md
-            - Button: api-reference/studio-components/types/buttons/Button.md
-            - IconButton: api-reference/studio-components/types/buttons/IconButton.md
-            - MainButton: api-reference/studio-components/types/buttons/MainButton.md
+            - BaseButtonProperties: api-reference/studio-components/types/buttons/BaseButton.md
+            - IconButtonProperties: api-reference/studio-components/types/buttons/IconButton.md
           - Inputs:
-            - TextInput: api-reference/studio-components/types/input/TextInput.md
-            - LimitedTextInput: api-reference/studio-components/types/input/LimitedTextInput.md
+            - TextInputProperties: api-reference/studio-components/types/input/TextInput.md
+            - LimitedTextInputProperties: api-reference/studio-components/types/input/LimitedTextInput.md
           - Dropdown Menu:
-            - Dropdown: api-reference/studio-components/types/dropdown/Dropdown.md
-            - DropdownItem: api-reference/studio-components/types/dropdown/DropdownItem.md
+            - DropdownProperties: api-reference/studio-components/types/dropdown/Dropdown.md
+            - DropdownItemProperties: api-reference/studio-components/types/dropdown/DropdownItem.md
           - Util:
-            - getDragInput: api-reference/studio-components/types/util/getDragInput.md
-            - getModifier: api-reference/studio-components/types/util/getModifier.md
-            - getMotionState: api-reference/studio-components/types/util/getMotionState.md
-            - getSelectedState: api-reference/studio-components/types/util/getSelectedState.md
-            - getState: api-reference/studio-components/types/util/getState.md
-            - themeProvider: api-reference/studio-components/types/util/themeProvider.md
+            - DragInputProperties: api-reference/studio-components/types/util/getDragInput.md
+            - ModifierInput: api-reference/studio-components/types/util/getModifier.md
+            - GetSelectedStateProperties: api-reference/studio-components/types/util/getSelectedState.md
+            - ThemeProvider: api-reference/studio-components/types/util/themeProvider.md
           - BackgroundProperties: api-reference/studio-components/types/Background.md
           - ShadowProperties: api-reference/studio-components/types/Shadow.md
           - BoxBorderProperties: api-reference/studio-components/types/BoxBorder.md
