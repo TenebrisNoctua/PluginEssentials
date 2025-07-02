@@ -45,7 +45,7 @@ local Shadow = require(StudioComponents.Shadow)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../types/Shadow.md">ShadowProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../types/Shadow">ShadowProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

@@ -48,7 +48,7 @@ local getModifier = require(StudioComponents.Util.getModifier)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../../types/util/getModifier.md">ModifierInput</a></td>
+                    <td class="api-param-highlight">props: <a href="../../../types/util/getModifier">ModifierInput</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

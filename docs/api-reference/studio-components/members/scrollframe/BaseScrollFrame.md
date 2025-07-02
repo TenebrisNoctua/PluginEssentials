@@ -45,7 +45,7 @@ local BaseScrollFrame = require(StudioComponents.BaseScrollFrame)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../../types/scrollframe/BaseScrollFrame.md">BaseScrollFrameProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../../types/scrollframe/BaseScrollFrame">BaseScrollFrameProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

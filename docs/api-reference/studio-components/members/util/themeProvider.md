@@ -44,7 +44,7 @@ local themeProvider = require(StudioComponents.themeProvider)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="../../types/util/themeProvider.md">themeProvider</a></td>
+                    <td class="api-return-box"><a href="../../../types/util/themeProvider">themeProvider</a></td>
                 </tr>
             </tbody>
         </table>

@@ -24,7 +24,7 @@ local returnedFunction = Scope:Computed(getSelectedState(props))
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../../types/util/getSelectedState.md">GetSelectedStateProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../../types/util/getSelectedState">GetSelectedStateProperties</a></td>
                     <td>The table which contains the properties that will be used within the returned callback function.</td>
                 </tr>
             </tbody>

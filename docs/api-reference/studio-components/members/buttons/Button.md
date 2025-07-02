@@ -45,7 +45,7 @@ local Button = require(StudioComponents.Button)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="../../types/buttons/BaseButton.md">BaseButtonProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../../types/buttons/BaseButton">BaseButtonProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>
