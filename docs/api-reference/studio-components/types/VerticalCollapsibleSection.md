@@ -53,4 +53,4 @@ Sets whether or not the `VerticalCollapsibleSection` is collapsed. Can either be
 
 ----
 
-<h4>This component sure is long...</h4>
+<h4>This component name sure is long...</h4>

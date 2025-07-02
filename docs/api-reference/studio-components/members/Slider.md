@@ -45,7 +45,7 @@ local Slider = require(StudioComponents.Slider)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">SliderProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../types/Slider.md">SliderProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

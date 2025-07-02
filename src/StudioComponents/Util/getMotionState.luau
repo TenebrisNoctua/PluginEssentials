@@ -16,7 +16,7 @@ type Use = Types.Use
 
 --motionStateTypes: Tween, Spring
 return function(Scope: Scope): (goalState: State<any>, motionStateType: string, ...any) -> State<any> | any
-	return function(goalState: State<any>, motionStateType: string, ...:any): State<any> | any
+	return function(goalState: State<any>, motionStateType: string, ...: any): State<any> | any
 		local motionTypeFn = Fusion[motionStateType]
 		if typeof(motionTypeFn) ~= "function" then
 			warn(("[%s]: No motionStateType with the name '%s' was found in Fusion!"):format(script.Name, tostring(motionStateType)))

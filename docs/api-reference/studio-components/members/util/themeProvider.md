@@ -12,8 +12,8 @@ Initializes themeProvider and returns a table containing its methods and propert
 ## Default Syntax
 
 ```lua
-local themeProviderUtil = require(StudioComponents.Util.themeProvider)
-local themeProvider = themeProviderUtil(Scope)
+local themeProviderUtility = require(StudioComponents.Util.themeProvider)
+local themeProvider = themeProviderUtility(Scope)
 ```
 
 ## Shorthand
@@ -44,7 +44,7 @@ local themeProvider = require(StudioComponents.themeProvider)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="">themeProvider</a></td>
+                    <td class="api-return-box"><a href="../../types/util/themeProvider.md">themeProvider</a></td>
                 </tr>
             </tbody>
         </table>

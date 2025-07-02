@@ -72,7 +72,7 @@ return function(Scope: Scope): (props: DragInputProperties) -> (Vector2Value, Co
 
 		local function processInput(position)
 			local use = if getUseFunction then getUseFunction() else nil
-				
+
 			local connectionProvider = unwrap(connectionProvider, use)
 			if connectionProvider then
 				local offset = position - connectionProvider.AbsolutePosition
@@ -138,7 +138,7 @@ return function(Scope: Scope): (props: DragInputProperties) -> (Vector2Value, Co
 
 		local tasks = {}
 		local function cleanupTasks()
-			for _,cleanupTask in pairs(tasks) do
+			for _, cleanupTask in tasks do
 				cleanupTask()
 			end
 		end

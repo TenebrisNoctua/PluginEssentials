@@ -22,7 +22,7 @@ The `DropdownItemProperties` table that is given to the [`DropdownItem()`](../..
 <h3 markdown>
 	OnSelected
 	<span class="api-property-type">
-		: (selectedOption: any) -> nil,
+		: (selectedOption: any) -> nil
 	</span>
 </h3>
 

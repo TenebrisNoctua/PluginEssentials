@@ -45,7 +45,7 @@ local Loading = require(StudioComponents.Loading)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">LoadingProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../types/Loading.md">LoadingProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

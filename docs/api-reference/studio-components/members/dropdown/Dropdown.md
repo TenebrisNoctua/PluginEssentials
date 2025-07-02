@@ -45,7 +45,7 @@ local Dropdown = require(StudioComponents.Dropdown)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">DropdownProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../types/dropdown/Dropdown.md">DropdownProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

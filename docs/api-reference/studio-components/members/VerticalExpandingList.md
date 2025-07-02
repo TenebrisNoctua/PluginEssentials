@@ -45,7 +45,7 @@ local VerticalExpandingList = require(StudioComponents.VerticalExpandingList)(Sc
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">VerticalExpandingListProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../types/VerticalExpandingList.md">VerticalExpandingListProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>

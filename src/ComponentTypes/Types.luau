@@ -53,10 +53,10 @@ export type WidgetProperties = {
 --// Util Types
 
 export type DragInputProperties = {
-	Instance: GuiObject,
+	Instance: CanBeState<GuiObject>,
 	Enabled: CanBeState<boolean>?,
 	OnChange: ((newValue: Vector2) -> Vector2?)?,
-	getUseFunction: () -> ((state: any) -> ())?,
+	getUseFunction: () -> Use?,
 	Value: CanBeValue<Vector2>,
 	Min: CanBeValue<Vector2>,
 	Max: CanBeValue<Vector2>,

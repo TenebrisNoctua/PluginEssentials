@@ -45,7 +45,7 @@ local LimitedTextInput = require(StudioComponents.LimitedTextInput)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">props: <a href="">LimitedTextInputProperties</a></td>
+                    <td class="api-param-highlight">props: <a href="../../types/input/LimitedTextInput.md">LimitedTextInputProperties</a></td>
                     <td>The table which contains the properties of the component that will be created.</td>
                 </tr>
             </tbody>
