@@ -7,7 +7,7 @@
 ```lua
 function VerticalCollapsibleSection(Scope: Scope): (props: VerticalCollapsibleSectionProperties) -> Frame
 ```
-Initializes the VerticalCollapsibleSection component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a frame that contains a header and a content frame. The content frame can be collapsed by clicking on the header.
 
 ## Default Syntax
 

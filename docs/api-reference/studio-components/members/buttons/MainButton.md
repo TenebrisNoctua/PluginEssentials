@@ -7,7 +7,7 @@
 ```lua
 function MainButton(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 ```
-Initializes the MainButton component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a BaseButton, but uses the style of a main button, which is usually a blue background color.
 
 ## Default Syntax
 

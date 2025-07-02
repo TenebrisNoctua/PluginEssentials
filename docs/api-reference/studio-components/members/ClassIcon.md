@@ -7,7 +7,7 @@
 ```lua
 function ClassIcon(Scope: Scope): (props: ClassIconProperties) -> ImageLabel
 ```
-Initializes the ClassIcon component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is an image of a given ClassName from the user's installed Studio icon set.
 
 ## Default Syntax
 

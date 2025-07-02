@@ -7,7 +7,7 @@
 ```lua
 function ColorPicker(Scope: Scope): (props: ColorPickerProperties) -> Frame
 ```
-Initializes the ColorPicker component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is an HSV color picker that uses a value slider.
 
 ## Default Syntax
 

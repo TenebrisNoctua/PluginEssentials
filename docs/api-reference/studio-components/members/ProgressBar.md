@@ -7,7 +7,7 @@
 ```lua
 function ProgressBar(Scope: Scope): (props: ProgressProperties) -> Frame
 ```
-Initializes the ProgressBar component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a bar that fills up with an accent color.
 
 ## Default Syntax
 

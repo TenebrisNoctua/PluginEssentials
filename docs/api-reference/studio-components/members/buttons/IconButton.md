@@ -7,7 +7,7 @@
 ```lua
 function IconButton(Scope: Scope): (props: IconButtonProperties) -> TextButton
 ```
-Initializes the IconButton component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a button with an image on it instead of text.
 
 ## Default Syntax
 

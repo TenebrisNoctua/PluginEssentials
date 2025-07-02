@@ -7,7 +7,7 @@
 ```lua
 function Title(Scope: Scope): (props: LabelProperties) -> TextLabel
 ```
-Initializes the Title component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a simple text label following Studio style guidelines for title text.
 
 ## Default Syntax
 

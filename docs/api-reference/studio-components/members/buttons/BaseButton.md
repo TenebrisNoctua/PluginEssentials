@@ -7,7 +7,7 @@
 ```lua
 function BaseButton(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 ```
-Initializes the BaseButton component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a TextButton that reacts to different states like hover, press, and disabled.
 
 ## Default Syntax
 

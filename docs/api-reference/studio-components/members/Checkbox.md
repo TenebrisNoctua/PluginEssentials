@@ -7,7 +7,7 @@
 ```lua
 function Checkbox(Scope: Scope): (props: CheckboxProperties) -> Frame
 ```
-Initializes the Checkbox component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a checkbox that reacts to different states like hover, checked, indeterminate, and disabled.
 
 ## Default Syntax
 

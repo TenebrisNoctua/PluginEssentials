@@ -7,9 +7,7 @@
 ```lua
 function getMotionState(Scope: Scope): (goalState: State<any>, motionStateType: string, ...any) -> CanBeState<any>
 ```
-Initializes the getMotionState utility component and returns a new function to create a value from the component.
-
-This utility component allows you to easily create a motion from a `State`.
+Initializes the utility component and returns a new function to create a `State` from that component, which is used to easily create a motion from it. This provides an easy way of calling certain animations within Fusion, such as `Spring`.
 
 
 ## Default Syntax

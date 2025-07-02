@@ -7,7 +7,7 @@
 ```lua
 function getDragInput(Scope: Scope): (props: DragInputProperties) -> (Value<Vector2>, Computed<Vector2>, Value<boolean>)
 ```
-Initializes the getDragInput utility component and returns a new function to create values from the component.
+Initializes the utility component and returns a new function to create values from that component, which are used to get dragging input from a certain area on the screen.
 
 ## Default Syntax
 
@@ -54,7 +54,7 @@ local getDragInput = require(StudioComponents.Util.getDragInput)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/tuples"><code>(Vector2Value, Computed<Vector2>, Value<boolean>)</code></a></td>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/tuples"><code>(Value<Vector2>, Computed<Vector2>, Value<boolean>)</code></a></td>
                 </tr>
             </tbody>
         </table>

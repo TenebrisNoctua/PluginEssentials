@@ -7,7 +7,7 @@
 ```lua
 function ScrollFrame(Scope: Scope): (props: ScrollFrameProperties) -> Frame
 ```
-Initializes the ScrollFrame component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a BaseScrollFrame, but has properties that will determine the CanvasSize for the BaseScrollFrame.
 
 ## Default Syntax
 

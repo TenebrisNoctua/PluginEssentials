@@ -7,7 +7,7 @@
 ```lua
 function Button(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 ```
-Initializes the Button component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a BaseButton but with already customized properties.
 
 ## Default Syntax
 

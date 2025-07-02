@@ -7,7 +7,7 @@
 ```lua
 function LimitedTextInput(Scope: Scope): (props: LimitedTextInputProperties) -> Frame
 ```
-Initializes the LimitedTextInput component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a TextInput, but contains properties for limiting the length of input to the TextBox.
 
 ## Default Syntax
 

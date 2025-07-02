@@ -7,7 +7,7 @@
 ```lua
 function Slider(Scope: Scope): (props: SliderProperties) -> Frame
 ```
-Initializes the Slider component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a slider that reacts to being dragged.
 
 ## Default Syntax
 

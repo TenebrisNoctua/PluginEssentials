@@ -7,9 +7,7 @@
 ```lua
 function getModifier(Scope: Scope): (props: ModifierInput) -> Computed<any>
 ```
-Initializes the getModifier utility component and returns a new function to create a value from the component.
-
-This utility component keeps track of the provided values within the `props`, and whenever they change, re-calculates the returned modifier within the returned `Computed`.
+Initializes the utility component and returns a new function to create a modifier state from that component, which is used to keep track of the changes that may occur in the `props` table's values. This is used to get a `StudioStyleGuideModifier` that changes depending on the given values within the `props` table.
 
 
 ## Default Syntax

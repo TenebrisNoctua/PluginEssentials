@@ -7,7 +7,7 @@
 ```lua
 function VerticalExpandingList(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
 ```
-Initializes the VerticalExpandingList component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a Frame that uses AutomaticSize for the Y axis and contains a UIListLayout.
 
 ## Default Syntax
 

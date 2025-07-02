@@ -7,7 +7,7 @@
 ```lua
 function Background(Scope: Scope): (props: BackgroundProperties) -> Frame
 ```
-Initializes the Background component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a borderless Frame with a background color that matches the user's current theme.
 
 ## Default Syntax
 

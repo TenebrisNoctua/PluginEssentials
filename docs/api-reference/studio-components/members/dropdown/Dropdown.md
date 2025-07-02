@@ -7,7 +7,7 @@
 ```lua
 function Dropdown(Scope: Scope): (props: DropdownProperties) -> Frame
 ```
-Initializes the Dropdown component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a button that shows the selected item and a list of items in a dropdown when clicking on it.
 
 ## Default Syntax
 

@@ -7,7 +7,7 @@
 ```lua
 function Loading(Scope: Scope): (props: LoadingProperties) -> Frame
 ```
-Initializes the Loading component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is an animated component to display whilst something else loads.
 
 ## Default Syntax
 

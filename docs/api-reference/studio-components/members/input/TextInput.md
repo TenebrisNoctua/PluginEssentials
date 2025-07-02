@@ -7,7 +7,7 @@
 ```lua
 function TextInput(Scope: Scope): (props: TextInputProperties) -> TextBox
 ```
-Initializes the TextInput component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a TextBox that reacts to states like hover, focus, and disabled.
 
 ## Default Syntax
 

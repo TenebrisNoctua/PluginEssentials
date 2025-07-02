@@ -7,7 +7,7 @@
 ```lua
 function Shadow(Scope: Scope): (props: ShadowProperties) -> ImageLabel
 ```
-Initializes the Shadow component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a subtle shadow positioned on the side of your choosing.
 
 ## Default Syntax
 

@@ -7,7 +7,7 @@
 ```lua
 function BaseScrollFrame(Scope: Scope): (props: BaseScrollFrameProperties) -> Frame
 ```
-Initializes the BaseScrollFrame component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a custom scrolling frame that uses Roblox's ScrollingFrame for input and padding.
 
 ## Default Syntax
 
