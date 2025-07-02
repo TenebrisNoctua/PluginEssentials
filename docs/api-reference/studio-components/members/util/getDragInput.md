@@ -54,7 +54,7 @@ local getDragInput = require(StudioComponents.Util.getDragInput)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/tuples"><code>(Value<Vector2>, Computed<Vector2>, Value<boolean>)</code></a></td>
+                    <td class="api-return-box"><a href="https://create.roblox.com/docs/luau/tuples">(Value&lt;Vector2&gt;, Computed&lt;Vector2&gt;, Value&lt;boolean&gt;)</a></td>
                 </tr>
             </tbody>
         </table>
