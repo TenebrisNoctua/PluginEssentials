@@ -7,7 +7,7 @@
 ```lua
 function Toolbar(Scope: Scope): (props: ToolbarProperties) -> PluginToolbar
 ```
-Initializes the Toolbar component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is an object used to create PluginToolbarButtons.
 
 ## Default Syntax
 

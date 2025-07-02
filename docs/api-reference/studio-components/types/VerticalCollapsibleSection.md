@@ -23,7 +23,7 @@ This type is also an extension of the [`VerticalExpandingListProperties`](../typ
 <h3 markdown>
 	Text
 	<span class="api-property-type">
-		: CanBeState<string>?
+		: CanBeState&lt;string&gt;?
 	</span>
 </h3>
 
@@ -34,7 +34,7 @@ The text that will be displayed on the `VerticalCollapsibleSection`. Can either 
 <h3 markdown>
 	TextColor3
 	<span class="api-property-type">
-		: CanBeState<Color3>?
+		: CanBeState&lt;Color3&gt;?
 	</span>
 </h3>
 
@@ -45,7 +45,7 @@ The color of the text on the `VerticalCollapsibleSection`. Can either be a `Stat
 <h3 markdown>
 	Collapsed
 	<span class="api-property-type">
-		: CanBeValue<boolean>?
+		: CanBeValue&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -53,4 +53,4 @@ Sets whether or not the `VerticalCollapsibleSection` is collapsed. Can either be
 
 ----
 
-<h4>This component name sure is long...</h4>
+<h6>This component name sure is long...</h6>

@@ -15,7 +15,6 @@ This utility function ensures that you get the correct Fusion object type at all
 * If both of these are false, but the `defaultValue` is a `State`, then the `defaultValue` will be returned.
 * If all of the above are false, but the `defaultValue` still exists, then the utility function will create a new object from the kind either set in the `mustBeKind`, or the kind "Value" by default, with the value from the `defaultValue` and return it.
 
-
 ## Default Syntax
 
 ```lua
@@ -52,11 +51,11 @@ local getState = require(StudioComponents.Util.getState)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">inputValue: <a href="">CanBeState<any></a></td>
+                    <td class="api-param-highlight">inputValue: <a href="">CanBeState&lt;any&gt;</a></td>
                     <td>The input value to be checked.</td>
                 </tr>
                 <tr>
-                    <td class="api-param-highlight">defaultValue: <a href="">CanBeState<any></a></td>
+                    <td class="api-param-highlight">defaultValue: <a href="">CanBeState&lt;any&gt;</a></td>
                     <td>If the input value is not provided or not valid, then this value will be used.</td>
                 </tr>
                 <tr>
@@ -69,7 +68,7 @@ local getState = require(StudioComponents.Util.getState)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a><code>CanBeState<any></code></a></td>
+                    <td class="api-return-box"><a>CanBeState&lt;any&gt;</a></td>
                 </tr>
             </tbody>
         </table>

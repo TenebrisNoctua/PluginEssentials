@@ -21,7 +21,7 @@ The `BoxBorderProperties` table that is given to the [`BoxBorder()`](../members/
 <h3 markdown>
 	Color
 	<span class="api-property-type">
-		: CanBeState<Color3>?
+		: CanBeState&lt;Color3&gt;?
 	</span>
 </h3>
 
@@ -32,7 +32,7 @@ The color of the border. Can either be a `State` containing a `Color3` or a `Col
 <h3 markdown>
 	Thickness
 	<span class="api-property-type">
-		: CanBeState<number>?
+		: CanBeState&lt;number&gt;?
 	</span>
 </h3>
 
@@ -43,7 +43,7 @@ The thickness of the border. Can either be a `State` containing a `number` or a 
 <h3 markdown>
 	CornerRadius
 	<span class="api-property-type">
-		: CanBeState<UDim>?
+		: CanBeState&lt;UDim&gt;?
 	</span>
 </h3>
 

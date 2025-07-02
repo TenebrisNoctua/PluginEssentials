@@ -46,7 +46,7 @@ local getMotionState = require(StudioComponents.Util.getMotionState)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-param-highlight">goalState: <a href="">State<any></a></td>
+                    <td class="api-param-highlight">goalState: <a href="">State&lt;any&gt;</a></td>
                     <td>The goal state to be reached.</td>
                 </tr>
                 <tr>
@@ -63,7 +63,7 @@ local getMotionState = require(StudioComponents.Util.getMotionState)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a><code>CanBeState<any></code></a></td>
+                    <td class="api-return-box"><a>CanBeState&lt;any&gt;</a></td>
                 </tr>
             </tbody>
         </table>

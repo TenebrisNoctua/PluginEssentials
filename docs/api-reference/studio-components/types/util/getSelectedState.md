@@ -5,7 +5,7 @@
 
 ```lua
 export type GetSelectedStateProperties = {
-	Value: Value<any>?,
+	Value: CanBeValue<any>?,
 	Options: CanBeState<{any}>?,
 	OnSelected: ((selectedOption: any, use: Use?) -> nil)?,
 }
@@ -20,18 +20,18 @@ The `getSelectedStateProperties` table that is given to the [`getSelectedState()
 <h3 markdown>
 	Value
 	<span class="api-property-type">
-		: CanBeState<any>?
+		: CanBeValue&lt;any&gt;?
 	</span>
 </h3>
 
-The selected option value from the component. Can either be a `State` that contains anything, or just anything.
+The selected option value from the component. Can either be a `Value` that contains anything, or just anything.
 
 ----
 
 <h3 markdown>
 	Options
 	<span class="api-property-type">
-		: CanBeState<{any}>?
+		: CanBeState&lt;{any}&gt;?
 	</span>
 </h3>
 

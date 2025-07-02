@@ -31,7 +31,7 @@ The type of the `themeProvider` table that is returned from the [`themeProvider(
 <h3 markdown>
 	Theme
 	<span class="api-property-type">
-		: Value<string>
+		: Value&lt;string&gt;
 	</span>
 </h3>
 
@@ -42,7 +42,7 @@ The current theme that is set on the Studio. *(Should only be read.)*
 <h3 markdown>
 	ThemeColors
 	<span class="api-property-type">
-		: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Value<Color3>}}
+		: {[Enum.StudioStyleGuideColor]: {[Enum.StudioStyleGuideModifier]: Value&lt;Color3&gt;}}
 	</span>
 </h3>
 
@@ -53,7 +53,7 @@ The theme colors used by the components within Plugin Essentials. Directly modif
 <h3 markdown>
 	IsDark
 	<span class="api-property-type">
-		: Value<boolean>
+		: Value&lt;boolean&gt;
 	</span>
 </h3>
 
@@ -99,7 +99,7 @@ The default fonts stored within the `themeProvider`. *(Should only be read.)*
 <h3 markdown>
 	GetColor
 	<span class="api-property-type">
-		: (self: themeProvider, styleGuideColor: CanBeValue<Enum.StudioStyleGuideColor>, styleGuideModifier: CanBeValue<Enum.StudioStyleGuideModifier>, force: boolean?) -> Computed<Color3>
+		: (self: themeProvider, styleGuideColor: CanBeValue&lt;Enum.StudioStyleGuideColor&gt;, styleGuideModifier: CanBeValue&lt;Enum.StudioStyleGuideModifier&gt;, force: boolean?) -> Computed&lt;Color3&gt;
 	</span>
 </h3>
 
@@ -111,7 +111,7 @@ This color is returned within a `Computed`, so when the theme of the Studio upda
 <h3 markdown>
 	GetFont
 	<span class="api-property-type">
-		: (self: themeProvider, fontName: CanBeState<string>) -> Computed<Enum.Font>
+		: (self: themeProvider, fontName: CanBeState&lt;string&gt;) -> Computed&lt;Enum.Font&gt;
 	</span>
 </h3>
 

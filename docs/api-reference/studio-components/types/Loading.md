@@ -19,7 +19,7 @@ The `LoadingProperties` table that is given to the [`Loading()`](../members/Load
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 

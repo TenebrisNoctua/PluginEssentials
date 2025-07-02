@@ -44,7 +44,7 @@ The item that will be used for setting the `Text` property of the `DropdownItem`
 <h3 markdown>
 	Text
 	<span class="api-property-type">
-		: CanBeState<string>?
+		: CanBeState&lt;string&gt;?
 	</span>
 </h3>
 
@@ -55,7 +55,7 @@ Sets the `Text` property of the `DropdownItem`. Setting this property is not rec
 <h3 markdown>
 	ZIndex
 	<span class="api-property-type">
-		: CanBeState<number>?
+		: CanBeState&lt;number&gt;?
 	</span>
 </h3>
 

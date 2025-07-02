@@ -25,7 +25,7 @@ The `DragInputProperties` table that is given to the [`getDragInput()`](../../me
 <h3 markdown>
     Instance
     <span class="api-property-type">
-        : CanBeState<GuiObject>
+        : CanBeState&lt;GuiObject&gt;
     </span>
 </h3>
 
@@ -36,7 +36,7 @@ The `Instance` the drag detection will be running on.
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -69,7 +69,7 @@ Settings this property will cause the `State`, that the returned `Use` function 
 <h3 markdown>
 	Value
 	<span class="api-property-type">
-		: CanBeValue<Vector2>
+		: CanBeValue&lt;Vector2&gt;
 	</span>
 </h3>
 
@@ -80,7 +80,7 @@ The initial value of the drag input. Can either be a `Value` containing a `Vecto
 <h3 markdown>
     Min
     <span class="api-property-type">
-        : CanBeValue<Vector2>
+        : CanBeValue&lt;Vector2&gt;
     </span>
 </h3>
 
@@ -91,7 +91,7 @@ The minimum position that the drag can be started from.
 <h3 markdown>
     Max
     <span class="api-property-type">
-        : CanBeValue<Vector2>
+        : CanBeValue&lt;Vector2&gt;
     </span>
 </h3>
 
@@ -102,7 +102,7 @@ The maximum position that the drag can be started from.
 <h3 markdown>
     Step
     <span class="api-property-type">
-        : CanBeValue<Vector2>
+        : CanBeValue&lt;Vector2&gt;
     </span>
 </h3>
 

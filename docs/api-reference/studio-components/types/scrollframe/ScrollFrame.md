@@ -5,7 +5,7 @@
 
 ```lua
 export type ScrollFrameProperties = BaseScrollFrameProperties & {
-	CanvasScaleConstraint: CanBeState<Enum.ScrollingDirection?>?,
+	CanvasScaleConstraint: CanBeState<Enum.ScrollingDirection>?,
 	UIPadding: UIPadding?,
 	UILayout: UILayout?,
 }
@@ -22,7 +22,7 @@ This type is also an extension of the [`BaseScrollFrameProperties`](BaseScrollFr
 <h3 markdown>
 	CanvasScaleConstraint
 	<span class="api-property-type">
-		: CanBeState<Enum.ScrollingDirection?>?
+		: CanBeState&lt;Enum.ScrollingDirection&gt;?
 	</span>
 </h3>
 

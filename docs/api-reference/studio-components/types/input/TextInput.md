@@ -21,7 +21,7 @@ The `TextInputProperties` table that is given to the [`TextInput()`](../../membe
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -32,7 +32,7 @@ Sets whether the `TextInput` will be enabled or not. Can either be a `State` con
 <h3 markdown>
 	Text
 	<span class="api-property-type">
-		: CanBeValue<string>?,
+		: CanBeValue&lt;string&gt;?,
 	</span>
 </h3>
 

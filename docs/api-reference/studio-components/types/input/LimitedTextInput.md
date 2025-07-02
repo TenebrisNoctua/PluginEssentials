@@ -5,8 +5,8 @@
 
 ```lua
 export type LimitedTextInputProperties = TextInputProperties & {
-	GraphemeLimit: CanBeState<number>,
-	TextLimit: CanBeState<number>,
+	GraphemeLimit: CanBeState&lt;number&gt;,
+	TextLimit: CanBeState&lt;number&gt;,
 }
 ```
 
@@ -21,7 +21,7 @@ This type is also an extension of the [`TextInputProperties`](TextInput.md) type
 <h3 markdown>
 	GraphemeLimit
 	<span class="api-property-type">
-		: CanBeState<number>
+		: CanBeState&lt;number&gt;
 	</span>
 </h3>
 
@@ -32,7 +32,7 @@ Sets the [grapheme](https://en.wikipedia.org/wiki/Grapheme) limit for the `Limit
 <h3 markdown>
 	TextLimit
 	<span class="api-property-type">
-		: CanBeState<number>
+		: CanBeState&lt;number&gt;
 	</span>
 </h3>
 

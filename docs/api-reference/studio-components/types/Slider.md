@@ -25,7 +25,7 @@ The `SliderProperties` table that is given to the [`Slider()`](../members/Slider
 <h3 markdown>
 	HandleSize
 	<span class="api-property-type">
-		: CanBeState<UDim2>?
+		: CanBeState&lt;UDim2&gt;?
 	</span>
 </h3>
 
@@ -36,7 +36,7 @@ Sets the size of the handle on the `Slider`. Can either be a `State` containing 
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -58,7 +58,7 @@ The callback function that will be called when the `Slider`'s value changes.
 <h3 markdown>
 	Value
 	<span class="api-property-type">
-		: CanBeValue<number>?
+		: CanBeValue&lt;number&gt;?
 	</span>
 </h3>
 
@@ -69,7 +69,7 @@ The initial value of the `Slider`. Can either be a `Value` containing a `number`
 <h3 markdown>
 	Min
 	<span class="api-property-type">
-		: CanBeState<number>
+		: CanBeState&lt;number&gt;
 	</span>
 </h3>
 
@@ -80,7 +80,7 @@ The minimum number that the handle can be moved to. Can either be a `State` cont
 <h3 markdown>
 	Max
 	<span class="api-property-type">
-		: CanBeState<number>
+		: CanBeState&lt;number&gt;
 	</span>
 </h3>
 
@@ -91,7 +91,7 @@ The maximum number that the handle can be moved to. Can either be a `State` cont
 <h3 markdown>
 	Step
 	<span class="api-property-type">
-		: CanBeState<number>,
+		: CanBeState&lt;number&gt;,
 	</span>
 </h3>
 

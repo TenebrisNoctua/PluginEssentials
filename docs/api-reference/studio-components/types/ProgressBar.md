@@ -19,7 +19,7 @@ The `ProgressProperties` table that is given to the [`ProgressBar()`](../members
 <h3 markdown>
 	Progress
 	<span class="api-property-type">
-		: CanBeState<number>?
+		: CanBeState&lt;number&gt;?
 	</span>
 </h3>
 

@@ -23,7 +23,7 @@ The `ColorPickerProperties` table that is given to the [`ColorPicker()`](../memb
 <h3 markdown>
 	ListDisplayMode
 	<span class="api-property-type">
-		: CanBeState<Enum.ListDisplayMode>?
+		: CanBeState&lt;Enum.ListDisplayMode&gt;?
 	</span>
 </h3>
 
@@ -34,7 +34,7 @@ The display mode of the `ColorPicker`. Can either be a `State` containing the [`
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -56,7 +56,7 @@ The callback function that will be called when the `ColorPicker`'s value changes
 <h3 markdown>
 	Value
 	<span class="api-property-type">
-		: CanBeValue<Color3>?,
+		: CanBeValue&lt;Color3&gt;?,
 	</span>
 </h3>
 
@@ -67,7 +67,7 @@ The initial value of the `ColorPicker`. Can either be a `Value` containing a `Co
 <h3 markdown>
 	Step
 	<span class="api-property-type">
-		: CanBeValue<Vector2>?,
+		: CanBeValue&lt;Vector2&gt;?,
 	</span>
 </h3>
 

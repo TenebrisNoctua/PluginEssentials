@@ -23,7 +23,7 @@ The `LabelProperties` table that is given to the [`Label()`](../members/Label.md
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -34,7 +34,7 @@ Sets whether the `Label` will be enabled or not. Can either be a `State` contain
 <h3 markdown>
 	Text
 	<span class="api-property-type">
-		: CanBeState<string>?
+		: CanBeState&lt;string&gt;?
 	</span>
 </h3>
 
@@ -45,7 +45,7 @@ The text that will be displayed on the `Label`. Can either be a `State` containi
 <h3 markdown>
 	TextColor3
 	<span class="api-property-type">
-		: CanBeState<Color3>?
+		: CanBeState&lt;Color3&gt;?
 	</span>
 </h3>
 
@@ -56,7 +56,7 @@ The color of the text on the `Label`. Can either be a `State` containing a `Colo
 <h3 markdown>
 	TextColorStyle
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideColor>?
+		: CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
 	</span>
 </h3>
 
@@ -67,10 +67,10 @@ Sets the color style of the text to the given [`Enum`](https://create.roblox.com
 <h3 markdown>
 	TextSize
 	<span class="api-property-type">
-		: CanBeValue<number>?
+		: CanBeState&lt;number&gt;?
 	</span>
 </h3>
 
-The size of the text that will be displayed on the `Label`. Can either be a `Value` containing a `number`, or a `number`.
+The size of the text that will be displayed on the `Label`. Can either be a `State` containing a `number`, or a `number`.
 
 ----

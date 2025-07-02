@@ -35,7 +35,7 @@ The callback function that will be called when the `BaseButton` is activated.
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -46,7 +46,7 @@ Sets whether the `BaseButton` will be enabled or not. Can either be a `State` co
 <h3 markdown>
 	TextColorStyle
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideColor>?
+		: CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
 	</span>
 </h3>
 
@@ -57,7 +57,7 @@ Sets the color style of the text to the given [`Enum`](https://create.roblox.com
 <h3 markdown>
 	BackgroundColorStyle
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideColor>?
+		: CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
 	</span>
 </h3>
 
@@ -68,7 +68,7 @@ Sets the color style of the background to the given [`Enum`](https://create.robl
 <h3 markdown>
 	BorderColorStyle
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideColor>?
+		: CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
 	</span>
 </h3>
 
@@ -79,7 +79,7 @@ Sets the color style of the border to the given [`Enum`](https://create.roblox.c
 <h3 markdown>
 	TextSize
 	<span class="api-property-type">
-		: CanBeValue<number>?
+		: CanBeValue&lt;number&gt;?
 	</span>
 </h3>
 

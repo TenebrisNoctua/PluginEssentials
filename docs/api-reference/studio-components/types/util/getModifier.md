@@ -22,7 +22,7 @@ The `ModifierInput` table that is given to the [`getModifier()`](../../members/u
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -33,7 +33,7 @@ Sets whether or not the component for the modifier is enabled.
 <h3 markdown>
 	Hovering
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -45,7 +45,7 @@ Sets whether or not the component for the modifier is hovering.
 <h3 markdown>
 	Selected
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -56,7 +56,7 @@ Sets whether or not the component for the modifier is selected.
 <h3 markdown>
 	Pressed
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -67,7 +67,7 @@ Sets whether or not the component for the modifier is pressed.
 <h3 markdown>
 	Otherwise
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideModifier>?
+		: CanBeState&lt;Enum.StudioStyleGuideModifier&gt;?
 	</span>
 </h3>
 

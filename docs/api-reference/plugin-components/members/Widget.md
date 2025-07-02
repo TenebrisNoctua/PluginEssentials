@@ -7,7 +7,7 @@
 ```lua
 function Widget(Scope: Scope): (props: WidgetProperties) -> DockWidgetPluginGui
 ```
-Initializes the Widget component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is a PluginGui that displays its contents inside a dockable Roblox Studio window.
 
 ## Default Syntax
 

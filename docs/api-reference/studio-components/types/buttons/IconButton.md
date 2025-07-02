@@ -24,7 +24,7 @@ This type is also an extension of the [`BaseButtonProperties`](BaseButton.md) ty
 <h3 markdown>
 	ImageColorStyle
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideColor>?
+		: CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
 	</span>
 </h3>
 
@@ -35,7 +35,7 @@ Sets the color style of the image to the given [`Enum`](https://create.roblox.co
 <h3 markdown>
 	ImageColorModifier
 	<span class="api-property-type">
-		: CanBeState<Enum.StudioStyleGuideModifier>?
+		: CanBeState&lt;Enum.StudioStyleGuideModifier&gt;?
 	</span>
 </h3>
 
@@ -46,7 +46,7 @@ Sets the color style modifier of the image to the given [`Enum`](https://create.
 <h3 markdown>
 	IconColor3
 	<span class="api-property-type">
-		: CanBeState<Color3>?
+		: CanBeState&lt;Color3&gt;?
 	</span>
 </h3>
 

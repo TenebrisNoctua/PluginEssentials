@@ -25,7 +25,7 @@ The `BaseScrollFrameProperties` table that is given to the [`BaseScrollFrame()`]
 <h3 markdown>
 	ScrollBarBorderMode
 	<span class="api-property-type">
-		: CanBeState<Enum.BorderMode>?
+		: CanBeState&lt;Enum.BorderMode&gt;?
 	</span>
 </h3>
 
@@ -36,7 +36,7 @@ Sets the border mode of the `BaseScrollFrame`. Can either be a `State` containin
 <h3 markdown>
 	CanvasSize
 	<span class="api-property-type">
-		: CanBeState<UDim2>?
+		: CanBeState&lt;UDim2&gt;?
 	</span>
 </h3>
 
@@ -47,7 +47,7 @@ Sets the canvas size of the `BaseScrollFrame`. Can either be a `State` containin
 <h3 markdown>
 	ScrollingEnabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -58,7 +58,7 @@ Sets the whether or not the user can scroll within the `BaseScrollFrame`. Can ei
 <h3 markdown>
 	ScrollBarThickness
 	<span class="api-property-type">
-		: CanBeState<number>?
+		: CanBeState&lt;number&gt;?
 	</span>
 </h3>
 
@@ -69,7 +69,7 @@ Sets the thickness of the `ScrollBar` within the `BaseScrollFrame`. Can either b
 <h3 markdown>
 	VerticalScrollBarPosition
 	<span class="api-property-type">
-		: CanBeState<Enum.VerticalScrollBarPosition>?
+		: CanBeState&lt;Enum.VerticalScrollBarPosition&gt;?
 	</span>
 </h3>
 
@@ -80,7 +80,7 @@ Sets the position of the `ScrollBar` within the `BaseScrollFrame`. Can either be
 <h3 markdown>
 	VerticalScrollBarInset
 	<span class="api-property-type">
-		: CanBeState<Enum.ScrollBarInset>?
+		: CanBeState&lt;Enum.ScrollBarInset&gt;?
 	</span>
 </h3>
 
@@ -91,7 +91,7 @@ Sets whether the canvas should be inset by the `ScrollBarThickness` for the resp
 <h3 markdown>
 	CornerRadius
 	<span class="api-property-type">
-		: CanBeState<UDim>?
+		: CanBeState&lt;UDim&gt;?
 	</span>
 </h3>
 

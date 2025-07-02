@@ -34,7 +34,7 @@ The callback function that will be called when the `Checkbox`'s value changes.
 <h3 markdown>
 	Alignment
 	<span class="api-property-type">
-		: CanBeState<Enum.HorizontalAlignment>?
+		: CanBeState&lt;Enum.HorizontalAlignment&gt;?
 	</span>
 </h3>
 
@@ -45,7 +45,7 @@ Determines where the `Checkbox` will be aligned to. Can either be a `State` cont
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -56,7 +56,7 @@ Sets whether the `Checkbox` will be enabled or not. Can either be a `State` cont
 <h3 markdown>
 	Text
 	<span class="api-property-type">
-		: CanBeState<string>?
+		: CanBeState&lt;string&gt;?
 	</span>
 </h3>
 
@@ -67,7 +67,7 @@ The text that will be visible alongside the `Checkbox`. Can either be a `State` 
 <h3 markdown>
 	Value
 	<span class="api-property-type">
-		: CanBeValue<boolean>?,
+		: CanBeValue&lt;boolean&gt;?,
 	</span>
 </h3>
 

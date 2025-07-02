@@ -67,7 +67,7 @@ The toolbar that the `ToolbarButton` will be in.
 <h3 markdown>
 	Active
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 

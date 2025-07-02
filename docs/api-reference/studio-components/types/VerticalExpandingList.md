@@ -20,7 +20,7 @@ The `VerticalExpandingListProperties` table that is given to the [`VerticalExpan
 <h3 markdown>
 	Enabled
 	<span class="api-property-type">
-		: CanBeState<boolean>?
+		: CanBeState&lt;boolean&gt;?
 	</span>
 </h3>
 
@@ -31,7 +31,7 @@ Sets whether the `VerticalExpandingList` will be enabled or not. Can either be a
 <h3 markdown>
 	Padding
 	<span class="api-property-type">
-		: CanBeState<UDim>?
+		: CanBeState&lt;UDim&gt;?
 	</span>
 </h3>
 

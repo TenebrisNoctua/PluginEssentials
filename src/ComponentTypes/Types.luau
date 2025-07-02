@@ -93,7 +93,7 @@ export type BaseScrollFrameProperties = {
 }
 
 export type ScrollFrameProperties = BaseScrollFrameProperties & {
-	CanvasScaleConstraint: CanBeState<Enum.ScrollingDirection?>?,
+	CanvasScaleConstraint: CanBeState<Enum.ScrollingDirection>?,
 	UIPadding: UIPadding?,
 	UILayout: UILayout?,
 }

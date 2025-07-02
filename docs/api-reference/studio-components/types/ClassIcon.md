@@ -19,7 +19,7 @@ The `ClassIconProperties` table that is given to the [`ClassIcon()`](../members/
 <h3 markdown>
 	ClassName
 	<span class="api-property-type">
-		: CanBeState<string>
+		: CanBeState&lt;string&gt;
 	</span>
 </h3>
 

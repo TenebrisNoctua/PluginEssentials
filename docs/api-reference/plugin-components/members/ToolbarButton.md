@@ -7,7 +7,7 @@
 ```lua
 function ToolbarButton(Scope: Scope): (props: ToolbarButtonProperties) -> PluginToolbarButton
 ```
-Initializes the ToolbarButton component and returns a new function to create an instance of the component.
+Initializes the component and returns a new function to create that component, which is an object that allows the user to initiate a single, one-off action in Roblox Studio through the Click event.
 
 ## Default Syntax
 

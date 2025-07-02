@@ -20,7 +20,7 @@ The `BackgroundProperties` table that is given to the [`Background()`](../member
 <h3 markdown>
     StudioStyleGuideColor
     <span class="api-property-type">
-        : CanBeState<Enum.StudioStyleGuideColor>?
+        : CanBeState&lt;Enum.StudioStyleGuideColor&gt;?
     </span>
 </h3>
 
@@ -31,7 +31,7 @@ The [`Enum.StudioStyleGuideColor`](https://create.roblox.com/docs/reference/engi
 <h3 markdown>
     StudioStyleGuideModifier
     <span class="api-property-type">
-        : CanBeState<Enum.StudioStyleGuideModifier>?
+        : CanBeState&lt;Enum.StudioStyleGuideModifier&gt;?
     </span>
 </h3>
 
