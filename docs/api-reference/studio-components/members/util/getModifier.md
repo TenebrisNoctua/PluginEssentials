@@ -55,7 +55,7 @@ local getModifier = require(StudioComponents.Util.getModifier)(Scope)
         <table>
             <tbody>
                 <tr>
-                    <td class="api-return-box"><a><code>Computed&lt;any&gt;</code></a></td>
+                    <td class="api-return-box"><a>Computed&lt;any&gt;</a></td>
                 </tr>
             </tbody>
         </table>
