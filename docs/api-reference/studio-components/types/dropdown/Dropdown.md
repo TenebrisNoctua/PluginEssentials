@@ -1,62 +1,94 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">Dropdown</span>
-    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
+    <span class="api-title">DropdownProperties</span>
 </h1>
 
 ```lua
-function Dropdown(Scope: Scope): (props: DropdownProperties) -> Frame
-```
-Initializes the Dropdown component and returns a new function to create an instance of the component.
-
-## Default Syntax
-
-```lua
-local DropdownComponent = require(StudioComponents.Dropdown)
-local Dropdown = DropdownComponent(Scope)
-```
-
-## Shorthand
-
-```lua
-local Dropdown = require(StudioComponents.Dropdown)(Scope)
+export type DropdownProperties = {
+	Enabled: CanBeState<boolean>?,
+	Value: CanBeState<any>?,
+	Options: CanBeState<{any}>,
+	MaxVisibleItems: CanBeState<number>?,
+	HideDropdownWhenMouseLeaves: CanBeState<boolean>?,
+	OnSelected: (selectedOption: any) -> nil,
+	[any]: any,
+}
 ```
 
------
+The `DropdownProperties` table that is given to the [`Dropdown()`](../../members/dropdown/Dropdown.md) function that contains data about the desired `Dropdown` component.
 
-## Parameters
-<span markdown>
-    <div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</span>
+----
 
-## Returns Function
-<span markdown>
-    <div class="md-typeset__table" id="api-returns-function-table">
-        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">props: <a href="">DropdownProperties</a></td>
-                    <td>The table which contains the properties of the component that will be created.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/Frame">Frame</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+## Properties
+
+<h3 markdown>
+	Enabled
+	<span class="api-property-type">
+		: CanBeState<boolean>?
+	</span>
+</h3>
+
+Sets whether the `Dropdown` will be enabled or not. Can either be a `State` containing a `boolean`, or a `boolean`.
+
+----
+
+<h3 markdown>
+	Value
+	<span class="api-property-type">
+		: CanBeState<any>?
+	</span>
+</h3>
+
+The selected option value of the `Dropdown`. Can either be a `State` that contains anything, or just anything.
+
+----
+
+<h3 markdown>
+	Options
+	<span class="api-property-type">
+		: CanBeState<{any}>?
+	</span>
+</h3>
+
+The options within the `Dropdown`. Can either be a `State` that contains a table with anything, or just a table with anything.
+
+* If a value within this table is an `Instance`, or an `EnumItem`, then its name will be used as the option.
+* If a value within this table is a table, and it has one of these properties: `Label`, `Name`, or `Title`, then one of them will be used as the option.
+* If a value within this table is a `string` or something that can be turned into a `string`, then that `string` will be used.
+
+The found options will then be turned into a [`DropdownItem`](../../members/dropdown/DropdownItem.md) component to be used within the `Dropdown`.
+
+----
+
+<h3 markdown>
+	MaxVisibleItems
+	<span class="api-property-type">
+		: CanBeState<number>?
+	</span>
+</h3>
+
+The maximum amount of items that will be visible in the `Dropdown`. Can either be a `State` containing a `number`, or a `number`.
+
+----
+
+<h3 markdown>
+	HideDropdownWhenMouseLeaves
+	<span class="api-property-type">
+		: CanBeState<boolean>?
+	</span>
+</h3>
+
+Sets whether or not the `Dropdown` will be hidden when the mouse leaves. Can either be a `State` containing a `boolean`, or a `boolean`.
+
+----
+
+<h3 markdown>
+	OnSelected
+	<span class="api-property-type">
+		: (selectedOption: any) -> nil,
+	</span>
+</h3>
+
+The callback function that will be called when an option has been selected from the `Dropdown`.
+
+----

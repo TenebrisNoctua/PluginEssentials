@@ -1,62 +1,64 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">DropdownItem</span>
-    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
+    <span class="api-title">DropdownItemProperties</span>
 </h1>
 
 ```lua
-function DropdownItem(Scope: Scope): (props: DropdownItemProperties) -> Frame
-```
-Initializes the DropdownItem component and returns a new function to create an instance of the component.
-
-## Default Syntax
-
-```lua
-local DropdownComponent = require(StudioComponents.DropdownItem)
-local DropdownItem = DropdownComponent(Scope)
+export type DropdownItemProperties = {
+	OnSelected: (selectedOption: any) -> nil,
+	Item: any,
+    Text: CanBeState<string>?,
+    ZIndex: CanBeState<number>?,
+	[any]: any,
+}
 ```
 
-## Shorthand
+The `DropdownItemProperties` table that is given to the [`DropdownItem()`](../../members/dropdown/DropdownItem.md) function that contains data about the desired `DropdownItem`.
 
-```lua
-local DropdownItem = require(StudioComponents.DropdownItem)(Scope)
-```
+----
 
------
+## Properties
 
-## Parameters
-<span markdown>
-    <div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</span>
+<h3 markdown>
+	OnSelected
+	<span class="api-property-type">
+		: (selectedOption: any) -> nil,
+	</span>
+</h3>
 
-## Returns Function
-<span markdown>
-    <div class="md-typeset__table" id="api-returns-function-table">
-        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">props: <a href="">DropdownItemProperties</a></td>
-                    <td>The table which contains the properties of the component that will be created.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/Frame">Frame</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+The callback function that will be called when the option has been selected.
+
+----
+
+<h3 markdown>
+	Item
+	<span class="api-property-type">
+		: any
+	</span>
+</h3>
+
+The item that will be used for setting the `Text` property of the `DropdownItem`.
+
+----
+
+<h3 markdown>
+	Text
+	<span class="api-property-type">
+		: CanBeState<string>?
+	</span>
+</h3>
+
+Sets the `Text` property of the `DropdownItem`. Setting this property is not recommended, as if the `Item` property is set, then it may get overwritten.
+
+----
+
+<h3 markdown>
+	ZIndex
+	<span class="api-property-type">
+		: CanBeState<number>?
+	</span>
+</h3>
+
+Sets the `ZIndex` property of the `DropdownItem`.
+
+----

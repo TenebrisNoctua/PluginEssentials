@@ -88,7 +88,7 @@ export type BaseScrollFrameProperties = {
 	ScrollBarThickness: CanBeState<number>?,
 	VerticalScrollBarPosition: CanBeState<Enum.VerticalScrollBarPosition>?,
 	VerticalScrollBarInset: CanBeState<Enum.ScrollBarInset>?,
-	CornerRadius: UDim,
+	CornerRadius: CanBeState<UDim>?,
 	[any]: any,
 }
 
@@ -218,12 +218,12 @@ export type LabelProperties = {
 
 export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
+	Text: CanBeValue<string>?,
 	OnChange: (newText: string) -> nil,
 	[any]: any,
 }
 
 export type LimitedTextInputProperties = TextInputProperties & {
-	Text: CanBeValue<string>?,
 	GraphemeLimit: CanBeState<number>,
 	TextLimit: CanBeState<number>,
 }

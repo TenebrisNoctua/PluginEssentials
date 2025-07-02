@@ -1,62 +1,53 @@
 <h1 class="api-header" markdown>
-    <span class="api-icon" markdown>:octicons-workflow-24:</span>
-    <span class="api-title">ScrollFrame</span>
-    <span class="api-type">:</span><a href="https://create.roblox.com/docs/luau/functions" class="api-type">function</a>
+    <span class="api-icon" markdown>:octicons-note-24:</span>
+    <span class="api-title">ScrollFrameProperties</span>
 </h1>
 
 ```lua
-function ScrollFrame(Scope: Scope): (props: ScrollFrameProperties) -> Frame
-```
-Initializes the ScrollFrame component and returns a new function to create an instance of the component.
-
-## Default Syntax
-
-```lua
-local ScrollFrameComponent = require(StudioComponents.ScrollFrame)
-local ScrollFrame = ScrollFrameComponent(Scope)
+export type ScrollFrameProperties = BaseScrollFrameProperties & {
+	CanvasScaleConstraint: CanBeState<Enum.ScrollingDirection?>?,
+	UIPadding: UIPadding?,
+	UILayout: UILayout?,
+}
 ```
 
-## Shorthand
+The `ScrollFrameProperties` table that is given to the [`ScrollFrame()`](../../members/scrollframe/ScrollFrame.md) function that contains data about the desired `ScrollFrame`.
 
-```lua
-local ScrollFrame = require(StudioComponents.ScrollFrame)(Scope)
-```
+This type is also an extension of the [`BaseScrollFrameProperties`](BaseScrollFrame.md) type.
 
------
+----
 
-## Parameters
-<span markdown>
-    <div class="md-typeset__table">
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">Scope: <a href="">Scope</a></td>
-                    <td>The <code>Scope</code> the component will be initialized in.</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</span>
+## Properties
 
-## Returns Function
-<span markdown>
-    <div class="md-typeset__table" id="api-returns-function-table">
-        <h2 style="margin: 1.1em 0 .64em">Parameters</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-param-highlight">props: <a href="">ScrollFrameProperties</a></td>
-                    <td>The table which contains the properties of the component that will be created.</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2 style="margin: 1.1em 0 .64em">Returns</h2>
-        <table>
-            <tbody>
-                <tr>
-                    <td class="api-return-box"><a href="https://create.roblox.com/docs/reference/engine/classes/Frame">Frame</a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+<h3 markdown>
+	CanvasScaleConstraint
+	<span class="api-property-type">
+		: CanBeState<Enum.ScrollingDirection?>?
+	</span>
+</h3>
+
+Constraints the `CanvasScale` property of the `ScrollFrame` by the set scrolling direction. Can either be a `State` containing the [`Enum`](https://create.roblox.com/docs/reference/engine/enums/ScrollingDirection), or the `Enum`.
+
+----
+
+<h3 markdown>
+	UIPadding
+	<span class="api-property-type">
+		: UIPadding?
+	</span>
+</h3>
+
+The `UIPadding` instance that will be applied to the `ScrollFrame`. 
+
+----
+
+<h3 markdown>
+	UILayout
+	<span class="api-property-type">
+		: UILayout?
+	</span>
+</h3>
+
+The `UILayout` instance that will be applied to the `ScrollFrame`. 
+
+----

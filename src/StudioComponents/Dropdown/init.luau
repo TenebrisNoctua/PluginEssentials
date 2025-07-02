@@ -273,9 +273,7 @@ return function (Scope: Scope): (props: DropdownProperties) -> Frame
 								ImageColor3 = themeProvider:GetColor(Enum.StudioStyleGuideColor.TitlebarText, modifier),
 							}
 						},
-						--Scope:Computed(function(use, scope)
-						--if unwrap(isOpen, use) then
-						--[[return]] BoxBorder {
+						BoxBorder {
 							[Children] = ScrollFrame {
 								ZIndex = zIndex,
 								Name = "Drop",

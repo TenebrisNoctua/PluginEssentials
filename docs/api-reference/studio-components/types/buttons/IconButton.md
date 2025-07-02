@@ -13,9 +13,9 @@ export type IconButtonProperties = BaseButtonProperties & {
 }
 ```
 
-The `IconButtonProperties` table that is given to the [`IconButton()`](../members/IconButton.md) function that contains data about the desired `IconButton`.
+The `IconButtonProperties` table that is given to the [`IconButton()`](../../members/buttons/IconButton.md) function that contains data about the desired `IconButton`.
 
-This type is also an extension of the [`BaseButtonProperties`](../buttons/BaseButton.md) type.
+This type is also an extension of the [`BaseButtonProperties`](BaseButton.md) type.
 
 ----
 
