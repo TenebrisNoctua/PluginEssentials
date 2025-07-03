@@ -42,7 +42,7 @@ return function(Scope: Scope): (props: ColorPickerProperties) -> Frame
 
 	return function(props: ColorPickerProperties): Frame
 		local listDisplayMode = getState(props.ListDisplayMode, Enum.ListDisplayMode.Horizontal)
-		local step = getState(props.Step, Vector2.zero, "Vector2")
+		local step = getState(props.Step, Vector2.zero, "Value")
 		local isEnabled = getState(props.Enabled, true)
 
 		local isHorizontalList = Scope:Computed(function(use, scope)

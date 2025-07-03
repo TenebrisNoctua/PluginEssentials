@@ -5,7 +5,8 @@
 
 ```lua
 export type ProgressProperties = {
-	Progress: CanBeState<number>?,
+	Progress: CanBeState<number>,
+	MaximumProgress: CanBeState<number>,
 	[any]: any,
 }
 ```
@@ -19,10 +20,21 @@ The `ProgressProperties` table that is given to the [`ProgressBar()`](../members
 <h3 markdown>
 	Progress
 	<span class="api-property-type">
-		: CanBeState&lt;number&gt;?
+		: CanBeState&lt;number&gt;
 	</span>
 </h3>
 
 Sets the progress for the `ProgressBar`. Can either be a `State` containing a `number`, or a `number`.
+
+----
+
+<h3 markdown>
+	MaximumProgress
+	<span class="api-property-type">
+		: CanBeState&lt;number&gt;
+	</span>
+</h3>
+
+Sets the maximum number that the `Progress` property can reach for the `ProgressBar`. Can either be a `State` containing a `number`, or a `number`.
 
 ----

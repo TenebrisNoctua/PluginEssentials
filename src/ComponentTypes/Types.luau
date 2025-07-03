@@ -238,7 +238,8 @@ export type LoadingProperties = {
 -- ProgressBar
 
 export type ProgressProperties = {
-	Progress: CanBeState<number>?,
+	Progress: CanBeState<number>,
+	MaximumProgress: CanBeState<number>,
 	[any]: any,
 }
 

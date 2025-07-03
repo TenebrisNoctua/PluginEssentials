@@ -22,6 +22,7 @@ local Children = Fusion.Children
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"Progress",
+	"MaximumProgress"
 }
 
 type ProgressProperties = Types.ProgressProperties
@@ -33,9 +34,9 @@ return function(Scope: Scope): (props: ProgressProperties) -> Frame
 
 	return function(props: ProgressProperties): Frame
 		local frame = Scope:New "Frame" {
-			Name = "Loading",
-			BackgroundColor3 = themeProvider:GetColor(Enum.StudioStyleGuideColor.ScrollBarBackground),
-			Size = UDim2.new(0,constants.TextSize*6, 0, constants.TextSize),
+			Name = "ProgressBar",
+			BackgroundColor3 = themeProvider:GetColor(Enum.StudioStyleGuideColor.InputFieldBackground),
+			Size = props.Size or UDim2.new(0, constants.TextSize * 6, 0, constants.TextSize),
 			ClipsDescendants = true,
 
 			[Children] = {
@@ -47,7 +48,12 @@ return function(Scope: Scope): (props: ProgressProperties) -> Frame
 					BackgroundColor3 = themeProvider:GetColor(Enum.StudioStyleGuideColor.DialogMainButton),
 
 					Size = getMotionState(Scope:Computed(function(use, scope)
-						return UDim2.fromScale(unwrap(props.Progress, use) :: number, 1)
+						local Progress = unwrap(props.Progress, use) :: number
+						local MaximumProgress = unwrap(props.MaximumProgress, use) :: number
+						
+						assert(Progress <= MaximumProgress, "The progress property cannot have a number more than the MaximumProgress property.")
+
+						return UDim2.fromScale(Progress / MaximumProgress, 1)
 					end), "Spring", 40),
 
 					[Children] = Scope:New "UICorner" {
