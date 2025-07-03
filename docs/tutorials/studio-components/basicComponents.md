@@ -1,6 +1,6 @@
 # Basic Components
 
-The Studio Components library provide many useful components to make your plugin development experience easier.<br>
+The Studio Components library provides many useful components to make your plugin development experience easier.<br>
 Here are tutorials on how you can use certain basic ones.
 
 -----
@@ -116,7 +116,8 @@ local newLabel = Label {
 ```
 
 This component will accept any properties that a `TextLabel` instance can have.
-If the `TextColor3` property is not given, then the color will be determined based on your Studio theme. It will also automatically update when the theme is changed, so it is recommended to not set this property.
+
+The `TextColor3` property here is set to white as an example, and is not recommended to use in production. This is due to the fact that all components update their colors depending on the Studio's theme. Setting this property overwrites this system, and thus when the user updates their Studio's theme, the color will not be updated. If you still want to update the color however, you should use the [`TextColorStyle`](../../api-reference/studio-components/types/Label.md#textcolorstyle-canbestateenumstudiostyleguidecolor) property instead.
 
 -----
 
@@ -137,10 +138,11 @@ local newTitle = Title {
 ```
 
 This component will accept any properties that a `TextLabel` instance can have.
-If the `TextColor3` property is not given, then the color will be determined based on your Studio theme. It will also automatically update when the theme is changed, so it is recommended to not set this property.
+
+Like the `Label`, the `TextColor3` property is not recommended to be used.
 
 -----
 
 !!! info
-    All given properties can also be states due to Fusion. This allows you to create reactive components that has properties that will immediately update whenever a change occurs to that state's value.
+    All given properties can also be states due to Fusion. This allows you to create reactive components that have properties that will immediately update whenever a change occurs to that state's value.
 
