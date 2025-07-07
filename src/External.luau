@@ -25,7 +25,8 @@ function External.setLibrary(library: LibraryName, source: any)
 end
 
 function External.getLibrary(library: LibraryName)
-    return Libraries[library]
+    local Found = Libraries[library]
+    if Found then return Found else error("Could not retrieve the requested library because it doesn't exist.") end
 end
 
 return External

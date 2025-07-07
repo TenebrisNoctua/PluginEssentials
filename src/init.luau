@@ -11,6 +11,8 @@ local PluginEssentials = {
     StudioComponents = script.StudioComponents
 }
 
+local FoundFusion = script:FindFirstAncestorWhichIsA("Plugin"):FindFirstChild("Fusion", true)
+
 --// Types
 
 type Fusion = Types.Fusion
@@ -25,6 +27,12 @@ function PluginEssentials.setFusion(fusion: Fusion)
     External.setLibrary("Fusion", fusion)
 end
 
-PluginEssentials.setFusion(script:FindFirstAncestorWhichIsA("Plugin"):FindFirstChild("Fusion", true))
+-- If we find a Fusion library that already exists within the Plugin, we use that by default.
+if FoundFusion then
+    local IsValidFusion = require(FoundFusion)
+    if IsValidFusion and IsValidFusion.version and IsValidFusion.version.minor == 3 then
+        PluginEssentials.setFusion(IsValidFusion)
+    end
+end
 
 return PluginEssentials
