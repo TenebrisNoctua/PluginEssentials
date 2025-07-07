@@ -2,8 +2,8 @@
 -- Ported to Fusion by @YasuYoshida
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -36,6 +36,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 type BaseButtonProperties = Types.BaseButtonProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 	local getMotionState = getMotionStateUtil(Scope)

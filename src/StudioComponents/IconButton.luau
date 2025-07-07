@@ -1,5 +1,5 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -32,6 +32,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 type IconButtonProperties = Types.IconButtonProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: IconButtonProperties) -> TextButton
 	local BoxBorder = BoxBorderComponent(Scope)

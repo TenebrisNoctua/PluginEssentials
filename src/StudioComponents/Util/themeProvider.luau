@@ -1,8 +1,11 @@
 -- Written by @TenebrisNoctua
+-- Handles the theme colors of the components.
 
 local Studio = settings().Studio
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 local Types = require(ComponentTypes.Types)
@@ -30,6 +33,7 @@ type Computed<T> = Types.Computed<T>
 
 type Scope = Types.Scope
 type Use = Types.Use
+type Fusion = Types.Fusion
 
 type StyleGuideColor = Value<Enum.StudioStyleGuideColor> | Enum.StudioStyleGuideColor
 type StyleGuideModifier = Value<Enum.StudioStyleGuideModifier> | Enum.StudioStyleGuideModifier

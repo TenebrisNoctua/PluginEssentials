@@ -1,5 +1,5 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -18,6 +18,7 @@ local OnChange = Fusion.OnChange
 
 type BoxBorderProperties = Types.BoxBorderProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 -- using [Children] to define the GuiObject is meant to give a more consistant format
 

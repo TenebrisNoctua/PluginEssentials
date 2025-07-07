@@ -1,9 +1,6 @@
 -- Written by @boatbomber
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
-
 local StudioComponents = script.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
 

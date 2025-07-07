@@ -1,10 +1,11 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 local Types = require(ComponentTypes.Types)
 
 type Use = Types.Use
+type Fusion = Types.Fusion
 
 return function<T>(x: T, use: Use?): T | any
 	-- If x is a state, and requires a dependency to be added, we also require a use function.

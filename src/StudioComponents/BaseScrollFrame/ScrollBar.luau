@@ -2,8 +2,8 @@
 -- Modified by @mvyasu
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -37,6 +37,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 type ScrollBarProperties = Types.ScrollBarProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: ScrollBarProperties) -> ImageButton
 	local themeProvider = themeProviderComponent(Scope)

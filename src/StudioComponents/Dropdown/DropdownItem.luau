@@ -1,5 +1,5 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -27,6 +27,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 type DropdownItemProperties = Types.DropdownItemProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: DropdownItemProperties) -> TextButton
 	local themeProvider = themeProviderComponent(Scope)

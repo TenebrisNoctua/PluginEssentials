@@ -1,5 +1,5 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 
@@ -13,6 +13,7 @@ local isMotionEnabled = true
 type State<T> = Types.State<T>
 type Scope = Types.Scope
 type Use = Types.Use
+type Fusion = Types.Fusion
 
 --motionStateTypes: Tween, Spring
 return function(Scope: Scope): (goalState: State<any>, motionStateType: string, ...any) -> State<any> | any

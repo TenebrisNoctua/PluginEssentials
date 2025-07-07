@@ -1,5 +1,5 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 local Types = require(ComponentTypes.Types)
@@ -9,8 +9,10 @@ local unwrap = require(script.Parent.unwrap)
 type ModifierInput = Types.ModifierInput
 
 type Computed<T> = Types.Computed<T>
+
 type Scope = Types.Scope
 type Use = Types.Use
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (modifierInput: ModifierInput) -> Computed<any>
 	return function(modifierInput: ModifierInput): Computed<any>

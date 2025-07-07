@@ -23,6 +23,8 @@ export type Computed<T> = FusionTypes.Computed<T>
 export type Scope = FusionTypes.Scope<FusionTypes.Fusion>
 export type Use = FusionTypes.Use
 
+export type Fusion = FusionTypes.Fusion
+
 --// Plugin Component Types
 
 export type ToolbarProperties = {

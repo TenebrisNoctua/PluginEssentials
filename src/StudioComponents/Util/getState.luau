@@ -1,6 +1,3 @@
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
-
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 
 local Types = require(ComponentTypes.Types)

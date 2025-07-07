@@ -1,5 +1,7 @@
 local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+
+local External = require(script.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local PluginComponents = script.Parent
 local StudioComponents = PluginComponents.Parent:FindFirstChild("StudioComponents")
@@ -22,6 +24,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 
 type ToolbarButtonProperties = Types.ToolbarButtonProperties
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: ToolbarButtonProperties) -> PluginToolbarButton
 	return function(props: ToolbarButtonProperties): PluginToolbarButton

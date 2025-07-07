@@ -26,8 +26,8 @@
 
 --]]
 
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local ComponentTypes = script.Parent.Parent.Parent.ComponentTypes
 local Types = require(ComponentTypes.Types)
@@ -46,6 +46,7 @@ type Computed<T> = Types.Computed<T>
 type Value<T> = Types.Value<T>
 
 type Scope = Types.Scope
+type Fusion = Types.Fusion
 
 return function(Scope: Scope): (props: DragInputProperties) -> (Vector2Value, Computed<Vector2>, Value<boolean>)
 	local getState = getStateUtil(Scope)

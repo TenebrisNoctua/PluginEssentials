@@ -2,8 +2,8 @@
 -- Ported to Fusion by @YasuYoshida
 -- Migrated to Fusion 0.3 by @TenebrisNoctua
 
-local Plugin = script:FindFirstAncestorWhichIsA("Plugin")
-local Fusion = require(Plugin:FindFirstChild("Fusion", true))
+local External = require(script.Parent.Parent.Parent.External)
+local Fusion = External.getLibrary("Fusion") :: Fusion
 
 local StudioComponents = script.Parent.Parent
 local StudioComponentsUtil = StudioComponents:FindFirstChild("Util")
@@ -35,9 +35,12 @@ local COMPONENT_ONLY_PROPERTIES = {
 type ScrollArrowProperties = Types.ScrollArrowProperties
 
 type State<T> = Types.State<T>
-type Scope = Types.Scope
+type Value<T> = Types.Value<T>
 
-local function getBaseProperties(Scope: Scope, themeProvider: typeof(themeProviderComponent({})), mainModifier: State<Enum.StudioStyleGuideModifier> | Enum.StudioStyleGuideModifier, props: ScrollArrowProperties)
+type Scope = Types.Scope
+type Fusion = Types.Fusion
+
+local function getBaseProperties(Scope: Scope, themeProvider: typeof(themeProviderComponent({} :: Fusion)), mainModifier: Value<Enum.StudioStyleGuideModifier> | Enum.StudioStyleGuideModifier, props: ScrollArrowProperties)
 	return {
 		Size = DEFAULT_ARROW_SIZE,
 		Image = DEFAULT_ARROW_IMAGE,
