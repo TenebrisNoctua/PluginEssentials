@@ -9,7 +9,7 @@ The usage is similar to the previous version, except now every component require
 
 -------------------------------------------------------------------------------------------------------------
 
-This is a repository with components that many people find essential to making plugins with [Fusion](https://github.com/Elttob/Fusion). You'll find in the src folder that there's two folders. Each one has a specific set of components which you can learn more about below.
+This is a repository with components that many people find essential to making plugins with [Fusion](https://github.com/Elttob/Fusion). You'll find in the src folder that there's two folders. Each one has a specific set of components which you can learn more about in the documentation.
 
 ### Community Usage (For Fusion 0.2)
 
