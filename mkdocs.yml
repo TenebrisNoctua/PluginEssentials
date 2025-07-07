@@ -81,6 +81,8 @@ nav:
       - tutorials/studio-components/advancedComponents.md
   - API Reference:
       - API Reference: api-reference/index.md
+      - General:
+          setFusion: api-reference/setFusion.md
       - Plugin Components:
         - Members:
           - Widget: api-reference/plugin-components/members/Widget.md
