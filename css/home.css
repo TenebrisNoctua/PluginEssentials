@@ -1,0 +1,87 @@
+[dir=ltr] .md-header__title {
+    margin-left: 0.5rem;
+    margin-right: .4rem;
+}
+
+.md-footer {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.md-footer__title {
+    color: var(--footer-fg-color);
+}
+
+.md-footer__direction {
+    color: var(--footer-fg-color);
+}
+
+.md-footer__button {
+    color: var(--footer-fg-color);
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+    height: 2rem;
+}
+
+.md-header__button.md-logo {
+    margin-right: 0
+}
+
+#peTitle {
+    font-weight: 700;
+    letter-spacing: -.02em;
+    z-index: inherit;
+    color: var(--title-text-color);
+}
+
+.peTitleDes {
+    z-index: inherit;
+}
+
+#peTitleSeperator {
+    margin-top: -30px;
+    width: 33%;
+    border: none;
+    height: 2px;
+    color: #333;
+    background-color: #333;
+}
+
+#peMainSection {
+    position: relative;
+    min-height: 30rem;
+    font-size: 1.2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    z-index: 1;
+}
+
+#peMainSection::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    bottom: -20em;
+    z-index: -1;
+    opacity: 0.4;
+    background: radial-gradient(farthest-corner at 10% 0%, transparent, var(--md-default-bg-color)), var(--main-section-image);
+    background-position: top right;
+    background-size: 80vh 80vh;
+    box-shadow: inset 0 -15em 15em -1em var(--md-default-bg-color);
+    filter: blur(calc(0.1vw + 0.25em));
+    background-repeat: no-repeat;
+}
+
+#peNavButton {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-weight: 610;
+    font-size: 0.76rem;
+    border-radius: 0.3rem;
+    position: relative;
+}
