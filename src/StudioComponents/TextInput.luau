@@ -31,7 +31,9 @@ local PLACEHOLDER_TEXT_COLOR = Color3.fromRGB(102, 102, 102)
 
 local COMPONENT_ONLY_PROPERTIES = {
 	"Enabled",
-	"ClearTextOnFocus"
+	"ClearTextOnFocus",
+	"OnFocusLost",
+	"Filter"
 }
 
 type TextInputProperties = Types.TextInputProperties
@@ -62,14 +64,16 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 
 		local currentTextBounds = Scope:Value(Vector2.zero)
 		local absoluteTextBoxSize = Scope:Value(Vector2.zero)
+		local textBoxRef = Scope:Value(nil)
+		local oldText = unwrap(props.Text) or ""
 
 		local newTextBox = BoxBorder {
 			Color = getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.InputFieldBorder, borderModifier), "Spring", 40),
 
-			[Children] = Scope:New "TextBox" {
+			[Children] = textBoxRef:set(Scope:New "TextBox" {
 				Name = "TextInput",
 				Size = UDim2.new(1, 0, 0, 25),
-				Text = "",
+				Text = props.Text or "",
 				TextSize = constants.TextSize,
 				PlaceholderColor3 = PLACEHOLDER_TEXT_COLOR,
 				ClipsDescendants = true,
@@ -97,7 +101,21 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 				[Out "AbsoluteSize"] = absoluteTextBoxSize,
 
 				[OnEvent "Focused"] = function() isFocused:set(true) end,
-				[OnEvent "FocusLost"] = function() isFocused:set(false) end,
+				[OnEvent "FocusLost"] = function(enterPressed: boolean) 
+					isFocused:set(false) 
+					if not enterPressed then return end
+
+					local TextBox: TextBox = Fusion.peek(textBoxRef)
+					local filter = props.Filter
+					local onFocusLost = props.OnFocusLost
+					local newText = TextBox.Text
+
+					if filter and not filter(newText) then TextBox.Text = oldText; return end
+					oldText = newText
+					
+					if not onFocusLost then return end
+					return onFocusLost(newText)
+				end,
 
 				[OnEvent "InputBegan"] = function(inputObject)
 					if not unwrap(isEnabled) then
@@ -121,7 +139,7 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 					PaddingLeft = UDim.new(0, 5),
 					PaddingRight = UDim.new(0, 5),
 				},
-			}
+			})
 		}
 
 		local hydrateProps = stripProps(props, COMPONENT_ONLY_PROPERTIES)

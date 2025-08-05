@@ -412,7 +412,13 @@ return function (Scope: Scope): (props: DropdownProperties) -> Frame
 
 			task.spawn(onAncestryChanged)
 
-			table.insert(Scope, newDropdown.AncestryChanged:Connect(onAncestryChanged))
+			table.insert(Scope, newDropdown.AncestryChanged:Connect(function() 
+				local isEnabled = unwrap(isEnabled)
+				if not isEnabled then return end 
+
+				onAncestryChanged()
+			end))
+
 			cleanupObject(listenToParentCleanupList)
 
 			Scope:Hydrate(newDropdown)

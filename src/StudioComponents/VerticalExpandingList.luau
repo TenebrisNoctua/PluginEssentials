@@ -26,6 +26,7 @@ local Out = Fusion.Out
 local COMPONENT_ONLY_PROPERTIES = {
 	"Padding",
 	"AutomaticSize",
+	"SizeX"
 }
 
 type VerticalExpandingListProperties = Types.VerticalExpandingListProperties
@@ -48,12 +49,14 @@ return function(Scope: Scope): (props: VerticalExpandingListProperties) -> Frame
 					ClipsDescendants = true,
 					Size = getMotionState(Scope:Computed(function(use, scope)
 						local mode = unwrap(props.AutomaticSize or Enum.AutomaticSize.Y, use) -- Custom autosize since engine sizing is unreliable
+						local sizeX = unwrap(props.SizeX, use) or 1
+
 						if mode == Enum.AutomaticSize.Y then
 							local s = unwrap(contentSize, use)
 							if s then
-								return UDim2.new(1,0,0,s.Y)
+								return UDim2.new(sizeX, 0, 0, s.Y)
 							else
-								return UDim2.new(1,0,0,0)
+								return UDim2.new(sizeX, 0, 0, 0)
 							end
 						else
 							return props.Size or UDim2.new(1,0,0,0)

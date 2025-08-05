@@ -36,6 +36,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Text",
 	"TextColor3",
 	"Enabled",
+	"SizeX",
 	Children,
 }
 
@@ -83,7 +84,8 @@ return function(Scope: Scope): (props: VerticalCollapsibleSectionProperties) -> 
 			Name = "VerticalCollapsibleSection",
 			BackgroundTransparency = 1,
 			--TODO: remove this + 2 once BorderMode becomes a thing for UIStroke
-			Size = UDim2.new(1, 0, 0, HEADER_HEIGHT + 2),
+			Size = UDim2.new(unwrap(props.SizeX) or 1, 0, 0, HEADER_HEIGHT + 2),
+			SizeX = props.SizeX,
 			Padding = props.Padding,
 
 			AutomaticSize = Scope:Computed(function(use, scope)

@@ -24,6 +24,7 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"CanvasScaleConstraint",
 	"UIPadding",
 	"UILayout",
+	"Enabled"
 }
 
 -- if you're using this component with the default sizes of the other components
@@ -62,12 +63,15 @@ return function(Scope: Scope): (props: ScrollFrameProperties) -> Frame
 		local scrollFrameProps = table.clone(props)
 		scrollFrameProps[Children] = {props.UIPadding, props.UILayout, props[Children]}
 
-		for index, value in pairs {
+		for index, value in {
 			CanvasSize = Scope:Computed(function(use, scope)
+				local enabled = unwrap(props.Enabled, use)
+				if not enabled then return UDim2.new() end
+				
 				local contentSize = unwrap(contentSize, use) or Vector2.zero
 				local currentPadding = {}
 
-				for index, value in pairs(contentPadding) do
+				for index, value in contentPadding do
 					currentPadding[index] = unwrap(value, use) or UDim.new()
 				end
 

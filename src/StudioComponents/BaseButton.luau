@@ -31,7 +31,9 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"BorderColorStyle",
 	"Activated",
 	"Enabled",
-	"TextSize"
+	"TextSize",
+	"CornerRadius",
+	"Timeout"
 }
 
 type BaseButtonProperties = Types.BaseButtonProperties
@@ -49,6 +51,7 @@ return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 		local isEnabled = getState(props.Enabled, true)
 		local isHovering = Scope:Value(false)
 		local isPressed = Scope:Value(false)
+		local timeout = getState(props.Timeout, 0)
 
 		local modifier = getModifier({
 			Enabled = isEnabled,
@@ -58,6 +61,7 @@ return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 		})
 
 		local newBaseButton = BoxBorder {
+			CornerRadius = props.CornerRadius,
 			Color = getMotionState(themeProvider:GetColor(props.BorderColorStyle or Enum.StudioStyleGuideColor.CheckedFieldBorder, modifier), "Spring", 40),
 
 			[Children] = Scope:New "TextButton" {
@@ -89,14 +93,23 @@ return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 					end
 				end,
 				[OnEvent "Activated"] = (function()
-					if props.Activated then
-						return function()
-							if unwrap(isEnabled) then
-								props.Activated()
-							end
-						end
+					local Activated = props.Activated
+					if not Activated then return end 
+
+					return function()
+						if not unwrap(isEnabled) then return end 
+						Activated()
+
+						local timeout = unwrap(timeout)
+						if typeof(timeout) ~= "number" then return end
+
+						isPressed:set(false)
+						isHovering:set(false)
+						isEnabled:set(false)
+						
+						task.wait(timeout)
+						isEnabled:set(true)
 					end
-					return
 				end)(),
 			}
 		}

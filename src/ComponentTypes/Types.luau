@@ -154,18 +154,24 @@ export type BackgroundProperties = {
 export type BaseButtonProperties = {
 	Activated: (() -> nil)?,
 	Enabled: CanBeState<boolean>?,
+	TextSize: CanBeValue<number>?,
 	TextColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	BackgroundColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	BorderColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
-	TextSize: CanBeValue<number>?,
+	CornerRadius: CanBeState<UDim>?,
+	Timeout: CanBeValue<number>?,
 	[any]: any,
 }
 
 export type IconButtonProperties = BaseButtonProperties & {
 	ImageColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
+	Icon: CanBeState<string>,
 	IconColor3: CanBeState<Color3>?,
+	CornerRadius: CanBeState<UDim>?,
+	Timeout: CanBeValue<number>?,
 	TextSize: nil,
+	TextColorStyle: nil,
 	[any]: any,
 }
 
@@ -222,6 +228,8 @@ export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
 	Text: CanBeValue<string>?,
 	OnChange: (newText: string) -> nil,
+	OnFocusLost: (newText: string) -> nil,
+	Filter: (newText: string) -> boolean,
 	[any]: any,
 }
 
@@ -271,6 +279,7 @@ export type SliderProperties = {
 export type VerticalExpandingListProperties = {
 	Enabled: CanBeState<boolean>?,
 	Padding: CanBeState<UDim>?,
+	SizeX: CanBeState<number>?,
 	[any]: any,
 }
 
