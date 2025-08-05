@@ -168,8 +168,6 @@ export type IconButtonProperties = BaseButtonProperties & {
 	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
 	Icon: CanBeState<string>,
 	IconColor3: CanBeState<Color3>?,
-	CornerRadius: CanBeState<UDim>?,
-	Timeout: CanBeValue<number>?,
 	TextSize: nil,
 	TextColorStyle: nil,
 	[any]: any,

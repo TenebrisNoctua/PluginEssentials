@@ -7,6 +7,7 @@
 export type VerticalExpandingListProperties = {
 	Enabled: CanBeState<boolean>?,
 	Padding: CanBeState<UDim>?,
+	SizeX: CanBeState<number>?,
 	[any]: any,
 }
 ```
@@ -36,5 +37,16 @@ Sets whether the `VerticalExpandingList` will be enabled or not. Can either be a
 </h3>
 
 The padding between instances inside the `VerticalExpandingList`. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----
+
+<h3 markdown>
+	SizeX
+	<span class="api-property-type">
+		: CanBeState&lt;number&gt;?
+	</span>
+</h3>
+
+This property sets the size of the `VerticalExpandingList` on the X axis (Scale). Can either be a `State` containing an `number`, or an `number`.
 
 ----

@@ -7,8 +7,10 @@
 export type IconButtonProperties = BaseButtonProperties & {
 	ImageColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
+	Icon: CanBeState<string>,
 	IconColor3: CanBeState<Color3>?,
 	TextSize: nil,
+	TextColorStyle: nil,
 	[any]: any,
 }
 ```
@@ -40,6 +42,17 @@ Sets the color style of the image to the given [`Enum`](https://create.roblox.co
 </h3>
 
 Sets the color style modifier of the image to the given [`Enum`](https://create.roblox.com/docs/reference/engine/enums/StudioStyleGuideModifier) or a `State` containing that `Enum`.
+
+----
+
+<h3 markdown>
+	Icon
+	<span class="api-property-type">
+		: CanBeState&lt;string&gt;?
+	</span>
+</h3>
+
+The image that will appear on the `IconButton`. Can either be a `State` containing a `string`, or a `string`. 
 
 ----
 

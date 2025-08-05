@@ -11,11 +11,11 @@ Here's an example on how you can create a toolbar and a toolbar button:
 local Fusion = require(someFolder.Fusion)
 local Scope = Fusion:scoped()
 
-local WindowComponent = require(PluginEssentials.PluginComponents.Window)
+local WidgetComponent = require(PluginEssentials.PluginComponents.Widget)
 local ToolbarComponent = require(PluginEssentials.PluginComponents.Toolbar)
 local ToolbarButtonComponent = require(PluginEssentials.PluginComponents.ToolbarButton)
 
-local Window = WindowComponent(Scope)
+local Widget = WidgetComponent(Scope)
 local Toolbar = ToolbarComponent(Scope)
 local ToolbarButton = ToolbarButtonComponent(Scope)
 
@@ -39,19 +39,19 @@ In the example above, we created a new toolbar called "Tools Toolbar" with the "
 !!! warning
     Creating a `Toolbar` in Studio with the Next Gen Ribbon enabled will do nothing as the behavior for it has not been implemented yet.
 
-## Configuring a Window with Toolbar Buttons
+## Configuring a Widget with Toolbar Buttons
 
-Now that we have created our toolbar button, it is time to connect it to a `Window`, so it can be used to enable or disable it.
+Now that we have created our toolbar button, it is time to connect it to a `Widget`, so it can be used to enable or disable it.
 
 ```lua
 local Fusion = require(someFolder.Fusion)
 local Scope = Fusion:scoped()
 
-local WindowComponent = require(PluginEssentials.PluginComponents.Window)
+local WidgetComponent = require(PluginEssentials.PluginComponents.Widget)
 local ToolbarComponent = require(PluginEssentials.PluginComponents.Toolbar)
 local ToolbarButtonComponent = require(PluginEssentials.PluginComponents.ToolbarButton)
 
-local Window = WindowComponent(Scope)
+local Widget = WidgetComponent(Scope)
 local Toolbar = ToolbarComponent(Scope)
 local ToolbarButton = ToolbarButtonComponent(Scope)
 
@@ -101,7 +101,7 @@ In the example above, we created a toolbar, a toolbar button and a widget to dis
     local Scope = Fusion:scoped()
 
     -- More efficient and easier to write!
-    local Window = require(PluginEssentials.PluginComponents.Window)(Scope)
+    local Widget = require(PluginEssentials.PluginComponents.Widget)(Scope)
     local Toolbar = require(PluginEssentials.PluginComponents.Toolbar)(Scope)
     local ToolbarButton = require(PluginEssentials.PluginComponents.ToolbarButton)(Scope)
     ```

@@ -7,10 +7,12 @@
 export type BaseButtonProperties = {
 	Activated: (() -> nil)?,
 	Enabled: CanBeState<boolean>?,
+	TextSize: CanBeValue<number>?,
 	TextColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	BackgroundColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
 	BorderColorStyle: CanBeState<Enum.StudioStyleGuideColor>?,
-	TextSize: CanBeValue<number>,
+	CornerRadius: CanBeState<UDim>?,
+	Timeout: CanBeValue<number>?,
 	[any]: any,
 }
 ```
@@ -40,6 +42,17 @@ The callback function that will be called when the `BaseButton` is activated.
 </h3>
 
 Sets whether the `BaseButton` will be enabled or not. Can either be a `State` containing a `boolean`, or a `boolean`.
+
+----
+
+<h3 markdown>
+	TextSize
+	<span class="api-property-type">
+		: CanBeValue&lt;number&gt;?
+	</span>
+</h3>
+
+The size of the text that will be displayed on the `BaseButton`. Can either be a `Value` containing a `number`, or a `number`.
 
 ----
 
@@ -77,12 +90,23 @@ Sets the color style of the border to the given [`Enum`](https://create.roblox.c
 ----
 
 <h3 markdown>
-	TextSize
+	CornerRadius
+	<span class="api-property-type">
+		: CanBeState&lt;UDim&gt;?
+	</span>
+</h3>
+
+Sets the corner radius of the `BaseButton`. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----
+
+<h3 markdown>
+	Timeout
 	<span class="api-property-type">
 		: CanBeValue&lt;number&gt;?
 	</span>
 </h3>
 
-The size of the text that will be displayed on the `BaseButton`. Can either be a `Value` containing a `number`, or a `number`.
+This property determines if the `BaseButton` will be disabled for a certain period of time after it's been activated. Can either be a `Value` containing a `number`, or a `number`.
 
 ----
