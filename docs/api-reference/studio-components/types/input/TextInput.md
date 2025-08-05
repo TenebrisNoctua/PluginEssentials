@@ -8,8 +8,8 @@ export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
 	Text: CanBeValue<string>?,
 	OnChange: (newText: string) -> nil,
-	OnFocusLost: (newText: string) -> nil,
-	Filter: (newText: string) -> boolean,
+	OnFocusLost: ((newText: string) -> nil)?,
+	Filter: ((newText: string) -> boolean)?,
 	[any]: any,
 }
 ```
@@ -57,7 +57,7 @@ The callback function that will be called when the `Text` property changes.
 <h3 markdown>
 	OnFocusLost
 	<span class="api-property-type">
-		: (newText: string) -> nil,
+		: ((newText: string) -> nil)?,
 	</span>
 </h3>
 
@@ -69,7 +69,7 @@ If the `Filter` callback function has been set, then this function will only be 
 <h3 markdown>
 	Filter
 	<span class="api-property-type">
-		: (newText: string) -> boolean,
+		: ((newText: string) -> boolean)?,
 	</span>
 </h3>
 

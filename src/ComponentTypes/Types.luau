@@ -226,8 +226,8 @@ export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
 	Text: CanBeValue<string>?,
 	OnChange: (newText: string) -> nil,
-	OnFocusLost: (newText: string) -> nil,
-	Filter: (newText: string) -> boolean,
+	OnFocusLost: ((newText: string) -> nil)?,
+	Filter: ((newText: string) -> boolean)?,
 	[any]: any,
 }
 
