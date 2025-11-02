@@ -31,6 +31,8 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"ScrollBarThickness",
 	"ScrollBarBorderMode",
 	"CanvasSize",
+	"CanvasAutomaticSize",
+	"CanvasClipsDescendants",
 	"CornerRadius",
 	Children,
 }
@@ -133,6 +135,8 @@ return function(Scope: Scope): (props: BaseScrollFrameProperties) -> Frame
 					ScrollBarImageTransparency = 1,
 					BackgroundTransparency = 1,
 					BorderSizePixel = 0,
+					ClipsDescendants = props.CanvasClipsDescendants,
+					AutomaticSize = props.CanvasAutomaticSize or Enum.AutomaticSize.None,
 					AutomaticCanvasSize = Enum.AutomaticSize.Y,
 
 					ZIndex = zIndex,

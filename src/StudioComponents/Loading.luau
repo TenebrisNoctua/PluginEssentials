@@ -121,6 +121,7 @@ return function(Scope: Scope): (props: LoadingProperties) -> Frame
 					Size = sizeA,
 					Position = UDim2.fromScale(0.02, 0.5),
 					AnchorPoint = Vector2.new(0,0.5),
+					ZIndex = props.ZIndex or 1
 				},
 				Scope:New "Frame" {
 					Name = "Bar2",
@@ -128,6 +129,7 @@ return function(Scope: Scope): (props: LoadingProperties) -> Frame
 					Size = sizeB,
 					Position = UDim2.fromScale(0.5, 0.5),
 					AnchorPoint = Vector2.new(0.5,0.5),
+					ZIndex = props.ZIndex or 1
 				},
 				Scope:New "Frame" {
 					Name = "Bar3",
@@ -135,6 +137,7 @@ return function(Scope: Scope): (props: LoadingProperties) -> Frame
 					Size = sizeA,
 					Position = UDim2.fromScale(0.98, 0.5),
 					AnchorPoint = Vector2.new(1,0.5),
+					ZIndex = props.ZIndex or 1
 				},
 			}
 		}

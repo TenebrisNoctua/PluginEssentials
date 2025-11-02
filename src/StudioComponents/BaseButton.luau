@@ -105,8 +105,10 @@ return function(Scope: Scope): (props: BaseButtonProperties) -> TextButton
 
 						isPressed:set(false)
 						isHovering:set(false)
-						isEnabled:set(false)
+
+						if isEnabled.kind ~= "Value" then return end
 						
+						isEnabled:set(false)
 						task.wait(timeout)
 						isEnabled:set(true)
 					end

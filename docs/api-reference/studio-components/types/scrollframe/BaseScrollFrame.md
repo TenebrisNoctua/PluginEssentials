@@ -7,6 +7,8 @@
 export type BaseScrollFrameProperties = {
 	ScrollBarBorderMode: CanBeState<Enum.BorderMode>?,
 	CanvasSize: CanBeState<UDim2>?,
+	CanvasAutomaticSize: CanBeState<Enum.AutomaticSize>?,
+	CanvasClipsDescendants: CanBeState<boolean>?,
 	ScrollingEnabled: CanBeState<boolean>?,
 	ScrollBarThickness: CanBeState<number>?,
 	VerticalScrollBarPosition: CanBeState<Enum.VerticalScrollBarPosition>?,
@@ -41,6 +43,28 @@ Sets the border mode of the `BaseScrollFrame`. Can either be a `State` containin
 </h3>
 
 Sets the canvas size of the `BaseScrollFrame`. Can either be a `State` containing an `UDim2`, or an `UDim2`.
+
+----
+
+<h3 markdown>
+	CanvasAutomaticSize
+	<span class="api-property-type">
+		: CanBeState&lt;Enum.AutomaticSize&gt;?
+	</span>
+</h3>
+
+Sets the automatic size of the `BaseScrollFrame`. Can either be a `State` containing an `Enum`, or an `Enum`.
+
+----
+
+<h3 markdown>
+	CanvasClipsDescendants
+	<span class="api-property-type">
+		: CanBeState&lt;boolean&gt;?
+	</span>
+</h3>
+
+Sets whether or not descendants will be clipped on the canvas. Can either be a `State` containing an `boolean`, or an `boolean`.
 
 ----
 
@@ -95,6 +119,6 @@ Sets whether the canvas should be inset by the `ScrollBarThickness` for the resp
 	</span>
 </h3>
 
-Sets the canvas size of the `BaseScrollFrame`. Can either be a `State` containing an `UDim2`, or an `UDim2`.
+Sets the corner radius of the `BaseScrollFrame`. Can either be a `State` containing an `UDim`, or an `UDim`.
 
 ----

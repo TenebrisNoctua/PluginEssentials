@@ -7,9 +7,13 @@
 export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
 	Text: CanBeValue<string>?,
+	TextXAlignment: CanBeValue<Enum.TextXAlignment>?,
+	CornerRadius: CanBeState<UDim>?,
+	PaddingLeft: CanBeState<UDim>?,
+	PaddingRight: CanBeState<UDim>?,
 	OnChange: (newText: string) -> nil,
-	OnFocusLost: ((newText: string) -> nil)?,
-	Filter: ((newText: string) -> boolean)?,
+	OnFocusLost: (newText: string) -> nil,
+	Filter: (newText: string) -> boolean,
 	[any]: any,
 }
 ```
@@ -40,6 +44,51 @@ Sets whether the `TextInput` will be enabled or not. Can either be a `State` con
 
 The default text that will be displayed on the `TextInput`. Can either be a `Value` containing a `string`, or a `string`.
 This property can be changed by the end-user.
+
+----
+
+<h3 markdown>
+	TextXAlignment
+	<span class="api-property-type">
+		: CanBeValue&lt;Enum.TextXAlignment&gt;?,
+	</span>
+</h3>
+
+The default text alignment of the `TextInput`. Can either be a `Value` containing an `Enum`, or an `Enum`.
+
+----
+
+
+<h3 markdown>
+	CornerRadius
+	<span class="api-property-type">
+		: CanBeState&lt;UDim&gt;?
+	</span>
+</h3>
+
+Sets the corner radius of the `TextInput`. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----
+
+<h3 markdown>
+	PaddingLeft
+	<span class="api-property-type">
+		: CanBeState&lt;UDim&gt;?,
+	</span>
+</h3>
+
+How much padding will be applied to the descendants of the `TextInput` on the left side. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----
+
+<h3 markdown>
+	PaddingRight
+	<span class="api-property-type">
+		: CanBeState&lt;UDim&gt;?,
+	</span>
+</h3>
+
+How much padding will be applied to the descendants of the `TextInput` on the right side. Can either be a `State` containing an `UDim`, or an `UDim`.
 
 ----
 

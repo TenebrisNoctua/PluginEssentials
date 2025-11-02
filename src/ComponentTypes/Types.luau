@@ -86,6 +86,8 @@ export type GetSelectedStateProperties = {
 export type BaseScrollFrameProperties = {
 	ScrollBarBorderMode: CanBeState<Enum.BorderMode>?,
 	CanvasSize: CanBeState<UDim2>?,
+	CanvasAutomaticSize: CanBeState<Enum.AutomaticSize>?,
+	CanvasClipsDescendants: CanBeState<boolean>?,
 	ScrollingEnabled: CanBeState<boolean>?,
 	ScrollBarThickness: CanBeState<number>?,
 	VerticalScrollBarPosition: CanBeState<Enum.VerticalScrollBarPosition>?,
@@ -168,6 +170,8 @@ export type IconButtonProperties = BaseButtonProperties & {
 	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
 	Icon: CanBeState<string>,
 	IconColor3: CanBeState<Color3>?,
+	CornerRadius: CanBeState<UDim>?,
+	Timeout: CanBeValue<number>?,
 	TextSize: nil,
 	TextColorStyle: nil,
 	[any]: any,
@@ -225,9 +229,13 @@ export type LabelProperties = {
 export type TextInputProperties = {
 	Enabled: CanBeState<boolean>?,
 	Text: CanBeValue<string>?,
+	TextXAlignment: CanBeValue<Enum.TextXAlignment>?,
+	CornerRadius: CanBeState<UDim>?,
+	PaddingLeft: CanBeState<UDim>?,
+	PaddingRight: CanBeState<UDim>?,
 	OnChange: (newText: string) -> nil,
-	OnFocusLost: ((newText: string) -> nil)?,
-	Filter: ((newText: string) -> boolean)?,
+	OnFocusLost: (newText: string) -> nil,
+	Filter: (newText: string) -> boolean,
 	[any]: any,
 }
 

@@ -33,7 +33,10 @@ local COMPONENT_ONLY_PROPERTIES = {
 	"Enabled",
 	"ClearTextOnFocus",
 	"OnFocusLost",
-	"Filter"
+	"Filter",
+	"CornerRadius",
+	"PaddingLeft",
+	"PaddingRight"
 }
 
 type TextInputProperties = Types.TextInputProperties
@@ -69,6 +72,7 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 
 		local newTextBox = BoxBorder {
 			Color = getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.InputFieldBorder, borderModifier), "Spring", 40),
+			CornerRadius = props.CornerRadius,
 
 			[Children] = textBoxRef:set(Scope:New "TextBox" {
 				Name = "TextInput",
@@ -79,13 +83,13 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 				ClipsDescendants = true,
 
 				Font = themeProvider:GetFont("Default"),
-				BackgroundColor3 = getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.InputFieldBackground, mainModifier), "Spring", 40),
+				BackgroundColor3 = props.BackgroundColor3 or getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.InputFieldBackground, mainModifier), "Spring", 40),
 				BackgroundTransparency = props.BackgroundTransparency or 0,
 				
 				TextColor3 = props.TextColor3 or getMotionState(themeProvider:GetColor(Enum.StudioStyleGuideColor.MainText, mainModifier), "Spring", 40),
 				TextEditable = isEnabled,
 
-				TextXAlignment = Scope:Computed(function(use, scope)
+				TextXAlignment = props.TextXAlignment or Scope:Computed(function(use, scope)
 					local bounds = (unwrap(currentTextBounds, use) or Vector2.zero).X + 5 -- because of padding
 					local pixels = (unwrap(absoluteTextBoxSize, use) or Vector2.zero).X
 					return if bounds >= pixels then Enum.TextXAlignment.Right else Enum.TextXAlignment.Left
@@ -136,8 +140,8 @@ return function(Scope: Scope): (props: TextInputProperties) -> TextBox
 				[OnChange "Text"] = props.OnChange,
 
 				[Children] = Scope:New "UIPadding" {
-					PaddingLeft = UDim.new(0, 5),
-					PaddingRight = UDim.new(0, 5),
+					PaddingLeft = props.PaddingLeft or UDim.new(0, 5),
+					PaddingRight = props.PaddingRight or UDim.new(0, 5),
 				},
 			})
 		}

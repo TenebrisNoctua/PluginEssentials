@@ -207,9 +207,6 @@ return function (Scope: Scope): (props: DropdownProperties) -> Frame
 				return unwrap(useableDropdownHeaderSize, use)
 			end),
 			[Children] = {
-				-- this frame hides the dropdown if the mouse leaves it
-				-- maybe this should be done with a mouse click instead
-				-- but I don't know the cleanest way to do that right now
 				Scope:New "Frame" {
 					Name = "DropdownHeader",
 					BackgroundTransparency = 1,

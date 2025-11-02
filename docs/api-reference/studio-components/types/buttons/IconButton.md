@@ -9,6 +9,8 @@ export type IconButtonProperties = BaseButtonProperties & {
 	ImageColorModifier: CanBeState<Enum.StudioStyleGuideModifier>?,
 	Icon: CanBeState<string>,
 	IconColor3: CanBeState<Color3>?,
+	CornerRadius: CanBeState<UDim>?,
+	Timeout: CanBeValue<number>?,
 	TextSize: nil,
 	TextColorStyle: nil,
 	[any]: any,
@@ -64,5 +66,27 @@ The image that will appear on the `IconButton`. Can either be a `State` containi
 </h3>
 
 The color of the icon on the `IconButton`. Can either be a `State` containing a `Color3`, or a `Color3`. Setting this property is not recommended, as it will overwrite the default color defined by the theme of the Studio.
+
+----
+
+<h3 markdown>
+	CornerRadius
+	<span class="api-property-type">
+		: CanBeState&lt;UDim&gt;?
+	</span>
+</h3>
+
+Sets the corner radius of the `IconButton`. Can either be a `State` containing an `UDim`, or an `UDim`.
+
+----
+
+<h3 markdown>
+	Timeout
+	<span class="api-property-type">
+		: CanBeValue&lt;number&gt;?
+	</span>
+</h3>
+
+This property determines if the `IconButton` will be disabled for a certain period of time after it's been activated. Can either be a `Value` containing a `number`, or a `number`.
 
 ----
