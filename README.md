@@ -7,6 +7,10 @@ A migrated version of PluginEssentials (by @mvyasu) to Fusion 0.3.
 
 The usage is similar to the previous version, except now every component requires a Scope table to use the components.
 
+## :warning: Archived
+
+This resource has been archived in favor of [Fusion Foundation](https://github.com/TenebrisNoctua/FusionFoundation), which provides components that are far more consistent to the styling of Roblox Studio, with more capability. While you can still use PluginEssentials, it will no longer be maintained.
+
 -------------------------------------------------------------------------------------------------------------
 
 This is a repository with components that many people find essential to making plugins with [Fusion](https://github.com/Elttob/Fusion). You'll find in the src folder that there's two folders. Each one has a specific set of components which you can learn more about in the documentation.
